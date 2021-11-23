@@ -1,4 +1,4 @@
-@startuml
+@startuml algoThief
 class Policia{}
 
 interface Cargo{}
@@ -31,6 +31,9 @@ class Guia{
 interface Pais{
 }
 class Ciudad{
+}
+
+class Pista{
 }
 
 class Aeropuerto
