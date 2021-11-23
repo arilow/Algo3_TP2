@@ -28,19 +28,28 @@ class Guardian{
 class Guia{
     -pista: Pista
 }
-
-interface Ciudad{
-}
 interface Pais{
 }
-class Canada{
-    -descpripcion:String
+class Ciudad{
 }
+
 class Aeropuerto
 {
     listaEmpleados: OrderedCollection
 }
+class Puerto
+{
+    listaEmpleados: OrderedCollection
+}
 class Palacio
+{
+    listaEmpleados: OrderedCollection
+}
+class Bolsa
+{
+    listaEmpleados: OrderedCollection
+}
+class Banco
 {
     listaEmpleados: OrderedCollection
 }
@@ -51,7 +60,6 @@ class Museo
 
 Policia --> Cargo
 Pais --> Ciudad
-class Canada implements Ciudad
 class Novato implements Cargo
 class Detective implements Cargo
 class Investigador implements Cargo
@@ -61,8 +69,41 @@ class Tripulante implements Empleado
 class Guardian implements Empleado
 class Guia implements Empleado
 
-Canada o-- Aeropuerto
-Canada o-- Museo
-Canada o-- Palacio
+Ciudad o-- Aeropuerto
+Ciudad o-- Puerto
+Ciudad o-- Biblioteca
+Ciudad o-- Palacio
+Ciudad o-- Bolsa
+Ciudad o-- Banco
+Ciudad o-- Museo
 
+
+class Ladron{
+
+}
+class Sexo{
+}
+
+
+Ladron --> Sexo
+Ladron --> Hobby
+Ladron --> Cabello
+Ladron --> Seña
+Ladron --> Vehiculo
+
+interface ObjetoRobado
+{
+}
+class Comun
+{
+}
+class Valioso
+{
+}
+class MuyValioso
+{
+}
+class Comun implements ObjetoRobado
+class Valioso implements ObjetoRobado
+class MuyValioso implements ObjetoRobado
 @enduml
