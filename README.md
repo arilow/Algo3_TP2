@@ -6,11 +6,11 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - Ariel Lowy     (https://github.com/integrante1)
-* **Integrante 2** - Guido Arribas  (https://github.com/integrante2)
-* **Integrante 3** - Lola Segura    (https://github.com/integrante3)
-* **Integrante 4** - Lucas Burna    (https://github.com/integrante4)
-* **Integrante 5** - Mateo Colombo    (https://github.com/integrante4)
+* **Integrante 1** - Ariel Lowy    
+* **Integrante 2** - Guido Arribas  
+* **Integrante 3** - Lola Segura   
+* **Integrante 4** - Lucas Burna  
+* **Integrante 5** - Mateo Colombo 
 Corrector: **{Corrector}**
 
 ## Aplicación
