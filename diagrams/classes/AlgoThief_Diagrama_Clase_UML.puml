@@ -1,0 +1,68 @@
+@startuml
+class Policia{}
+
+interface Cargo{}
+class Novato{
+    -tiempoDeViaje():int
+}
+class Detective{
+    -tiempoDeViaje():int
+}
+class Investigador{
+    -tiempoDeViaje():int
+}
+class Sargento{
+    -tiempoDeViaje():int
+}
+
+
+interface Empleado{
+    +contarPista():void
+}
+class Tripulante{
+    -pista: Pista
+}
+class Guardian{
+    -pista: Pista
+}
+class Guia{
+    -pista: Pista
+}
+
+interface Ciudad{
+}
+interface Pais{
+}
+class Canada{
+    -descpripcion:String
+}
+class Aeropuerto
+{
+    listaEmpleados: OrderedCollection
+}
+class Palacio
+{
+    listaEmpleados: OrderedCollection
+}
+class Museo
+{
+    listaEmpleados: OrderedCollection
+}
+
+Policia --> Cargo
+Pais --> Ciudad
+class Canada implements Ciudad
+class Novato implements Cargo
+class Detective implements Cargo
+class Investigador implements Cargo
+class Sargento  implements Cargo
+
+class Tripulante implements Empleado
+class Guardian implements Empleado
+class Guia implements Empleado
+
+Canada o-- Aeropuerto
+Canada o-- Museo
+Canada o-- Palacio
+
+@enduml
