@@ -1,0 +1,80 @@
+@startuml algoThief
+class Policia{}
+interface Pista{}
+
+class Facil{}
+class Medio{}
+class Dificil{}
+
+
+interface Cargo{}
+class Novato{}
+class Detective{}
+class Investigador{}
+class Sargento{}
+
+
+interface Empleado{}
+class Tripulante{}
+class Guardian{}
+class Guia{}
+interface Ciudad{
+}
+
+class Pista{
+}
+
+class Aeropuerto{}
+class Puerto{}
+class Palacio{}
+class Bolsa{}
+class Banco{}
+class Museo{}
+
+Policia --> Cargo
+class Novato implements Cargo
+class Detective implements Cargo
+class Investigador implements Cargo
+class Sargento  implements Cargo
+
+class Tripulante implements Empleado
+class Guardian implements Empleado
+class Guia implements Empleado
+
+Ciudad o-- Aeropuerto
+Ciudad o-- Puerto
+Ciudad o-- Biblioteca
+Ciudad o-- Palacio
+Ciudad o-- Bolsa
+Ciudad o-- Banco
+Ciudad o-- Museo
+
+
+class Ladron{}
+class Sexo{}
+
+
+Ladron --> Sexo
+Ladron --> Hobby
+Ladron --> Cabello
+Ladron --> Seña
+Ladron --> Vehiculo
+
+interface ObjetoRobado{}
+class Comun{}
+class Valioso{}
+class MuyValioso{}
+class Comun implements ObjetoRobado
+class Valioso implements ObjetoRobado
+class MuyValioso implements ObjetoRobado
+
+class Medio implements Pista
+class Facil implements Pista
+class Dificil implements Pista
+
+Empleado-->Pista
+Policia ..>Ciudad
+Policia ..>Empleado
+Ladron --> ObjetoRobado
+
+@enduml
