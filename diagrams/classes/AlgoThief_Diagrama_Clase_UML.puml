@@ -11,27 +11,29 @@ class Juego {
 class Partida {
 ' - jugador: Jugador
 ' - ladron: Ladron
+    + GenerarNivel()
+}
+
+class Nivel {
 - ciudades: Ciudad
 - ciudadActual: Ciudad
 
 + EntrarAEdificio(edif: Edificio)
 }
 
-
 class ManipuladorDeEventos {
-+ EscucharEvento(partida: Partida)
++ EscucharEvento(nivel: Nivel)
 }
 
 class Jugador {
     - tiempo
     + SumarHoras(horas: int)
 }
+
 class Ciudad {
     + Recibir(jugador: Jugador)
     + MostrarPista(): Pista
 }
-
-interface Pista{}
 
 interface Cargo{}
 class Novato{}
@@ -39,9 +41,7 @@ class Detective{}
 class Investigador{}
 class Sargento{}
 
-
-class Pista{
-}
+class Pista{}
 
 class Aeropuerto{}
 class Puerto{}
@@ -49,6 +49,15 @@ class Palacio{}
 class Bolsa{}
 class Banco{}
 class Museo{}
+
+class Ladron{}
+class DatosLadron{}
+class Sexo{}
+
+interface ObjetoRobado{}
+class Comun{}
+class Valioso{}
+class MuyValioso{}
 
 Jugador --> Cargo
 
@@ -65,11 +74,6 @@ Ciudad <|-- Bolsa
 Ciudad <|-- Banco
 Ciudad <|-- Museo
 
-
-class Ladron{}
-class DatosLadron{}
-class Sexo{}
-
 Ladron --> DatosLadron
 DatosLadron --> Sexo
 DatosLadron --> Hobby
@@ -77,24 +81,26 @@ DatosLadron --> Cabello
 DatosLadron --> Seña
 DatosLadron --> Vehiculo
 
-interface ObjetoRobado{}
-class Comun{}
-class Valioso{}
-class MuyValioso{}
-
 ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
 ObjetoRobado <|.. MuyValioso
 
 Juego --> Partida
-Juego --> ManipuladorDeEventos
 
+Partida --> ManipuladorDeEventos
 Partida --> Jugador
-Partida --> Ladron
-Partida --> Ciudad
-Ciudad -->Pista
+Partida --> Nivel
 
-Jugador <.Ciudad
+Nivel --> Ciudad
+Nivel --> Ladron
+Nivel <. ManipuladorDeEventos
+
+
+Jugador <. Nivel
+Jugador <. Ciudad
+
 Ladron --> ObjetoRobado
+
+Ciudad -->Pista
 
 @enduml
