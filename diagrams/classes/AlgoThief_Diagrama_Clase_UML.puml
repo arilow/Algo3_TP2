@@ -1,5 +1,27 @@
 @startuml algoThief
-class Policia{}
+class Juego {
+- DatoDeCiudades
+- DatosDeLadrones
+
+- IniciarMenu()
+- GenerarPartida()
+
+}
+
+class Partida {
+- jugador: Jugador
+- ladron: Ladron
+- ciudades: Ciudad
+- ciudadActual: Ciudad
+
++ EntrarAEdificio(edif: Edificio)
+}
+
+
+class ManipuladorDeEventos {
++ EscucharEvento(partida: Partida)
+}
+
 interface Pista{}
 
 class Facil{}
@@ -31,7 +53,7 @@ class Bolsa{}
 class Banco{}
 class Museo{}
 
-Policia --> Cargo
+Jugador --> Cargo
 class Novato implements Cargo
 class Detective implements Cargo
 class Investigador implements Cargo
@@ -72,9 +94,14 @@ class Medio implements Pista
 class Facil implements Pista
 class Dificil implements Pista
 
+Juego --> Partida
+Juego --> ManipuladorDeEventos
+
+Partida --> Jugador
+
 Empleado-->Pista
-Policia ..>Ciudad
-Policia ..>Empleado
+Jugador ..>Ciudad
+Jugador ..>Empleado
 Ladron --> ObjetoRobado
 
 @enduml
