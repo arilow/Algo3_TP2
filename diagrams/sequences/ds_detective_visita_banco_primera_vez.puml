@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant ":Juego" as J
+participant ":ManipuladorDeEventos" as ME
+participant "partida:Partida" as P
+participant ":Jugador" as JG
+participant "banco:Banco" as B
+
+J -> ME: EscucharEvento(partida)
+ME -> P: EntrarEnBanco()
+P -> JG: EntrarEn(banco)
+JG -> B: SumarHorasAJugador(tiempo)
+JG <-- B: tiempo + 1
+P -> B: MostrarPista()
+P <-- B: pista
+ME <-- P: pista
+
+@enduml
