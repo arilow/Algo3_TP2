@@ -4,14 +4,14 @@
 participant ":Juego" as J
 participant ":ManipuladorDeEventos" as ME
 participant "partida:Partida" as P
-participant ":Jugador" as JG
 participant "banco:Banco" as B
+participant "jugador:Jugador" as JG
 
 J -> ME: EscucharEvento(partida)
 ME -> P: EntrarEnBanco()
-P -> JG: EntrarEn(banco)
-JG -> B: SumarHorasAJugador(tiempo)
-JG <-- B: tiempo + 1
+P -> B: Recibir(jugador)
+B -> JG: SumarHoras(1)
+
 P -> B: MostrarPista()
 P <-- B: pista
 ME <-- P: pista

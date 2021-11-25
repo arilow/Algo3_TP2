@@ -24,6 +24,11 @@ class ManipuladorDeEventos {
 
 class Jugador {
     - tiempo
+    + SumarHoras(horas: int)
+}
+class Ciudad {
+    + Recibir(jugador: Jugador)
+    + MostrarPista(): Pista
 }
 
 interface Pista{}
@@ -47,18 +52,18 @@ class Museo{}
 
 Jugador --> Cargo
 
-Cargo <|-- Novato
-Cargo <|-- Detective
-Cargo <|-- Investigador
-Cargo <|-- Sargento
+Cargo <|.. Novato
+Cargo <|.. Detective
+Cargo <|.. Investigador
+Cargo <|.. Sargento
 
-Ciudad o-- Aeropuerto
-Ciudad o-- Puerto
-Ciudad o-- Biblioteca
-Ciudad o-- Palacio
-Ciudad o-- Bolsa
-Ciudad o-- Banco
-Ciudad o-- Museo
+Ciudad <|-- Aeropuerto
+Ciudad <|-- Puerto
+Ciudad <|-- Biblioteca
+Ciudad <|-- Palacio
+Ciudad <|-- Bolsa
+Ciudad <|-- Banco
+Ciudad <|-- Museo
 
 
 class Ladron{}
@@ -77,9 +82,9 @@ class Comun{}
 class Valioso{}
 class MuyValioso{}
 
-ObjetoRobado <-- Comun
-ObjetoRobado <-- Valioso
-ObjetoRobado <-- MuyValioso
+ObjetoRobado <|.. Comun
+ObjetoRobado <|.. Valioso
+ObjetoRobado <|.. MuyValioso
 
 Juego --> Partida
 Juego --> ManipuladorDeEventos
@@ -89,7 +94,7 @@ Partida --> Ladron
 Partida --> Ciudad
 Ciudad -->Pista
 
-Jugador .>Ciudad
+Jugador <.Ciudad
 Ladron --> ObjetoRobado
 
 @enduml
