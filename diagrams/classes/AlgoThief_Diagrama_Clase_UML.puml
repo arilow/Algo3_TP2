@@ -9,8 +9,8 @@ class Juego {
 }
 
 class Partida {
-- jugador: Jugador
-- ladron: Ladron
+' - jugador: Jugador
+' - ladron: Ladron
 - ciudades: Ciudad
 - ciudadActual: Ciudad
 
@@ -22,12 +22,11 @@ class ManipuladorDeEventos {
 + EscucharEvento(partida: Partida)
 }
 
+class Jugador {
+    - tiempo
+}
+
 interface Pista{}
-
-class Facil{}
-class Medio{}
-class Dificil{}
-
 
 interface Cargo{}
 class Novato{}
@@ -35,13 +34,6 @@ class Detective{}
 class Investigador{}
 class Sargento{}
 
-
-interface Empleado{}
-class Tripulante{}
-class Guardian{}
-class Guia{}
-interface Ciudad{
-}
 
 class Pista{
 }
@@ -54,14 +46,11 @@ class Banco{}
 class Museo{}
 
 Jugador --> Cargo
-class Novato implements Cargo
-class Detective implements Cargo
-class Investigador implements Cargo
-class Sargento  implements Cargo
 
-class Tripulante implements Empleado
-class Guardian implements Empleado
-class Guia implements Empleado
+Cargo <|-- Novato
+Cargo <|-- Detective
+Cargo <|-- Investigador
+Cargo <|-- Sargento
 
 Ciudad o-- Aeropuerto
 Ciudad o-- Puerto
@@ -73,35 +62,34 @@ Ciudad o-- Museo
 
 
 class Ladron{}
+class DatosLadron{}
 class Sexo{}
 
-
-Ladron --> Sexo
-Ladron --> Hobby
-Ladron --> Cabello
-Ladron --> Seña
-Ladron --> Vehiculo
+Ladron --> DatosLadron
+DatosLadron --> Sexo
+DatosLadron --> Hobby
+DatosLadron --> Cabello
+DatosLadron --> Seña
+DatosLadron --> Vehiculo
 
 interface ObjetoRobado{}
 class Comun{}
 class Valioso{}
 class MuyValioso{}
-class Comun implements ObjetoRobado
-class Valioso implements ObjetoRobado
-class MuyValioso implements ObjetoRobado
 
-class Medio implements Pista
-class Facil implements Pista
-class Dificil implements Pista
+ObjetoRobado <-- Comun
+ObjetoRobado <-- Valioso
+ObjetoRobado <-- MuyValioso
 
 Juego --> Partida
 Juego --> ManipuladorDeEventos
 
 Partida --> Jugador
+Partida --> Ladron
+Partida --> Ciudad
+Ciudad -->Pista
 
-Empleado-->Pista
-Jugador ..>Ciudad
-Jugador ..>Empleado
+Jugador .>Ciudad
 Ladron --> ObjetoRobado
 
 @enduml
