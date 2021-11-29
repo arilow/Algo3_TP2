@@ -6,8 +6,8 @@ public class Juego {
     protected final List<String> datosDeCiudades;
     protected final List<String> datosDeLadrones;
 
-    public iniciarMenu() {
-        this.esContent = esContent;
-        this.usContent = usContent;
+    public Juego(List<String> datosDeCiudades, List<String> datosDeLadrones) {
+        this.datosDeCiudades = datosDeCiudades;
+        this.datosDeLadrones = datosDeLadrones;
     }
 }
