@@ -45,10 +45,9 @@ class Pista{}
 
 class Aeropuerto{}
 class Puerto{}
-class Palacio{}
+class Biblioteca{}
 class Bolsa{}
 class Banco{}
-class Museo{}
 
 class Ladron{}
 class DatosLadron{}
@@ -69,10 +68,8 @@ Cargo <|.. Sargento
 Ciudad <|-- Aeropuerto
 Ciudad <|-- Puerto
 Ciudad <|-- Biblioteca
-Ciudad <|-- Palacio
 Ciudad <|-- Bolsa
 Ciudad <|-- Banco
-Ciudad <|-- Museo
 
 Ladron --> DatosLadron
 DatosLadron --> Sexo
