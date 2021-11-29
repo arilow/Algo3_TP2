@@ -8,9 +8,7 @@ import java.util.List;
 public class Ciudad {
 
     String nombre;
-
     List<Edificio> edificios;
-
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
     }
