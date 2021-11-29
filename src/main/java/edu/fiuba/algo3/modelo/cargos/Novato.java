@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.cargos;
 
-public class Sargento implements Cargo{
+public class Novato implements Cargo {
     private int cantidadArrestos;
 
     public int getCantidadArrestos() {
