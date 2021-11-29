@@ -8,4 +8,31 @@ public class Ladron {
     private String seña;
     private String vehiculo;
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public String getCabello() {
+        return cabello;
+    }
+
+    public String getSeña() {
+        return seña;
+    }
+
+    public String getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setCabello(String cabello) {
+        this.cabello = cabello;
+    }
 }
