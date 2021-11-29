@@ -1,0 +1,5 @@
+1. Ver si hay que guardar distintos perfiles o si cada vez que se inicia una partida se comienza todo de nuevo.
+
+2. La partida es la que debería tener el tiempo actual, y debería ser en formato Date
+y tambien la fecha final debería estar como un final y calculars la diferencia entre esas fechas.
+
