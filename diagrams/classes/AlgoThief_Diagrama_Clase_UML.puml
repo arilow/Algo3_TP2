@@ -1,32 +1,34 @@
 @startuml algoThief
 class Juego {
-- DatoDeCiudades
-- DatosDeLadrones
+    - DatoDeCiudades
+    - DatosDeLadrones
 
-- IniciarMenu()
-- GenerarPartida()
+    - IniciarMenu()
+    - GenerarPartida()
 
 }
 
 class Partida {
-' - jugador: Jugador
-' - ladron: Ladron
+    ' - jugador: Jugador
+    ' - ladron: Ladron
     + GenerarNivel()
 }
 
 class Nivel {
-- ciudades: Ciudad
-- ciudadActual: Ciudad
+    ' A futuro podria ser una fecha (date)
+    - tiempo: int
+    - ciudadInicial: Ciudad
+    - ciudades: Ciudad
+    - ciudadActual: Ciudad
 
-+ EntrarAEdificio(edif: Edificio)
+    + EntrarAEdificio(edif: Edificio)
 }
 
 class ManipuladorDeEventos {
-+ EscucharEvento(nivel: Nivel)
+    + EscucharEvento(nivel: Nivel)
 }
 
 class Jugador {
-    - tiempo
     + SumarHoras(horas: int)
 }
 
@@ -41,23 +43,33 @@ class Detective{}
 class Investigador{}
 class Sargento{}
 
-class Pista{}
+class Pista{
+    - contenido: string
+    ' + mostrarGraficos()
+     + imprimirPista()
+}
 
 class Aeropuerto{}
 class Puerto{}
-class Palacio{}
+class Biblioteca{}
 class Bolsa{}
 class Banco{}
-class Museo{}
 
-class Ladron{}
-class DatosLadron{}
-class Sexo{}
+class Ladron{
+  - seña: string
+  - vehiculo: string
+  - genero: string
+  - hobby: string
+  - cabello: string
+}
 
 interface ObjetoRobado{}
 class Comun{}
 class Valioso{}
 class MuyValioso{}
+
+interface Edificio {
+}
 
 Jugador --> Cargo
 
@@ -66,20 +78,14 @@ Cargo <|.. Detective
 Cargo <|.. Investigador
 Cargo <|.. Sargento
 
-Ciudad <|-- Aeropuerto
-Ciudad <|-- Puerto
-Ciudad <|-- Biblioteca
-Ciudad <|-- Palacio
-Ciudad <|-- Bolsa
-Ciudad <|-- Banco
-Ciudad <|-- Museo
+Ciudad "1" <|-- "3" Edificio
+Edificio <|.. Aeropuerto
+Edificio <|.. Puerto
+Edificio <|.. Biblioteca
+Edificio <|.. Bolsa
+Edificio <|.. Banco
 
-Ladron --> DatosLadron
-DatosLadron --> Sexo
-DatosLadron --> Hobby
-DatosLadron --> Cabello
-DatosLadron --> Seña
-DatosLadron --> Vehiculo
+Edificio -> Pista
 
 ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
@@ -100,7 +106,5 @@ Jugador <. Nivel
 Jugador <. Ciudad
 
 Ladron --> ObjetoRobado
-
-Ciudad -->Pista
 
 @enduml
