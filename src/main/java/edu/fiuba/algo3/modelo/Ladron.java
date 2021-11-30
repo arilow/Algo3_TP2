@@ -8,6 +8,8 @@ public class Ladron {
     private String seña;
     private String vehiculo;
 
+    public Ladron(String sexo, String hobby, String cabello, String seña, String vehiculo){};
+
     public String getSexo() {
         return sexo;
     }
