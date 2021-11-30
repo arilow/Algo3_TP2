@@ -2,7 +2,6 @@ package edu.fiuba.algo3.integracion;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ladron;
-import edu.fiuba.algo3.modelo.Message;
 import edu.fiuba.algo3.modelo.cargos.Cargo;
 import edu.fiuba.algo3.modelo.cargos.Novato;
 import edu.fiuba.algo3.modelo.ciudades.Ciudad;
@@ -24,6 +23,6 @@ public class EntregaUnoTest {
         Jugador jugador = new Jugador("Mateo", cargo, montreal);
 
 
-        assertEquals("Hola Mundo!", message.greet());
+      //  assertEquals("Hola Mundo!", message.greet());
     }
 }
