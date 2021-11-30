@@ -9,7 +9,17 @@ public class Ciudad {
 
     String nombre;
     List<Edificio> edificios;
+    Edificio edificioActual;
+
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
+    }
+
+    public Ciudad(List<Edificio> edificios){
+        this.edificios = edificios;
+    }
+    public void entrarAEdificio(Edificio edificio){
+        edificio.mostrarPista();
+        this.edificioActual = edificio;
     }
 }
