@@ -21,20 +21,22 @@ class Nivel {
     - ciudades: Ciudad
     - ciudadActual: Ciudad
 
-    + EntrarAEdificio(edif: Edificio)
+    + visitarCiudad(ciud:Ciudad)
+
 }
 
 class ManipuladorDeEventos {
-    + EscucharEvento(nivel: Nivel)
+    + escucharEvento(nivel: Nivel)
 }
 
 class Jugador {
-    + SumarHoras(horas: int)
+    + sumarHoras(horas: int)
 }
 
 class Ciudad {
-    + Recibir(jugador: Jugador)
-    + MostrarPista(): Pista
+    + recibir(jugador: Jugador)
+    + mostrarPista(): Pista
+    + entrarAEdificio(edif: Edificio)
 }
 
 interface Cargo{}
