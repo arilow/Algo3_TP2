@@ -1,17 +1,17 @@
 @startuml algoThief
 class Juego {
-    - DatoDeCiudades
-    - DatosDeLadrones
+    - datoDeCiudades
+    - datosDeLadrones
 
-    - IniciarMenu()
-    - GenerarPartida()
+    - iniciarMenu()
+    - generarPartida()
 
 }
 
 class Partida {
     ' - jugador: Jugador
     ' - ladron: Ladron
-    + GenerarNivel()
+    + generarNivel()
 }
 
 class Nivel {
