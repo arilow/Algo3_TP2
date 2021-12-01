@@ -6,16 +6,21 @@ import edu.fiuba.algo3.modelo.edificios.Edificio;
 import java.util.List;
 
 public class Nivel {
-    private List<Ciudad> ciudades;
+//    private List<Ciudad> ciudades;
     private Ciudad ciudadActual;
+    private Tiempo tiempo;
 
-    public Nivel(List<Ciudad> ciudades){
-        this.ciudades = ciudades;
+    public Nivel(Ciudad ciudad){
+        ciudadActual = ciudad;
+        tiempo = new Tiempo(10);
     }
-    public void visitarCiudad(Ciudad ciudad){
+  /*  public void visitarCiudad(Ciudad ciudad){
         this.ciudadActual = ciudad;
     }
-    public void entrarAEdificio(Edificio edificio){
-        ciudadActual.entrarAEdificio(edificio);
+
+   */
+
+    public void entrarAEdificio(int edificio){
+        ciudadActual.entrarAEdificio(edificio, tiempo);
     }
 }

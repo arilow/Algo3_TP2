@@ -19,8 +19,6 @@ public class Tiempo extends Observable {
             setChanged();
             notifyObservers();
         }
-
-        System.out.println("Sumado");
     }
 
     public int obtenerHorasPasadas() {

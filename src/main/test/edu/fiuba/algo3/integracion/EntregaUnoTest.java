@@ -36,7 +36,6 @@ public class EntregaUnoTest {
         System.setOut(standardOut);
     }
 
-
     @Test
     public void casoDeUsoUno() {
         ObjetoComun tesoroNacional = new ObjetoComun();
@@ -49,12 +48,12 @@ public class EntregaUnoTest {
         edificios.add(banco);
 
         Ciudad montreal = new Ciudad(edificios);
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        ciudades.add(montreal);
+        /*List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        ciudades.add(montreal);*/
 
-        Nivel nivel = new Nivel(ciudades);
-        nivel.visitarCiudad(montreal);
-        nivel.entrarAEdificio(banco);
+        Nivel nivel = new Nivel(montreal);
+        //nivel.visitarCiudad(0);
+        nivel.entrarAEdificio(0);
 
         assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
     }
