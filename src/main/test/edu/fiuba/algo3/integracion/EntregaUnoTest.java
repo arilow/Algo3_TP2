@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.cargos.Cargo;
 import edu.fiuba.algo3.modelo.cargos.Novato;
 import edu.fiuba.algo3.modelo.ciudades.Ciudad;
 import edu.fiuba.algo3.modelo.edificios.Banco;
+import edu.fiuba.algo3.modelo.edificios.Biblioteca;
 import edu.fiuba.algo3.modelo.edificios.Edificio;
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
@@ -26,9 +27,28 @@ public class EntregaUnoTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+    ObjetoComun tesoroNacional = new ObjetoComun();
+    Ladron ladron = new Ladron("femenino","","","","");
+    Cargo cargo = new Novato();
+    Jugador jugador = new Jugador("Mateo", cargo);
+
+    Edificio banco = new Banco("Soy una Pista de un banco.");
+    Edificio biblioteca = new Biblioteca("Soy una Pista de una biblioteca.");
+    List<Edificio> edificios = new ArrayList<Edificio>();
+
+    Ciudad montreal = new Ciudad(edificios);
+    List<Ciudad> ciudades = new ArrayList<Ciudad>();
+
+
+    Nivel nivel = new Nivel(ciudades);
+
     @BeforeEach
     public void setUp() {
+
         System.setOut(new PrintStream(outputStreamCaptor));
+        edificios.add(banco);
+        edificios.add(biblioteca);
+        ciudades.add(montreal);
     }
 
     @AfterEach
@@ -39,23 +59,22 @@ public class EntregaUnoTest {
 
     @Test
     public void casoDeUsoUno() {
-        ObjetoComun tesoroNacional = new ObjetoComun();
-        Ladron ladron = new Ladron("femenino","","","","");
-        Cargo cargo = new Novato();
-        Jugador jugador = new Jugador("Mateo", cargo);
 
-        Edificio banco = new Banco("Soy una Pista de un banco.");
-        List<Edificio> edificios = new ArrayList<Edificio>();
-        edificios.add(banco);
-
-        Ciudad montreal = new Ciudad(edificios);
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        ciudades.add(montreal);
-
-        Nivel nivel = new Nivel(ciudades);
         nivel.visitarCiudad(montreal);
         nivel.entrarAEdificio(banco);
 
         assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
     }
+    @Test
+    public void casoDeUsoDos(){
+
+        nivel.visitarCiudad(montreal);
+        nivel.entrarAEdificio(biblioteca);
+        assertEquals("Soy una Pista de una biblioteca.", outputStreamCaptor.toString().trim());
+        System.setOut(new PrintStream(outputStreamCaptor));
+        nivel.entrarAEdificio(banco);
+        assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
+
+    }
 }
+

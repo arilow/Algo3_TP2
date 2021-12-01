@@ -6,4 +6,7 @@ public class Biblioteca implements Edificio{
     public void mostrarPista() {
         System.out.println(pista);
     }
+    public Biblioteca(String pista){
+        this.pista = pista;
+    }
 }
