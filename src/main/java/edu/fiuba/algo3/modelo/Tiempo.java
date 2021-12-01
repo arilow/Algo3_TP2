@@ -23,7 +23,7 @@ public class Tiempo extends Observable {
         System.out.println("Sumado");
     }
 
-    public int obtenerPasadas() {
+    public int obtenerHorasPasadas() {
         return horas;
     }
 }
