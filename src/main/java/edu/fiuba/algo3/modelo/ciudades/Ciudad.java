@@ -15,11 +15,17 @@ public class Ciudad {
         /* TODO */
     }
 
+    public Ciudad(){
+    }
     public Ciudad(List<Edificio> edificios){
         this.edificios = edificios;
     }
     public void entrarAEdificio(Edificio edificio){
         edificio.mostrarPista();
         this.edificioActual = edificio;
+    }
+
+    public boolean equals(Ciudad c) {
+        return this.nombre == c.nombre;
     }
 }

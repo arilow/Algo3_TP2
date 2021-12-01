@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EntregaUnoTest {
 
@@ -57,5 +58,22 @@ public class EntregaUnoTest {
         nivel.entrarAEdificio(banco);
 
         assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    public void casoDeUsoTres() {
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        Ciudad montreal = new Ciudad();
+        ciudades.add(montreal);
+        Ciudad mexico = new Ciudad();
+        ciudades.add(mexico);
+
+        Cargo cargo = new Novato();  // Supongo que el jugador tiene un cargo de novato
+        Jugador jugador = new Jugador("Mateo", cargo);
+
+        Nivel nivel = new Nivel(ciudades, montreal);
+        nivel.visitarCiudad(mexico);
+
+        assertTrue(nivel.estaEnCiudad(mexico));
     }
 }
