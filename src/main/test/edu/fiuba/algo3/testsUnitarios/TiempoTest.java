@@ -27,7 +27,7 @@ public class TiempoTest {
     public void test01TiempoSeAgregaUnaHora() {
         Tiempo tiempo = new Tiempo(10);
 
-        tiempo.SumarHoras(1);
+        tiempo.sumarHoras(1);
 
         assertEquals(1, tiempo.obtenerHorasPasadas());
     }
@@ -38,7 +38,7 @@ public class TiempoTest {
         Tiempo tiempo = new Tiempo(10);
         tiempo.addObserver(observadorDeTiempo);
 
-        tiempo.SumarHoras(10);
+        tiempo.sumarHoras(10);
 
         assertEquals(1, observadorDeTiempo.obtenerContadorDeUpdates());
     }

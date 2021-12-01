@@ -12,7 +12,7 @@ public class Tiempo extends Observable {
         this.horasFin = fin;
     }
 
-    public void SumarHoras(int horasSumadas) {
+    public void sumarHoras(int horasSumadas) {
         horas += horasSumadas;
 
         if(horas >= horasFin) {
@@ -20,7 +20,6 @@ public class Tiempo extends Observable {
             notifyObservers();
         }
     }
-
     public int obtenerHorasPasadas() {
         return horas;
     }
