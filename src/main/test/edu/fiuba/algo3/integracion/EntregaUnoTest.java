@@ -28,6 +28,8 @@ public class EntregaUnoTest {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private int indice_banco;
+    private int indice_biblioteca;
 
     ObjetoComun tesoroNacional = new ObjetoComun();
     Ladron ladron = new Ladron("femenino","","","","");
@@ -46,6 +48,8 @@ public class EntregaUnoTest {
 
     @BeforeEach
     public void setUp() {
+        indice_banco = 0;
+        indice_biblioteca = 1;
 
         System.setOut(new PrintStream(outputStreamCaptor));
         edificios.add(banco);
@@ -59,11 +63,20 @@ public class EntregaUnoTest {
     }
 
     @Test
-    public void casoDeUsoDos(){
+    public void test01() {
+        ObjetoComun tesoroNacional = new ObjetoComun();
+        Ladron ladron = new Ladron("femenino","","","","");
+        Cargo cargo = new Novato();
+        Jugador jugador = new Jugador("Mateo");
 
-        nivel.visitarCiudad(montreal);
-        nivel.entrarAEdificio(biblioteca);
-        nivel.entrarAEdificio(banco);
+        Edificio banco = new Banco("Soy una Pista de un banco.");
+        List<Edificio> edificios = new ArrayList<Edificio>();
+        edificios.add(banco);
+
+        Ciudad montreal = new Ciudad(edificios);
+
+        Nivel nivel = new Nivel(montreal, jugador);
+        nivel.entrarAEdificio(0);
 
         //Falta verificar que se está entrando a ambos edificios correctamente
 

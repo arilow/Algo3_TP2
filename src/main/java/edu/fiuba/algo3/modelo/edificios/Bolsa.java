@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
-public class Bolsa implements Edificio{
-
-    String pista;
-    public String mostrarPista() {
-        return pista;
+public class Bolsa extends Edificio{
+    public Bolsa(String pista) {
+        super(pista);
     }
 }
