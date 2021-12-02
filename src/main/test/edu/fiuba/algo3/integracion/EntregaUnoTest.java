@@ -14,6 +14,7 @@ import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class EntregaUnoTest {
 
@@ -70,11 +72,17 @@ public class EntregaUnoTest {
 
         nivel.visitarCiudad(montreal);
         nivel.entrarAEdificio(biblioteca);
-        assertEquals("Soy una Pista de una biblioteca.", outputStreamCaptor.toString().trim());
-        System.setOut(new PrintStream(outputStreamCaptor));
         nivel.entrarAEdificio(banco);
-        assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
 
+        //Falta verificar que se está entrando a ambos edificios correctamente
+
+        Biblioteca bibliotecaStub = Mockito.mock(Biblioteca.class);
+        when(bibliotecaStub.mostrarPista()).thenReturn("Soy una Pista de una biblioteca");
+        assertEquals("Soy una Pista de un banco", bibliotecaStub.mostrarPista());
+
+        Banco bancoStub = Mockito.mock(Banco.class);
+        when(bancoStub.mostrarPista()).thenReturn("Soy una Pista de una biblioteca");
+        assertEquals("Soy una Pista de una biblioteca", bancoStub.mostrarPista());
     }
 }
 
