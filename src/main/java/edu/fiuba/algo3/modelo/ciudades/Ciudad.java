@@ -27,4 +27,8 @@ public class Ciudad {
         edificios.get(edificio).aumentarTiempo(tiempo);
         edificios.get(edificio).mostrarPista();
     }
+
+    public float obtenerDistancia(Ciudad otra) {
+        return 2000;
+    }
 }

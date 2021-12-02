@@ -67,7 +67,7 @@ public class CiudadTest {
         Tiempo tiempo = new Tiempo(10);
         Edificio banco = new Banco("Soy una Pista de un banco.");
         Edificio biblioteca = new Banco("Soy una Pista de una biblioteca.");
-        List<Edificio> edificios = new ArrayList<Edificio>();
+        List<Edificio> edificios = new ArrayList<>();
         edificios.add(banco);
         edificios.add(biblioteca);
 

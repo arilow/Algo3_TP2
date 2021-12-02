@@ -23,4 +23,8 @@ public class Jugador {
     public void dormir(Tiempo tiempo) {
         tiempo.sumarHoras(8);
     }
+
+    public void viajar(float distancia, Tiempo tiempo) {
+        cargo.viajar(distancia, tiempo);
+    }
 }

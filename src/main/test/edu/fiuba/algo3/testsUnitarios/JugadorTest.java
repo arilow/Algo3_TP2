@@ -15,7 +15,7 @@ public class JugadorTest {
     private Novato novato;
 
     @Test
-    public void test01NovatoRecibeHeridaDeCuchilloPorPrimeraVez() {
+    public void test01JugadorRecibeHeridaDeCuchilloPorPrimeraVez() {
         Tiempo tiempo = new Tiempo(10);
         Jugador jugador = new Jugador(nombre, novato);
         jugador.recibirHeridaCuchillo(tiempo);
@@ -24,7 +24,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test02NovatoRecibeHeridaDeCuchilloPorSegundaVez() {
+    public void test02JugadorRecibeHeridaDeCuchilloPorSegundaVez() {
         Tiempo tiempo = new Tiempo(10);
         Jugador jugador = new Jugador(nombre, novato);
 
@@ -35,7 +35,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test03NovatoDuerme() {
+    public void test03JugadorDuerme() {
         Tiempo tiempo = new Tiempo(10);
         Jugador jugador = new Jugador(nombre, novato);
 
