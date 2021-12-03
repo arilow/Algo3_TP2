@@ -7,14 +7,14 @@ import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import java.util.List;
 
 public class Nivel {
-//    private List<Ciudad> ciudades;
+    private List<Ciudad> ciudades;
     private Ladron ladron;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
     private Tiempo tiempo;
     private Jugador jugador;
 
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron){
+    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
         ciudadActual = ciudad;
         this.jugador = jugador;

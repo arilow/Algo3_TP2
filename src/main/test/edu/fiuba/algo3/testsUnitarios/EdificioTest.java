@@ -118,6 +118,7 @@ public class EdificioTest {
         assertEquals(27, tiempo.obtenerHorasPasadas());
     }
 
+    //Caso de uso 04
     @Test
     public void test05AeropuertoAumentaTiempoTresVeces() {
         Edificio puerto = new Puerto("Soy una Pista de un puerto.");
@@ -136,6 +137,8 @@ public class EdificioTest {
 
         assertEquals(6, tiempo.obtenerHorasPasadas());
     }
+
+    //Caso de uso 04
     @Test
     public void test06PuertoAumentaTiempoCincuentaYCincoVeces() {
         Edificio puerto = new Puerto("Soy una Pista de un puerto.");
