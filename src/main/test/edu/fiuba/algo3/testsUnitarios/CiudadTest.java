@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.testsUnitarios;
 
-import edu.fiuba.algo3.modelo.Nivel;
-import edu.fiuba.algo3.modelo.Pista;
-import edu.fiuba.algo3.modelo.Tiempo;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.cargos.Cargo;
+import edu.fiuba.algo3.modelo.cargos.Novato;
 import edu.fiuba.algo3.modelo.ciudades.Ciudad;
 import edu.fiuba.algo3.modelo.edificios.Aeropuerto;
 import edu.fiuba.algo3.modelo.edificios.Banco;
 import edu.fiuba.algo3.modelo.edificios.Edificio;
 import edu.fiuba.algo3.modelo.edificios.Puerto;
+import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,7 @@ public class CiudadTest {
         System.setOut(standardOut);
     }
 
+    //Caso de uso 01
     @Test
     public void test01SeEntraABancoYSeImprimePista() {
         Tiempo tiempo = new Tiempo(10);
@@ -66,6 +68,7 @@ public class CiudadTest {
         assertEquals(horas_pasadas_esperadas, tiempo.obtenerHorasPasadas());
     }
 
+    //Caso de uso 02
     @Test
     public void test03SeEntraABancoPorPrimeraVezYLuegoUnaBibliotecaYSeImprimenPistas() {
         Tiempo tiempo = new Tiempo(10);
@@ -84,5 +87,27 @@ public class CiudadTest {
         assertEquals("Soy una Pista de una biblioteca.", pista2.mostrar());
     }
 
+    //Caso de uso 03
+    @Test
+    public void test04DetectiveNovatoViajaDeMontrealAMexico() {
+        int horas_pasadas_esperadas = 11;
+
+        Tiempo tiempo = new Tiempo(10);
+        Cargo novato = new Novato();
+        Ciudad montreal = new Ciudad("Montreal", null);
+        Ciudad mexico = new Ciudad("México", null);
+        Jugador jugador = new Jugador("Mateo");
+
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        ciudades.add(montreal);
+        ciudades.add(mexico);
+
+        Nivel nivel = new Nivel(montreal, jugador, null, null, ciudades);
+
+        jugador.asignarCargo(novato);
+        jugador.viajar(10000, tiempo);
+
+        assertEquals(horas_pasadas_esperadas, tiempo.obtenerHorasPasadas());
+    }
 
 }

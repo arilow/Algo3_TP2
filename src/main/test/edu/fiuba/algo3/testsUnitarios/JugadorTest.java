@@ -18,6 +18,7 @@ public class JugadorTest {
 
     private String nombre = "Mateo";
 
+    //Caso de uso 05
     @Test
     public void test01JugadorRecibeHeridaDeCuchilloPorPrimeraVez() {
         Tiempo tiempo = new Tiempo(10);
@@ -27,6 +28,7 @@ public class JugadorTest {
         assertEquals(2, tiempo.obtenerHorasPasadas());
     }
 
+    //Caso de uso 05
     @Test
     public void test02JugadorRecibeHeridaDeCuchilloPorSegundaVez() {
         Tiempo tiempo = new Tiempo(10);
@@ -38,6 +40,7 @@ public class JugadorTest {
         assertEquals(3, tiempo.obtenerHorasPasadas());
     }
 
+    //Caso de uso 05
     @Test
     public void test03JugadorDuerme() {
         Tiempo tiempo = new Tiempo(10);

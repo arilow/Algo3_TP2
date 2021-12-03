@@ -40,7 +40,7 @@ public class NivelTest {
 
             Ciudad montreal = new Ciudad("Montreal", listaEdificios);
 
-            return new Nivel(montreal, jugador, tesoroNacionalDeMontreal, ladrona);
+            return new Nivel(montreal, jugador, tesoroNacionalDeMontreal, ladrona, null);
         }
     }
 
