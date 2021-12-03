@@ -32,10 +32,12 @@ public class Nivel {
         ciudadActual = ciudad;
     }
 
+    //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
         ciudadActual.entrarAEdificio(edificio, tiempo);
     }
 
+    //TODO reemplazar por fecha
     public int obtenerTiempo() {
         return tiempo.obtenerHorasPasadas();
     }
