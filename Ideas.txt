@@ -1,0 +1,17 @@
+1. Ver si hay que guardar distintos perfiles o si cada vez que se inicia una partida se comienza todo de nuevo.
+
+2. La partida es la que debería tener el tiempo actual, y debería ser en formato Date (ya que supongo que habrá que mostrarla en la interfaz gráfica)
+y tambien la fecha final debería estar como un final y calculars la diferencia entre esas fechas.
+
+3. DatosLadron está de más?
+
+4. Los datos del ladrón deberían ser atributos y no clases.
+
+5. Implementar una interfaz Edificio que implemente el método mostrarPista() en vez de que lo haga la Ciudad
+
+6. Tiene sentido que el ObjetoRobado tenga una ciudad o es simplemente parte del nombre? (Ver Entrega 1; Caso de Uso 1 "tesoro Nacional de Montreal")
+
+
+7. Jugador debería tener atributo CiudadActual?
+
+8. Qué cuota de aleatoriadad ponerle? El primer ladrón es siempre el mismo? Misma Ciudad Inicial? Mismo objeto?
