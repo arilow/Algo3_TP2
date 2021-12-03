@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.ciudades;
 
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.Tiempo;
 import edu.fiuba.algo3.modelo.edificios.*;
 
@@ -11,7 +12,7 @@ public class Ciudad {
 
     String nombre;
 
-    List<Edificio> edificios = new ArrayList<Edificio>();
+    List<Edificio> edificios;
     
     // Edificio edificioActual;
 
@@ -19,15 +20,18 @@ public class Ciudad {
         /* TODO */
     }
 
-    public Ciudad(){
-    }
-    public Ciudad(List<Edificio> edificios){
+    public Ciudad(String nombre, List<Edificio> edificios){
+        this.nombre = nombre;
         this.edificios = edificios;
     }
 
-    public void entrarAEdificio(int edificio, Tiempo tiempo) {
+    public boolean es(String nombre) {
+        return this.nombre.equals(nombre);
+    }
+
+    public Pista entrarAEdificio(int edificio, Tiempo tiempo) {
         edificios.get(edificio).aumentarTiempo(tiempo);
-        edificios.get(edificio).mostrarPista();
+        return edificios.get(edificio).mostrarPista();
     }
 
     public float obtenerDistancia(Ciudad otra) {
