@@ -44,7 +44,7 @@ public class EdificioTest {
         Edificio edif = new Edificio("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
-        // verify(tiempoMock).SumarHoras(1);
+        // verify(tiempoMock).sumarHoras(1);
 
         edif.aumentarTiempo(tiempo);
 
@@ -61,7 +61,7 @@ public class EdificioTest {
         Edificio edif = new Edificio("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
-        // verify(tiempoMock).SumarHoras(1);
+        // verify(tiempoMock).sumarHoras(1);
 
         // +1 hora
         edif.aumentarTiempo(tiempo);
@@ -81,7 +81,7 @@ public class EdificioTest {
         Edificio edif = new Edificio("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
-        // verify(tiempoMock).SumarHoras(1);
+        // verify(tiempoMock).sumarHoras(1);
 
         // +1 hora
         edif.aumentarTiempo(tiempo);
@@ -103,7 +103,7 @@ public class EdificioTest {
         Edificio edif = new Edificio("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
-        // verify(tiempoMock).SumarHoras(1);
+        // verify(tiempoMock).sumarHoras(1);
 
         for(int i = 0; i <10; i++)
             edif.aumentarTiempo(tiempo);

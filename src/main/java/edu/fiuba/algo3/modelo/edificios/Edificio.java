@@ -20,7 +20,7 @@ public class Edificio {
         else
             horasPorSumar = 3;
 
-        tiempo.SumarHoras(horasPorSumar);
+        tiempo.sumarHoras(horasPorSumar);
     }
 
     public void mostrarPista() {
