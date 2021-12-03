@@ -35,6 +35,10 @@ class Ciudad {
     + MostrarPista(): Pista
 }
 
+class Edificio {
+    - pista: Pista
+}
+
 interface Cargo{}
 class Novato{}
 class Detective{}
@@ -59,6 +63,12 @@ class Comun{}
 class Valioso{}
 class MuyValioso{}
 
+class Tiempo {
+    - horas
+    - horasFin
+    sumarHoras()
+}
+
 Jugador --> Cargo
 
 Cargo <|.. Novato
@@ -66,13 +76,14 @@ Cargo <|.. Detective
 Cargo <|.. Investigador
 Cargo <|.. Sargento
 
-Ciudad <|-- Aeropuerto
-Ciudad <|-- Puerto
-Ciudad <|-- Biblioteca
-Ciudad <|-- Palacio
-Ciudad <|-- Bolsa
-Ciudad <|-- Banco
-Ciudad <|-- Museo
+Ciudad --> "3" Edificio
+Edificio <|-- Aeropuerto
+Edificio <|-- Puerto
+Edificio <|-- Biblioteca
+Edificio <|-- Palacio
+Edificio <|-- Bolsa
+Edificio <|-- Banco
+Edificio <|-- Museo
 
 Ladron --> DatosLadron
 DatosLadron --> Sexo
@@ -101,6 +112,5 @@ Jugador <. Ciudad
 
 Ladron --> ObjetoRobado
 
-Ciudad -->Pista
 
 @enduml
