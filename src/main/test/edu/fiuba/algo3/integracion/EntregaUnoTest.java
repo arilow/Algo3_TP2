@@ -31,30 +31,12 @@ public class EntregaUnoTest {
     private int indice_banco;
     private int indice_biblioteca;
 
-    ObjetoComun tesoroNacional = new ObjetoComun();
-    Ladron ladron = new Ladron("femenino","","","","");
-    Cargo cargo = new Novato();
-    Jugador jugador = new Jugador("Mateo", cargo);
-
-    Edificio banco = new Banco("Soy una Pista de un banco.");
-    Edificio biblioteca = new Biblioteca("Soy una Pista de una biblioteca.");
-    List<Edificio> edificios = new ArrayList<Edificio>();
-
-    Ciudad montreal = new Ciudad(edificios);
-    List<Ciudad> ciudades = new ArrayList<Ciudad>();
-
-
-    Nivel nivel = new Nivel(ciudades);
-
     @BeforeEach
     public void setUp() {
         indice_banco = 0;
         indice_biblioteca = 1;
 
         System.setOut(new PrintStream(outputStreamCaptor));
-        edificios.add(banco);
-        edificios.add(biblioteca);
-        ciudades.add(montreal);
     }
 
     @AfterEach
@@ -65,7 +47,7 @@ public class EntregaUnoTest {
     @Test
     public void test01() {
         ObjetoComun tesoroNacional = new ObjetoComun();
-        Ladron ladron = new Ladron("femenino","","","","");
+        Ladron ladron = new Ladron("femenino", "", "", "", "");
         Cargo cargo = new Novato();
         Jugador jugador = new Jugador("Mateo");
 
@@ -78,8 +60,26 @@ public class EntregaUnoTest {
         Nivel nivel = new Nivel(montreal, jugador);
         nivel.entrarAEdificio(0);
 
-        //Falta verificar que se está entrando a ambos edificios correctamente
+        assertEquals("Soy una Pista de un banco.", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void test02(){
+        List<Edificio> edificios = new ArrayList<Edificio>();
 
+        Edificio banco = new Banco("Soy una Pista de un banco.");
+        edificios.add(banco);
+        Edificio biblioteca = new Biblioteca("Soy una Pista de una biblioteca.");
+        edificios.add(biblioteca);
+
+        Ciudad montreal = new Ciudad(edificios);
+        Jugador jugador = new Jugador("Mateo");
+        Nivel nivel = new Nivel(montreal, jugador);
+
+        nivel.visitarCiudad(montreal);
+        nivel.entrarAEdificio(0);
+        nivel.entrarAEdificio(1);
+
+        //Falta verificar que se está entrando a ambos edificios correctamente
 //        TODO
 //        Biblioteca bibliotecaStub = Mockito.mock(Biblioteca.class);
 //        when(bibliotecaStub.mostrarPista()).thenReturn("Soy una Pista de una biblioteca");
