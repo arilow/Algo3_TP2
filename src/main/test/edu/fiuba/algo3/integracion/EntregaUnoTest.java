@@ -49,15 +49,12 @@ public class EntregaUnoTest {
     public void test01() {
         ObjetoComun tesoroNacional = new ObjetoComun();
         Ladron ladron = new Ladron("femenino", "", "", "", "");
-        Cargo cargo = new Novato();
         Jugador jugador = new Jugador("Mateo");
 
         Edificio banco = new Banco("Soy una Pista de un banco.");
         List<Edificio> edificios = new ArrayList<Edificio>();
         edificios.add(banco);
-
         Ciudad montreal = new Ciudad(edificios);
-
         Nivel nivel = new Nivel(montreal, jugador);
         nivel.entrarAEdificio(0);
 
