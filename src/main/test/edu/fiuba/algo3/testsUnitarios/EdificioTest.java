@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.testsUnitarios;
 
-import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.Tiempo;
-import edu.fiuba.algo3.modelo.ciudades.Ciudad;
-import edu.fiuba.algo3.modelo.edificios.Aeropuerto;
-import edu.fiuba.algo3.modelo.edificios.Edificio;
-import edu.fiuba.algo3.modelo.edificios.Puerto;
+import edu.fiuba.algo3.modelo.Ciudad;
+import edu.fiuba.algo3.modelo.sitios.edificios.Aeropuerto;
+import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
+import edu.fiuba.algo3.modelo.sitios.edificios.Puerto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

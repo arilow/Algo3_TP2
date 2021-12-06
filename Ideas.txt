@@ -15,3 +15,7 @@ y tambien la fecha final debería estar como un final y calculars la diferencia 
 7. Jugador debería tener atributo CiudadActual?
 
 8. Qué cuota de aleatoriadad ponerle? El primer ladrón es siempre el mismo? Misma Ciudad Inicial? Mismo objeto?
+
+9. State place para el estado para el lugar dentro de una ciudad en el que estoy parado.
+
+
