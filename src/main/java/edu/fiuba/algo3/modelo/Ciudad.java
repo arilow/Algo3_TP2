@@ -1,11 +1,7 @@
-package edu.fiuba.algo3.modelo.ciudades;
+package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Pista;
-import edu.fiuba.algo3.modelo.Tiempo;
-import edu.fiuba.algo3.modelo.edificios.*;
+import edu.fiuba.algo3.modelo.sitios.edificios.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Ciudad {

@@ -4,17 +4,16 @@ import edu.fiuba.algo3.modelo.DatosLadron;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ladron;
 import edu.fiuba.algo3.modelo.Nivel;
-import edu.fiuba.algo3.modelo.ciudades.Ciudad;
-import edu.fiuba.algo3.modelo.edificios.Aeropuerto;
-import edu.fiuba.algo3.modelo.edificios.Banco;
-import edu.fiuba.algo3.modelo.edificios.Biblioteca;
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.Ciudad;
+import edu.fiuba.algo3.modelo.sitios.edificios.Aeropuerto;
+import edu.fiuba.algo3.modelo.sitios.edificios.Banco;
+import edu.fiuba.algo3.modelo.sitios.edificios.Biblioteca;
+import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 

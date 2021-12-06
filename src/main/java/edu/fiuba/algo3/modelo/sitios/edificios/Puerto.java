@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.edificios;
+package edu.fiuba.algo3.modelo.sitios.edificios;
 
 public class Puerto extends Edificio{
     public Puerto(String pista) {

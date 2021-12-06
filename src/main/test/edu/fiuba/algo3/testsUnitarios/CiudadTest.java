@@ -3,12 +3,9 @@ package edu.fiuba.algo3.testsUnitarios;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.cargos.Cargo;
 import edu.fiuba.algo3.modelo.cargos.Novato;
-import edu.fiuba.algo3.modelo.ciudades.Ciudad;
-import edu.fiuba.algo3.modelo.edificios.Aeropuerto;
-import edu.fiuba.algo3.modelo.edificios.Banco;
-import edu.fiuba.algo3.modelo.edificios.Edificio;
-import edu.fiuba.algo3.modelo.edificios.Puerto;
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.Ciudad;
+import edu.fiuba.algo3.modelo.sitios.edificios.Banco;
+import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,6 +48,10 @@ public class CiudadTest {
 
         Pista pista = montreal.entrarAEdificio(0, tiempo);
         assertEquals("Soy una Pista de un banco.", pista.mostrar());
+
+        // assertEquals del tiempo TODO
+        // En que estado estoy si no estoy en ningun edificio, se podria implmentar como un patron state
+
     }
 
     @Test
