@@ -17,7 +17,7 @@ public class Detective implements Cargo {
     }
 
     public void viajar(float distancia, Tiempo tiempo) {
-        // TODO: arreglar rendondeo the division entera
+        // TODO: arreglar rendondeo de division entera
         tiempo.sumarHoras((int) distancia/velocidadViaje);
     }
 
