@@ -9,10 +9,4 @@ public class Banco extends Edificio{
     public Banco(String pista) {
         super(pista);
     }
-
-
-    @Override
-    public void asignarJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
 }

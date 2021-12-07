@@ -33,7 +33,7 @@ public class EdificioTest {
 
     @Test
     public void test01EdificioMuestraPista() {
-        Edificio edif = new Edificio("Soy una pista");
+        Edificio edif = new Aeropuerto("Soy una pista");
 
         Pista pista =  edif.mostrarPista();
         assertEquals("Soy una pista", pista.mostrar());
@@ -47,7 +47,7 @@ public class EdificioTest {
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
         Tiempo tiempo = new Tiempo(10);
-        Edificio edif = new Edificio("Soy una pista");
+        Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
         // verify(tiempoMock).sumarHoras(1);
@@ -64,7 +64,7 @@ public class EdificioTest {
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
         Tiempo tiempo = new Tiempo(10);
-        Edificio edif = new Edificio("Soy una pista");
+        Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
         // verify(tiempoMock).sumarHoras(1);
@@ -84,7 +84,7 @@ public class EdificioTest {
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
         Tiempo tiempo = new Tiempo(10);
-        Edificio edif = new Edificio("Soy una pista");
+        Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
         // verify(tiempoMock).sumarHoras(1);
@@ -106,7 +106,7 @@ public class EdificioTest {
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
         Tiempo tiempo = new Tiempo(50);
-        Edificio edif = new Edificio("Soy una pista");
+        Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
         // verify(tiempoMock).sumarHoras(1);
