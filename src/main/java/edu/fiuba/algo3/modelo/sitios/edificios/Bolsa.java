@@ -4,4 +4,6 @@ public class Bolsa extends Edificio{
     public Bolsa(String pista) {
         super(pista);
     }
+
+
 }

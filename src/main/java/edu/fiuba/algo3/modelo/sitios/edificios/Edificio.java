@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.Tiempo;
 import edu.fiuba.algo3.modelo.sitios.Sitio;
 
-abstract class Edificio implements Sitio {
+public abstract class Edificio implements Sitio {
 
     private Pista pista;
     int contadorDeEntradas;

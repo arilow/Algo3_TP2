@@ -4,4 +4,5 @@ public class Aeropuerto extends Edificio{
     public Aeropuerto(String pista) {
         super(pista);
     }
+
 }
