@@ -14,16 +14,16 @@ public class Nivel {
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
-        ciudadActual = ciudad;
+        this.ciudades = ciudades;
+        this.ciudadActual = ciudad;
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
     }
 
     public void visitarCiudad(Ciudad ciudad){
-        float distancia = ciudadActual.obtenerDistancia(ciudad);
-
-        jugador.viajar(distancia, tiempo);
+        jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
+        this.ciudadActual = ciudad;
     }
 
     //TODO edificio no es un int
@@ -31,7 +31,13 @@ public class Nivel {
         ciudadActual.entrarAEdificio(edificio, tiempo);
     }
 
+    public void salirDeEdificio() {
+        ciudadActual.salirDeEdificio();
+    }
+
     //TODO reemplazar por fecha
+
+    // Obtiene la cantidad de tiempo que paso en la partida
     public int obtenerTiempo() {
         return tiempo.obtenerHorasPasadas();
     }

@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cargos.*;
-import edu.fiuba.algo3.modelo.sitios.Sitio;
-import edu.fiuba.algo3.modelo.sitios.edificios.AireLibre;
-import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 
 public class Jugador {
 
