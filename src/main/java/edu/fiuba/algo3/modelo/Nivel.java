@@ -50,6 +50,15 @@ public class Nivel {
 
     public boolean constatarDatosLadron(DatosLadron datos) {
         return ladron.constatarDatos(datos);
+    }//Usado unicamente en un assert dentro de NivelTest
+
+    public List<Ladron> buscarLadrones(List<DatosLadron> datosLadrones, List<Ladron> listaLadrones){
+       // return listaLadrones.stream().filter(d -> datosLadrones.equalsIgnoreCase(d.getColor())).map(Car::getModel).findAny();
+        //TODO: implementación de filtros para encontrar los ladrones que tienen los datos buscados
+        return listaLadrones; // Hay que modificar eso. Es simplemente para que no tire error
+    }
+    public int obtenerCantidadCiudadesEscape() {
+       return this.tesoro.obtenerCantidadCiudadesEscape();
     }
 
     /*public boolean estaEn(String ciudad) {
