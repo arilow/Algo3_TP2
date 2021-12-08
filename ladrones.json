@@ -1,0 +1,123 @@
+{
+  "ladrones": [
+    {
+      "nombre": "Nick Brunch",
+      "atributos": [
+        {
+        "sexo": "masculino",
+        "hobby": "escalador",
+        "cabello": "negro",
+        "senia": "anillo",
+        "vehiculo": "motocicleta"
+        }
+      ]
+      },
+    {
+      "nombre": "Len Bulk",
+      "atributos": [{
+        "sexo": "masculino",
+        "hobby": "escalador",
+        "cabello": "rojo",
+        "senia": "tatuaje",
+        "vehiculo": "motocicleta"}]
+    },
+
+    {
+      "nombre": "Ihor Ihorovitch",
+      "atributos": [
+        {
+          "sexo": "masculino",
+          "hobby": "croquet",
+          "cabello": "rubio",
+          "senia": "tatuaje",
+          "vehiculo": "limusina"
+        }
+      ]
+    },
+    {
+      "nombre": "Fast Eddie B.",
+      "atributos": [
+        {
+          "sexo": "masculino",
+          "hobby": "croquet",
+          "cabello": "negro",
+          "senia": "joyas",
+          "vehiculo": "convertible"
+        }
+      ]
+    },
+    {
+      "nombre": "Scar Graynolt",
+      "atributos": [
+        {
+          "sexo": "masculino",
+          "hobby": "croquet",
+          "cabello": "rojo",
+          "senia": "anillo",
+          "vehiculo": "limusina"
+        }
+      ]
+    },
+    {
+      "nombre": "Merey Laroc",
+      "atributos": [
+        {
+          "sexo": "feminino",
+          "hobby": "escalar",
+          "cabello": "marron",
+          "senia": "joyas",
+          "vehiculo": "limusina"
+        }
+      ]
+    },
+    {
+      "nombre": "Lady Agatha",
+      "atributos": [
+        {
+          "sexo": "femenino",
+          "hobby": "tenis",
+          "cabello": "rojo",
+          "senia": "anillo",
+          "vehiculo": "convertible"
+        }
+      ]
+    },
+    {
+      "nombre": "Katherine Drib",
+      "atributos": [
+        {
+          "sexo": "femenino",
+          "hobby": "escalar",
+          "cabello": "marron",
+          "senia": "tatuaje",
+          "vehiculo": "motocicleta"
+        }
+      ]
+    },
+    {
+      "nombre": "Dazzle Annie",
+      "atributos": [
+        {
+          "sexo": "femenino",
+          "hobby": "tenis",
+          "cabello": "rubia",
+          "senia": "tatuaje",
+          "vehiculo": "limusina"
+        }
+      ]
+    },
+    {
+      "nombre": "Carmen Sandiego",
+      "atributos": [
+        {
+          "sexo": "femenino",
+          "hobby": "tenis",
+          "cabello": "marron",
+          "senia": "joyas",
+          "vehiculo": "convertible"
+        }
+      ]
+    }
+  ]
+
+}
