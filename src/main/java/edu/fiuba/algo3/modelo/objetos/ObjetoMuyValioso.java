@@ -13,7 +13,7 @@ public class ObjetoMuyValioso implements ObjetoRobado {
         return  this.nombre == nombre;
     }
 
-    public int getCantidadCiudadesEscape(){
+    public int obtenerCantidadCiudadesEscape(){
         return cantidadCiudadesEscape;
     }
 }

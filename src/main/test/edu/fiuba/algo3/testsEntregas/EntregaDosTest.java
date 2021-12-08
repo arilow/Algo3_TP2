@@ -66,9 +66,10 @@ public class EntregaDosTest {
 
         ObjetoComun tesoro = new ObjetoComun("perla");
 
-        Ladron ladron = new Ladron("masculino","", "negro", "anillo", "motocicleta");
+        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
 
         Nivel nivel = new Nivel(montreal, jugador, tesoro, ladron, ciudades);
+
 
     }
 }
