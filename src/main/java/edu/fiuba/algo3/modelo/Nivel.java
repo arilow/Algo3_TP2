@@ -11,6 +11,7 @@ public class Nivel {
     private Ciudad ciudadActual;
     private Tiempo tiempo;
     private Jugador jugador;
+    private int ciudadesVisitadas;
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
@@ -19,6 +20,7 @@ public class Nivel {
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
+        this.ciudadesVisitadas = 1;
     }
 
     public void visitarCiudad(Ciudad ciudad){
@@ -27,6 +29,8 @@ public class Nivel {
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
+
+    public int obtenerCiudadesVisitadas() { return ciudadesVisitadas;}
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
@@ -60,6 +64,8 @@ public class Nivel {
     public int obtenerCantidadCiudadesEscape() {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }
+
+
 
     /*public boolean estaEn(String ciudad) {
         return ciudadActual.es(ciudad);
