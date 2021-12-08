@@ -26,6 +26,8 @@ public class Nivel {
         this.ciudadActual = ciudad;
     }
 
+    public Ciudad obtenerCiudadActual() { return ciudadActual;}
+
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
         ciudadActual.entrarAEdificio(edificio, tiempo);
@@ -50,7 +52,7 @@ public class Nivel {
         return ladron.constatarDatos(datos);
     }
 
-    public boolean estaEn(String ciudad) {
+    /*public boolean estaEn(String ciudad) {
         return ciudadActual.es(ciudad);
-    }
+    }*/
 }

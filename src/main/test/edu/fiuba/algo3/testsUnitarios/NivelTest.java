@@ -54,7 +54,7 @@ public class NivelTest {
 
         assertTrue(nivel.tieneTesoro("Tesoro Nacional de Montreal"));
         assertTrue(nivel.constatarDatosLadron(new DatosLadron("femenino","","","","")));
-        assertTrue(nivel.estaEn("Montreal"));
+        //assertTrue(nivel.estaEn("Montreal"));
 
         nivel.entrarAEdificio(0);
         //TODO: Corroborar que baja el tiempo.

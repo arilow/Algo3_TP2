@@ -7,11 +7,12 @@ import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 import java.util.List;
 
 public class Ciudad {
-    String nombre;
-    List<Edificio> edificios;
-    Sitio sitioActual;
+    private String nombre;
+    private List<Edificio> edificios;
+    private Sitio sitioActual;
     // Representa el espacio fuera de los edificios de la ciudad
-    Sitio aireLibre;
+    private Sitio aireLibre;
+    private Ubicacion ubicacion;
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
@@ -24,9 +25,17 @@ public class Ciudad {
         this.sitioActual = aireLibre;
     }
 
-    public boolean es(String nombre) {
-        return this.nombre.equals(nombre);
+    public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
+        this.nombre = nombre;
+        this.edificios = edificio;
+        this.aireLibre = new AireLibre();
+        this.sitioActual = aireLibre;
+        this.ubicacion = ubicacion;
     }
+
+    /*public boolean es(String nombre) {
+        return this.nombre.equals(nombre);
+    }*/
 
     public Pista entrarAEdificio(int edificio, Tiempo tiempo) {
         this.sitioActual = edificios.get(edificio);
@@ -34,11 +43,13 @@ public class Ciudad {
         return edificios.get(edificio).mostrarPista();
     }
 
+    public Ubicacion obtenerUbicacion(){ return ubicacion; }
+
     public void salirDeEdificio() {
         this.sitioActual = aireLibre;
     }
 
-    public float obtenerDistancia(Ciudad otra) {
-        return 2000;
+    public double obtenerDistancia(Ciudad otraCiudad) {
+        return this.ubicacion.calcularDistancia(otraCiudad.obtenerUbicacion());
     }
 }

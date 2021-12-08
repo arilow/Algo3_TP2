@@ -16,9 +16,8 @@ public class Investigador implements Cargo {
         }
     }
 
-    public void viajar(float distancia, Tiempo tiempo) {
-        // TODO: arreglar rendondeo the division entera
-        tiempo.sumarHoras((int) distancia/velocidadViaje);
+    public void viajar(double distancia, Tiempo tiempo) {
+        tiempo.sumarHoras((int) Math.round(distancia/velocidadViaje));
     }
 
     @Override
