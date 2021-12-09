@@ -10,7 +10,14 @@ public class Ladron {
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
     };
 
-
+    public DatosLadron obtenerDatos()
+    {
+        return this.datos;
+    }
+    public String toString() // es una buena práctica que se llame toString y no "convertirACadenaCaracteres"
+    {
+        return datos.toString();
+    }
     public boolean constatarDatos(DatosLadron datos) {
         return this.datos.constatar(datos);
     }

@@ -41,6 +41,36 @@ public class EntregaDosTest {
         assertEquals(nivel.obtenerCiudadActual(), mexico);
     }
 
+    @Test
+    public void test02CargarDatosEnComputadoraYBuscarSospechosos() {
+
+        Ciudad mexico = new Ciudad("México", null, null);
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        ciudades.add(mexico);
+
+        ObjetoComun tesoro = new ObjetoComun("perla");
+
+        Ladron ladron1 = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
+        Ladron ladron2 = new Ladron("femenino","tenis", "rubio", "tatuaje", "limusina");
+        Ladron ladron3 = new Ladron("masculino","croquet", "negro", "joya", "motocicleta");
+
+        List<Ladron> ladrones= new ArrayList<>();
+        ladrones.add(ladron1);
+        ladrones.add(ladron2);
+        ladrones.add(ladron3);
+
+        Ladron sospechoso = new Ladron("masculino","", "", "", "motocicleta");
+        Nivel nivel = new Nivel(mexico, null, tesoro, ladron1, ciudades,ladrones);
+
+        List<Ladron> resultado= nivel.buscarLadrones(sospechoso.obtenerDatos());
+        List<Ladron> sospechosos= new ArrayList<>();
+        sospechosos.add(ladron1);
+        sospechosos.add(ladron3);
+
+
+        assertEquals(sospechosos,resultado);
+    }
+
 
     @Test
     public void test04IntentarDeAtraparAlSospechosoSinLaOrdenEmitida(){
@@ -69,29 +99,5 @@ public class EntregaDosTest {
         Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
 
         Nivel nivel = new Nivel(montreal, jugador, tesoro, ladron, ciudades);
-
-
-
-
-
-    }
-
-    @Test
-    public void test05CargarDatosEnComputadoraYBuscarSospechosos() {
-
-        Ciudad mexico = new Ciudad("México", null, null);
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        ciudades.add(mexico);
-
-        ObjetoComun tesoro = new ObjetoComun("perla");
-
-        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
-        List<Ladron> ladrones= new ArrayList<>();
-        ladrones.add(ladron);
-        DatosLadron datosLadron= new DatosLadron("masculino","escalar", "negro", "anillo", "motocicleta");
-        Nivel nivel = new Nivel(mexico, null, tesoro, ladron, ciudades);
-
-        List<Ladron> resultado= nivel.buscarLadrones(datosLadron,ladrones);
-        assertEquals(ladrones,resultado);
     }
 }

@@ -16,11 +16,31 @@ public class DatosLadron {
     };
 
     public boolean constatar(DatosLadron otro) {
-        return (this.sexo.equals(otro.sexo) &&
-                this.hobby.equals(otro.hobby) &&
-                this.cabello.equals(otro.cabello) &&
-                this.senia.equals(otro.senia) &&
-                this.vehiculo.equals(otro.vehiculo));
+        //return (this.sexo.equals(otro.sexo) &&
+         //       this.hobby.equals(otro.hobby) &&
+          //      this.cabello.equals(otro.cabello) &&
+           //     this.senia.equals(otro.senia) &&
+            //    this.vehiculo.equals(otro.vehiculo));
+        boolean output= true;
+        if(!otro.sexo.isEmpty()) {
+            output=output&&sexo.equals(otro.sexo);
+        }
+        if(!otro.hobby.isEmpty()) {
+            output=output&&hobby.equals(otro.hobby);
+        }
+        if(!otro.senia.isEmpty()) {
+            output=output&&senia.equals(otro.senia);
+        }
+        if(!otro.cabello.isEmpty()) {
+            output=output&&cabello.equals(otro.cabello);
+        }
+        if(!otro.vehiculo.isEmpty()) {
+            output=output&&vehiculo.equals(otro.vehiculo);
+        }
+        return output;
+    }
+    public String toString(){
+        return sexo + " " + hobby + " " + cabello + " " + senia + " " + vehiculo;
     }
 
 }
