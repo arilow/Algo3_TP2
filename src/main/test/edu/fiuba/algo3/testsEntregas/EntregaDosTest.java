@@ -71,6 +71,9 @@ public class EntregaDosTest {
         Nivel nivel = new Nivel(montreal, jugador, tesoro, ladron, ciudades);
 
 
+
+
+
     }
 
     @Test
