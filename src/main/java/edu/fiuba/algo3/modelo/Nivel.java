@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Nivel {
     private List<Ciudad> ciudades;
@@ -52,10 +53,10 @@ public class Nivel {
         return ladron.constatarDatos(datos);
     }//Usado unicamente en un assert dentro de NivelTest
 
-    public List<Ladron> buscarLadrones(List<DatosLadron> datosLadrones, List<Ladron> listaLadrones){
-       // return listaLadrones.stream().filter(d -> datosLadrones.equalsIgnoreCase(d.getColor())).map(Car::getModel).findAny();
-        //TODO: implementación de filtros para encontrar los ladrones que tienen los datos buscados
-        return listaLadrones; // Hay que modificar eso. Es simplemente para que no tire error
+    public List<Ladron> buscarLadrones(DatosLadron datosLadron, List<Ladron> listaLadrones){
+        //TODO: mejorar el método de búsqueda para que no sea tan restrictivo(utilizacción de ANDs en contrastarDatos()) de filtros para encontrar los ladrones que tienen los datos buscados
+        return listaLadrones.stream().filter( l-> l.constatarDatos(datosLadron)).collect(Collectors.toList());
+
     }
     public int obtenerCantidadCiudadesEscape() {
        return this.tesoro.obtenerCantidadCiudadesEscape();

@@ -72,4 +72,23 @@ public class EntregaDosTest {
 
 
     }
+
+    @Test
+    public void test05CargarDatosEnComputadoraYBuscarSospechosos() {
+
+        Ciudad mexico = new Ciudad("México", null, null);
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        ciudades.add(mexico);
+
+        ObjetoComun tesoro = new ObjetoComun("perla");
+
+        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
+        List<Ladron> ladrones= new ArrayList<>();
+        ladrones.add(ladron);
+        DatosLadron datosLadron= new DatosLadron("masculino","escalar", "negro", "anillo", "motocicleta");
+        Nivel nivel = new Nivel(mexico, null, tesoro, ladron, ciudades);
+
+        List<Ladron> resultado= nivel.buscarLadrones(datosLadron,ladrones);
+        assertEquals(ladrones,resultado);
+    }
 }
