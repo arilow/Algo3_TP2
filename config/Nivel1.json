@@ -1,0 +1,55 @@
+{
+  "ciudades":[
+    {
+      "nombre": "pekin",
+      "objetoRobado": ["Huevo de 1000 años"],
+      "edificios": ["Bolsa", "Puerto", "Biblioteca"]
+    },
+    {
+      "nombre": "Baghdad",
+      "objetoRobado": ["Tableta de Babilonia", "alfombra voladora"],
+      "edificios": ["Banco", "Aeropuerto", "Biblioteca"]
+    },
+    {
+      "nombre": "Puerto Moresby",
+      "objetoRobado": ["Colmillo de jabali"],
+      "edificios": ["Banco", "Puerto", "Biblioteca"]
+    },
+    {
+      "nombre": "Sydney",
+      "objetoRobado": ["Candelabro de la casa de opera"],
+      "edificios": ["Bolsa", "Puerto", "Biblioteca"]
+    },
+    {
+      "nombre": "Estambul",
+      "objetoRobado": ["Cruz enjoyada de constantino"],
+      "edificios": ["Bolsa", "Aeropuerto", "Biblioteca"]
+    }
+  ],
+  "ladrones": [
+    {
+      "nombre": "Fast Eddie B.",
+      "genero": "hombre",
+      "hobby": "croquet",
+      "pelo": "negro",
+      "seña": "joyeria",
+      "auto": "convertible"
+    },
+    {
+      "nombre": "Scar Graynolt",
+      "genero": "hombre",
+      "hobby": "croquet",
+      "pelo": "red",
+      "seña": "añillo",
+      "auto": "limusina"
+    },
+    {
+      "nombre": "Merey Laroc",
+      "genero": "mujer",
+      "hobby": "escalar montaña",
+      "pelo": "marron",
+      "seña": "limusina",
+      "auto": "limusina"
+    }
+  ]
+}
