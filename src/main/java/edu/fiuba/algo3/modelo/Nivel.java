@@ -70,13 +70,7 @@ public class Nivel {
             if(this.ladronArrestado() && ciudadesVisitadas>=this.tesoro.obtenerCantidadCiudadesEscape()){
                 jugador.agregarArresto();
             }else{
-                return;
-                /*Random rand = new Random();
-                for (int i = 0; i < ciudades.size(); i+=1){
-                }
-                Ciudad ciudadDestino = ciudades.get(rand.nextInt(ciudades.size()));
-                ciudadDestino.asignarLadron();
-                ciudadDestino.asignarLadronAEdificio(rand.nextInt(4));*/
+
             }
         }
         ciudadActual.entrarAEdificio(edificio, tiempo);
