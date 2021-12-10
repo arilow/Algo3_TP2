@@ -67,13 +67,14 @@ public class EntregaDosTest {
         sospechosos.add(ladron1);
         sospechosos.add(ladron3);
 
+        nivel.entrarAEdificio(1);
 
         assertEquals(sospechosos,resultado);
     }
 
 
     @Test
-    public void test04IntentarDeAtraparAlSospechosoSinLaOrdenEmitida(){
+    public void test04IntentarAtraparAlSospechosoSinLaOrdenEmitida(){
 
         int horasPasadasEsperadas = 3;
         Jugador jugador = new Jugador("Mateo");
@@ -94,10 +95,15 @@ public class EntregaDosTest {
         ciudades.add(colombo);
         ciudades.add(buenosAires);
 
-        ObjetoComun tesoro = new ObjetoComun("perla");
+        ObjetoComun tesoro = new ObjetoComun("papiro");
 
-        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta");
+        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta", buenosAires, 2, "Smiggle");
 
         Nivel nivel = new Nivel(montreal, jugador, tesoro, ladron, ciudades);
+
+        nivel.visitarCiudad(buenosAires);
+        nivel.entrarAEdificio(2);
+
+
     }
 }

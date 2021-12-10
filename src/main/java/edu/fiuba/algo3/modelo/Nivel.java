@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
+import javafx.beans.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,8 @@ public class Nivel {
     private Tiempo tiempo;
     private Jugador jugador;
     private int ciudadesVisitadas;
+    private OrdenDeArresto ordenDeArresto;
+
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
@@ -35,6 +39,7 @@ public class Nivel {
         this.ladron = ladron;
         this.ladronesNivel= ladronesNivel;
         this.ciudadesVisitadas = 1;
+        this.ordenDeArresto = new OrdenDeArresto();
     }
 
     public void visitarCiudad(Ciudad ciudad){
@@ -48,7 +53,28 @@ public class Nivel {
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
+        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
+            if(this.atraparLadron()){
+                //ladron.encarcelar();
+            }
+        }
         ciudadActual.entrarAEdificio(edificio, tiempo);
+    }
+
+    private boolean atraparLadron() {
+        if(this.ordenDeArresto.fueEjecutada()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
+        ladron.moverserA(ciudad, edificio);
+    }
+
+    public void arrestarLadron(){
+
     }
 
     public void salirDeEdificio() {
@@ -89,7 +115,9 @@ public class Nivel {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }
 
-
+    /*public void emitirOrdenDeArresto(String nombreLadron){
+        this.ordenDeArresto = new OrdenDeArresto(nombreLadron);
+    }*/
 
     /*public boolean estaEn(String ciudad) {
         return ciudadActual.es(ciudad);

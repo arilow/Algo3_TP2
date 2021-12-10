@@ -13,6 +13,7 @@ public class Ciudad {
     // Representa el espacio fuera de los edificios de la ciudad
     private Sitio aireLibre;
     private Ubicacion ubicacion;
+    private boolean tieneLadron;
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
@@ -23,6 +24,7 @@ public class Ciudad {
         this.edificios = edificio;
         this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
+        this.tieneLadron = false;
     }
 
     public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
@@ -31,16 +33,26 @@ public class Ciudad {
         this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
         this.ubicacion = ubicacion;
+        this.tieneLadron = false;
     }
 
-    /*public boolean es(String nombre) {
+    public boolean es(String nombre) {
         return this.nombre.equals(nombre);
-    }*/
+    }
 
     public Pista entrarAEdificio(int edificio, Tiempo tiempo) {
         this.sitioActual = edificios.get(edificio);
         edificios.get(edificio).aumentarTiempo(tiempo);
+
+        /*if (ladron.obtenerCiudadActual() == this) {
+            if (edificios.get(edificio).tieneLadron() == true) {
+                //      return "Sí, tiene ladron"
+            } else {
+
+            }
+        }else {*/
         return edificios.get(edificio).mostrarPista();
+
     }
 
     public Ubicacion obtenerUbicacion(){ return ubicacion; }
@@ -51,5 +63,19 @@ public class Ciudad {
 
     public double obtenerDistancia(Ciudad otraCiudad) {
         return this.ubicacion.calcularDistancia(otraCiudad.obtenerUbicacion());
+    }
+
+    public void asignarLadronAEdificio(int edificio){
+        edificios.get(edificio).asignarLadron();
+    }
+
+    public void asignarLadron(){
+        this.tieneLadron = true;
+    }
+
+    public boolean tieneLadron(){ return tieneLadron; }
+
+    public String obtenerNombre() {
+        return nombre;
     }
 }
