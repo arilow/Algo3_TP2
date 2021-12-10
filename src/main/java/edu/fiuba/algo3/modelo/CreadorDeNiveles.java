@@ -77,10 +77,10 @@ public class CreadorDeNiveles {
     private void inicializarLadrones() {
         ladrones = new ArrayList<>();
 
-        ladrones.add(new Ladron("Jorge el malevolo", "masculino", "golf", "rubio", "lunar", "auto" ));
-        ladrones.add(new Ladron("Chichiwolen", "masculino","escalar", "negro", "anillo", "motocicleta"));
-        ladrones.add(new Ladron("Joaquin", "masculino","dar clases de algoritmos y programacion 3", "negro", "la facha", "aeroplano"));
-        ladrones.add(new Ladron("Lolo", "femenino","guitarra", "castaño", "nalgueable", "a pata"));
+        ladrones.add(new Ladron("masculino", "golf", "rubio", "lunar", "auto", ciudades.get(0),0,"Jorge el malevolo"));
+        ladrones.add(new Ladron("masculino","escalar", "negro", "anillo", "motocicleta",ciudades.get(1),1,"Chichiwolen"));
+        ladrones.add(new Ladron( "masculino","dar clases de algoritmos y programacion 3", "negro", "la facha", "aeroplano",ciudades.get(2),2,"Joaquin"));
+        //ladrones.add(new Ladron("Lolo", "femenino","guitarra", "castaño", "nalgueable", "a pata"));
     }
 
     private void inicializarObjetosRobados() {

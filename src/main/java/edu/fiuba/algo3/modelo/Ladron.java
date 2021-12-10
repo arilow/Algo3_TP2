@@ -10,7 +10,6 @@ public class Ladron {
     private String nombreLadron;
     private boolean esLibre;
 
-    private String nombre;
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
     };
@@ -44,7 +43,7 @@ public class Ladron {
     }
 
     public Ladron(String nombre, String sexo, String hobby, String cabello, String senia, String vehiculo) {
-        this.nombre = nombre;
+        this.nombreLadron = nombre;
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
     };
 

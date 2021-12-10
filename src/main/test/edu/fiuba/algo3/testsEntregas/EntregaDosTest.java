@@ -67,15 +67,13 @@ public class EntregaDosTest {
         sospechosos.add(ladron1);
         sospechosos.add(ladron3);
 
-        nivel.entrarAEdificio(1);
-
         assertEquals(sospechosos,resultado);
     }
 
 
     @Test
     public void test04IntentarAtraparAlSospechosoSinLaOrdenEmitida(){
-
+    //No se contempla la cantidad de ciudades visitadas
         int horasPasadasEsperadas = 3;
         Jugador jugador = new Jugador("Mateo");
 
@@ -94,8 +92,8 @@ public class EntregaDosTest {
 
         Ciudad montreal = new Ciudad("Montreal", edificios, uMontreal);
         Ciudad mexico = new Ciudad("México", edificios, uMexico);
-        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uMontreal);
-        Ciudad colombo = new Ciudad("Colombo", edificios, uMontreal);
+        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uBuenosAires);
+        Ciudad colombo = new Ciudad("Colombo", edificios, uColombo);
 
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
         ciudades.add(montreal);
@@ -119,8 +117,7 @@ public class EntregaDosTest {
     @Test
     public void test05IntentarAtraparAlSospechosoConLaOrdenEmitida(){
 
-        int horasPasadasEsperadas = 3;
-        Jugador jugador = new Jugador("Mateo");
+        Jugador jugador = new Jugador("Ari");
 
         Ubicacion uMontreal = new Ubicacion(-73.575439, 45.498646);
         Ubicacion uMexico = new Ubicacion(-99.228515, 19.394067);
@@ -137,8 +134,8 @@ public class EntregaDosTest {
 
         Ciudad montreal = new Ciudad("Montreal", edificios, uMontreal);
         Ciudad mexico = new Ciudad("México", edificios, uMexico);
-        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uMontreal);
-        Ciudad colombo = new Ciudad("Colombo", edificios, uMontreal);
+        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uBuenosAires);
+        Ciudad colombo = new Ciudad("Colombo", edificios, uColombo);
 
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
         ciudades.add(montreal);
@@ -157,7 +154,43 @@ public class EntregaDosTest {
         nivel.entrarAEdificio(2);
 
         assertFalse(ladron.estaLibre());
+    }
 
+    @Test
+    public void test06IDetectiveRealiza6ArrestosSospechosoRobaUnIcanGoldMaskYSeAtrapaElSospechoso(){
+        //No se contempla la cantidad de ciudades visitadas
+        int horasPasadasEsperadas = 3;
+        Jugador jugador = new Jugador("Mateo");
+        //Se agregan 6 arrestos para replicar el caso de uso
+        jugador.agregarArresto();
+        jugador.agregarArresto();
+        jugador.agregarArresto();
+        jugador.agregarArresto();
+        jugador.agregarArresto();
+        jugador.agregarArresto();
+
+        CreadorDeNiveles creadorDeNiveles= new CreadorDeNiveles();
+        Nivel nivel2= creadorDeNiveles.crearNivel(jugador);
+
+
+        //Se visitan 4 ciudades, asumiendo que Ican Gold Mask es un objeto Común
+        nivel2.visitarCiudad(0);
+        nivel2.entrarAEdificio(2);
+
+        nivel2.visitarCiudad(1);
+        nivel2.entrarAEdificio(2);
+
+        nivel2.visitarCiudad(2);
+        nivel2.entrarAEdificio(2);
+
+        nivel2.visitarCiudad(3);
+        nivel2.entrarAEdificio(2);
+
+        nivel2.visitarCiudad(0);
+        nivel2.emitirOrdenDeArresto("Jorge el malevolo");
+        nivel2.entrarAEdificio(0);
+
+        assertFalse(nivel2.obtenerLadron().estaLibre());
     }
 
 }

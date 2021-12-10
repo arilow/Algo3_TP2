@@ -51,6 +51,13 @@ public class Nivel {
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
         this.ciudadActual.esVisitada();
+        ciudadesVisitadas+=1;
+    }
+    public void visitarCiudad(int ciudad) {
+        this.ciudadActual = ciudades.get(ciudad);
+        jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
+        this.ciudadActual.esVisitada();
+        ciudadesVisitadas+=1;
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
@@ -59,8 +66,8 @@ public class Nivel {
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
-        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
-            if(this.ladronArrestado()){
+        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){ //La verificación de las ciudades visitadas no funciona. Tira true no importa lo que le pongas
+            if(this.ladronArrestado() && ciudadesVisitadas>=this.tesoro.obtenerCantidadCiudadesEscape()){
                 jugador.agregarArresto();
             }else{
                 return;
@@ -124,6 +131,9 @@ public class Nivel {
 
     public void emitirOrdenDeArresto(String nombreLadron){
         this.ordenDeArresto.ejecutarOrdenDeArresto(nombreLadron);
+    }
+    public Ladron obtenerLadron(){
+        return this.ladron;
     }
 
     /*public boolean estaEn(String ciudad) {
