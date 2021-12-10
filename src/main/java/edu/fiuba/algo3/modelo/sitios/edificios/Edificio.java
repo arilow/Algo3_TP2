@@ -8,11 +8,13 @@ import edu.fiuba.algo3.modelo.sitios.Sitio;
 public abstract class Edificio implements Sitio {
 
     private Pista pista;
-    int contadorDeEntradas;
+    private int contadorDeEntradas;
+    private boolean tieneLadron;
 
     public Edificio(String pista) {
         this.pista = new Pista(pista);
         contadorDeEntradas = 0;
+        tieneLadron = false;
     }
 
     public void aumentarTiempo(Tiempo tiempo) {
@@ -22,8 +24,15 @@ public abstract class Edificio implements Sitio {
             horasPorSumar = contadorDeEntradas;
         else
             horasPorSumar = 3;
-
         tiempo.sumarHoras(horasPorSumar);
+    }
+
+    public void asignarLadron(){
+        this.tieneLadron = true;
+    }
+
+    public boolean tieneLadron() {
+        return tieneLadron;
     }
 
     public Pista mostrarPista() {

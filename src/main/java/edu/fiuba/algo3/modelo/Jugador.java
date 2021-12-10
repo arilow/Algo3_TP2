@@ -41,7 +41,7 @@ public class Jugador {
         tiempo.sumarHoras(8);
     }
 
-    public void viajar(float distancia, Tiempo tiempo) {
+    public void viajar(double distancia, Tiempo tiempo) {
         cargo.viajar(distancia, tiempo);
     }
 

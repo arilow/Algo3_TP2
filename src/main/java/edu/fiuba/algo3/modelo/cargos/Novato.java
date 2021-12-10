@@ -24,7 +24,7 @@ public class Novato implements Cargo {
         this.cantidadArrestos = cantidadArrestos;
     }
 
-    public void viajar(float distancia, Tiempo tiempo) {
+    public void viajar(double distancia, Tiempo tiempo) {
         // TODO: arreglar rendondeo the division entera
         tiempo.sumarHoras((int) distancia/velocidadViaje);
     }

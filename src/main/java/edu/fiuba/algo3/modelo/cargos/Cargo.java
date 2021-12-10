@@ -5,6 +5,6 @@ import edu.fiuba.algo3.modelo.Tiempo;
 
 public interface Cargo {
     void agregarArresto();
-    void viajar(float diatancia, Tiempo tiempo);
+    void viajar(double diatancia, Tiempo tiempo);
     void asignarJugador(Jugador jugador);
 }
