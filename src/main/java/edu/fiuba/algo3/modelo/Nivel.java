@@ -1,13 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
-import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
-import javafx.beans.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Nivel {
     private List<Ciudad> ciudades;
@@ -29,17 +25,20 @@ public class Nivel {
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ciudadesVisitadas = 1;
+        this.ordenDeArresto = new OrdenDeArresto();
     }
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
         tiempo = new Tiempo(10);
         this.ciudades = ciudades;
         this.ciudadActual = ciudad;
+        ciudadActual.esVisitada();
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ladronesNivel= ladronesNivel;
         this.ciudadesVisitadas = 1;
         this.ordenDeArresto = new OrdenDeArresto();
+
     }
 
     public void jugar(/*Jugador jugador*/) {
@@ -51,6 +50,7 @@ public class Nivel {
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
+        this.ciudadActual.esVisitada();
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
@@ -60,28 +60,29 @@ public class Nivel {
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
         if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
-            if(this.atraparLadron()){
-                //ladron.encarcelar();
+            if(this.ladronArrestado()){
+                jugador.agregarArresto();
+            }else{
+                return;
+                /*Random rand = new Random();
+                for (int i = 0; i < ciudades.size(); i+=1){
+                }
+                Ciudad ciudadDestino = ciudades.get(rand.nextInt(ciudades.size()));
+                ciudadDestino.asignarLadron();
+                ciudadDestino.asignarLadronAEdificio(rand.nextInt(4));*/
             }
         }
         ciudadActual.entrarAEdificio(edificio, tiempo);
     }
 
-    private boolean atraparLadron() {
-        if(this.ordenDeArresto.fueEjecutada()){
-            return true;
-        }else {
-            return false;
-        }
+    private boolean ladronArrestado() {
+        return this.ordenDeArresto.verificarLadron(ladron);
     }
 
     public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
         ladron.moverserA(ciudad, edificio);
     }
 
-    public void arrestarLadron(){
-
-    }
 
     public void salirDeEdificio() {
         ciudadActual.salirDeEdificio();
@@ -121,9 +122,9 @@ public class Nivel {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }
 
-    /*public void emitirOrdenDeArresto(String nombreLadron){
-        this.ordenDeArresto = new OrdenDeArresto(nombreLadron);
-    }*/
+    public void emitirOrdenDeArresto(String nombreLadron){
+        this.ordenDeArresto.ejecutarOrdenDeArresto(nombreLadron);
+    }
 
     /*public boolean estaEn(String ciudad) {
         return ciudadActual.es(ciudad);

@@ -8,6 +8,7 @@ public class Ladron {
     private Ciudad ciudadActual;
     private int edificioActual;
     private String nombreLadron;
+    private boolean esLibre;
 
     private String nombre;
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo){
@@ -27,6 +28,7 @@ public class Ladron {
         this.ciudadActual = ciudadActual;
         this.edificioActual = edificio;
         this.nombreLadron = nombre;
+        this.esLibre = true;
     };
 
     public Ciudad obtenerCiudadActual(){
@@ -65,5 +67,13 @@ public class Ladron {
     public void moverserA(Ciudad ciudad, int edificio) {
         ciudadActual = ciudad;
         edificioActual = edificio;
+    }
+
+    public void arrestar(){
+        this.esLibre = false;
+    }
+
+    public boolean estaLibre(){
+        return this.esLibre;
     }
 }

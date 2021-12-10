@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EntregaDosTest {
 
@@ -84,10 +84,18 @@ public class EntregaDosTest {
         Ubicacion uBuenosAires = new Ubicacion(-58.3712, -34.6083);
         Ubicacion uColombo = new Ubicacion(79.8477800, 6.9319400);
 
-        Ciudad montreal = new Ciudad("Montreal", null, uMontreal);
-        Ciudad mexico = new Ciudad("México", null, uMexico);
-        Ciudad buenosAires = new Ciudad("Buenos Aires", null, uMontreal);
-        Ciudad colombo = new Ciudad("Colombo", null, uMontreal);
+        Edificio aeropuerto = new Banco("Soy una Pista de un aeropuerto.");
+        Edificio puerto = new Banco("Soy una Pista de un puerto.");
+        Edificio banco = new Banco("Soy una Pista de un banco.");
+        List<Edificio> edificios = new ArrayList<Edificio>();
+        edificios.add(banco);
+        edificios.add(puerto);
+        edificios.add(aeropuerto);
+
+        Ciudad montreal = new Ciudad("Montreal", edificios, uMontreal);
+        Ciudad mexico = new Ciudad("México", edificios, uMexico);
+        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uMontreal);
+        Ciudad colombo = new Ciudad("Colombo", edificios, uMontreal);
 
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
         ciudades.add(montreal);
@@ -104,6 +112,52 @@ public class EntregaDosTest {
         nivel.visitarCiudad(buenosAires);
         nivel.entrarAEdificio(2);
 
+        assertTrue(ladron.estaLibre());
 
     }
+
+    @Test
+    public void test05IntentarAtraparAlSospechosoConLaOrdenEmitida(){
+
+        int horasPasadasEsperadas = 3;
+        Jugador jugador = new Jugador("Mateo");
+
+        Ubicacion uMontreal = new Ubicacion(-73.575439, 45.498646);
+        Ubicacion uMexico = new Ubicacion(-99.228515, 19.394067);
+        Ubicacion uBuenosAires = new Ubicacion(-58.3712, -34.6083);
+        Ubicacion uColombo = new Ubicacion(79.8477800, 6.9319400);
+
+        Edificio aeropuerto = new Banco("Soy una Pista de un aeropuerto.");
+        Edificio puerto = new Banco("Soy una Pista de un puerto.");
+        Edificio banco = new Banco("Soy una Pista de un banco.");
+        List<Edificio> edificios = new ArrayList<Edificio>();
+        edificios.add(banco);
+        edificios.add(puerto);
+        edificios.add(aeropuerto);
+
+        Ciudad montreal = new Ciudad("Montreal", edificios, uMontreal);
+        Ciudad mexico = new Ciudad("México", edificios, uMexico);
+        Ciudad buenosAires = new Ciudad("Buenos Aires", edificios, uMontreal);
+        Ciudad colombo = new Ciudad("Colombo", edificios, uMontreal);
+
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        ciudades.add(montreal);
+        ciudades.add(mexico);
+        ciudades.add(colombo);
+        ciudades.add(buenosAires);
+
+        ObjetoComun tesoro = new ObjetoComun("papiro");
+
+        Ladron ladron = new Ladron("masculino","escalar", "negro", "anillo", "motocicleta", buenosAires, 2, "Smiggle");
+
+        Nivel nivel = new Nivel(montreal, jugador, tesoro, ladron, ciudades);
+
+        nivel.visitarCiudad(buenosAires);
+        nivel.emitirOrdenDeArresto("Smiggle");
+        nivel.entrarAEdificio(2);
+
+        assertFalse(ladron.estaLibre());
+
+    }
+
 }

@@ -6,14 +6,14 @@ public class OrdenDeArresto {
 
 
     private boolean ejecutada;
-    private String nombreLadron;
+    private String nombreLadronDeOrden;
 
     public OrdenDeArresto(){
         this.ejecutada = false;
     }
 
-    public OrdenDeArresto(String nombreLadron){
-        this.nombreLadron = nombreLadron;
+    public void ejecutarOrdenDeArresto(String nombreLadron){
+        this.nombreLadronDeOrden = nombreLadron;
         this.ejecutada = true;
     }
 
@@ -21,7 +21,25 @@ public class OrdenDeArresto {
         return ejecutada;
     }
 
+    public String obtenerNombre(){
+        return this.nombreLadronDeOrden;
+    }
+
     public void ejecutarOrden(){
         this.ejecutada = true;
+    }
+
+    public boolean verificarLadron(Ladron ladron) {
+        if(this.ejecutada && ladron.obtenerNombre() == nombreLadronDeOrden) {
+            ladron.arrestar();
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public void emitirOrden(String nombre) {
+        this.ejecutada = true;
+        this.nombreLadronDeOrden = nombre;
     }
 }

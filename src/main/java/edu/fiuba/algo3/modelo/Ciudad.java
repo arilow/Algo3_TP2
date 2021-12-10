@@ -12,6 +12,7 @@ public class Ciudad {
     private Sitio sitioActual;
     // Representa el espacio fuera de los edificios de la ciudad
     private Sitio aireLibre;
+    private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
 
@@ -34,6 +35,7 @@ public class Ciudad {
         this.sitioActual = aireLibre;
         this.ubicacion = ubicacion;
         this.tieneLadron = false;
+        this.visitada = false;
     }
 
     public boolean es(String nombre) {
@@ -77,5 +79,9 @@ public class Ciudad {
 
     public String obtenerNombre() {
         return nombre;
+    }
+
+    public void esVisitada() {
+        visitada = true;
     }
 }
