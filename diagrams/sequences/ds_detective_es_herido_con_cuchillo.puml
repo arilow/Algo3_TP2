@@ -4,16 +4,13 @@
 participant "partida:Partida" as P
 participant ":ManipuladorDeEventos" as ME
 participant "nivel:Nivel" as N
-participant "banco:Banco" as B
+participant "jugador:Jugador" as J
 participant "tiempo:Tiempo" as T
 
 P -> ME: EscucharEvento(partida)
-ME -> N: EntrarEnBanco()
-N -> B: RecibirPolicia(tiempo)
-B -> T: SumarHoras(1)
+ME -> N: RecibirChuchillada()
+N -> J: RecibirChuchillada(tiempo)
+J -> T: SumarHoras(2)
 
-N -> B: MostrarPista()
-N <-- B: pista
-ME <-- N: pista
 
 @enduml
