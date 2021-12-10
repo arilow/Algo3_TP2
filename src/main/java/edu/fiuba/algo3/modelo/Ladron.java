@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
-import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
-
-import java.util.Random;
 
 public class Ladron {
 
@@ -12,17 +9,18 @@ public class Ladron {
     private int edificioActual;
     private String nombreLadron;
 
+    private String nombre;
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
     };
 
-    public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual){
+    /*public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
         this.ciudadActual = ciudadActual;
         Random rand = new Random();
         rand.nextInt(4);
         this.edificioActual = rand.nextInt();
-    };
+    };*/
 
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual, int edificio, String nombre){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
@@ -42,6 +40,11 @@ public class Ladron {
     public String obtenerNombre(){
         return nombreLadron;
     }
+
+    public Ladron(String nombre, String sexo, String hobby, String cabello, String senia, String vehiculo) {
+        this.nombre = nombre;
+        datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
+    };
 
     public DatosLadron obtenerDatos()
     {
