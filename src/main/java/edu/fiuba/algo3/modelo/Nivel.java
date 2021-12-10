@@ -37,6 +37,12 @@ public class Nivel {
         this.ciudadesVisitadas = 1;
     }
 
+    public void jugar(/*Jugador jugador*/) {
+//        this.jugador = jugador;
+
+        //aca va el game loop.
+    }
+
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
