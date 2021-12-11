@@ -21,6 +21,7 @@ public class Partida {
         jugador = new Jugador("jugador");
     }
 
+
     public void crearNivel() {
         nivelActual = creadorDeNiveles.crearNivel(jugador);
     }

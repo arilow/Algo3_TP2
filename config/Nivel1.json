@@ -2,54 +2,79 @@
   "ciudades":[
     {
       "nombre": "pekin",
-      "objetoRobado": ["Huevo de 1000 años"],
-      "edificios": ["Bolsa", "Puerto", "Biblioteca"]
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Pidio Drachmas"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": "LLego en un auto con una bandera roja, blanca y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre el desierto"
+
+        }]
     },
     {
       "nombre": "Baghdad",
-      "objetoRobado": ["Tableta de Babilonia", "alfombra voladora"],
-      "edificios": ["Banco", "Aeropuerto", "Biblioteca"]
+      "edificios": [
+        {
+          "nombre": "Banco",
+          "pista": "Un hombre de cabello negro cambio su dinero a Kinas"
+        },
+        {
+          "nombre": "Aeropuerto",
+          "pista": "Tenia una bandera amarilla, roja y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre rocas volcanicas"
+        }]
     },
     {
       "nombre": "Puerto Moresby",
-      "objetoRobado": ["Colmillo de jabali"],
-      "edificios": ["Banco", "Puerto", "Biblioteca"]
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Estaba muy interesade en saber sobre el mercado de la lana"
+        },
+        {
+          "nombre": "Puerto",
+          "pista":  "Se fue en un barco que tenia una bandera roja, blanca y azul"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Llego en un combertible y se llevo un libro sobre las casas de opera mas famosas del mundo"
+        }]
     },
     {
       "nombre": "Sydney",
-      "objetoRobado": ["Candelabro de la casa de opera"],
-      "edificios": ["Bolsa", "Puerto", "Biblioteca"]
-    },
-    {
-      "nombre": "Estambul",
-      "objetoRobado": ["Cruz enjoyada de constantino"],
-      "edificios": ["Bolsa", "Aeropuerto", "Biblioteca"]
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Estaba interesado en conseguir libras"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": "Lo escuche hablando de croquet con un nubio"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Parecia muy interesado en las tumbas de los faraones."
+        }]
     }
   ],
-  "ladrones": [
+  "ladron":
     {
       "nombre": "Fast Eddie B.",
-      "genero": "hombre",
+      "sexo": "hombre",
       "hobby": "croquet",
-      "pelo": "negro",
-      "seña": "joyeria",
-      "auto": "convertible"
+      "cabello": "negro",
+      "senia": "joyeria",
+      "vehiculo": "convertible"
     },
-    {
-      "nombre": "Scar Graynolt",
-      "genero": "hombre",
-      "hobby": "croquet",
-      "pelo": "red",
-      "seña": "añillo",
-      "auto": "limusina"
-    },
-    {
-      "nombre": "Merey Laroc",
-      "genero": "mujer",
-      "hobby": "escalar montaña",
-      "pelo": "marron",
-      "seña": "limusina",
-      "auto": "limusina"
-    }
-  ]
+
+  "ObjetoRobado": "Huevo de 1000 anios"
 }
