@@ -16,7 +16,6 @@ public class Nivel {
     private int ciudadesVisitadas;
     private OrdenDeArresto ordenDeArresto;
 
-
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
         this.ciudades = ciudades;
@@ -27,6 +26,7 @@ public class Nivel {
         this.ciudadesVisitadas = 1;
         this.ordenDeArresto = new OrdenDeArresto();
     }
+
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
         tiempo = new Tiempo(10);
         this.ciudades = ciudades;
@@ -38,7 +38,6 @@ public class Nivel {
         this.ladronesNivel= ladronesNivel;
         this.ciudadesVisitadas = 1;
         this.ordenDeArresto = new OrdenDeArresto();
-
     }
 
     public void jugar(/*Jugador jugador*/) {
@@ -53,6 +52,7 @@ public class Nivel {
         this.ciudadActual.esVisitada();
         ciudadesVisitadas+=1;
     }
+
     public void visitarCiudad(int ciudad) {
         this.ciudadActual = ciudades.get(ciudad);
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
@@ -84,13 +84,11 @@ public class Nivel {
         ladron.moverserA(ciudad, edificio);
     }
 
-
     public void salirDeEdificio() {
         ciudadActual.salirDeEdificio();
     }
 
     //TODO reemplazar por fecha
-
     // Obtiene la cantidad de tiempo que paso en la partida
     public int obtenerTiempo() {
         return tiempo.obtenerHorasPasadas();
@@ -108,6 +106,7 @@ public class Nivel {
         //TODO: mejorar el método de búsqueda para que no sea tan restrictivo(utilizacción de ANDs en contrastarDatos()) de filtros para encontrar los ladrones que tienen los datos buscados
     //    return listaLadrones.stream().filter( l-> l.constatarDatos(datosLadron)).collect(Collectors.toList());
     //}
+
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){
         List<Ladron> sospechosos= new ArrayList<>();
         Ladron aux= new Ladron(null,null,null,null,null);
