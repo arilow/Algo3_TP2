@@ -16,7 +16,6 @@ public class ControladorBotonIniciarJuego implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        System.out.println("Hola!!");
         juego.comenzarPartida();
     }
 }

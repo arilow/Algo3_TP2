@@ -40,15 +40,12 @@ public class VentanaPrincipal implements Observer {
 
     public void abrirPantallaDePartida() {
         constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego.nivelActual(), windowWidth, windowHeight);
-
-        Scene scene = constructorDeEscenas.construirEscenaPrincipal();
-        stage.setScene(scene);
+        constructorDeEscenas.construirEscenaPrincipal();
     }
 
 
     public void mostrarEdificios(List<String> edificios) {
-        Scene escenaSeccionEdificios = constructorDeEscenas.construirPantallaSeleccionEdificios(edificios);
-        stage.setScene(escenaSeccionEdificios);
+        constructorDeEscenas.construirPantallaSeleccionEdificios(edificios);
     }
 
 

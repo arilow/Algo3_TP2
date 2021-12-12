@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class ControladorBotonEntrarEdificio implements EventHandler<ActionEvent> {
-
     int indiceEdificio;
     Nivel nivel;
 

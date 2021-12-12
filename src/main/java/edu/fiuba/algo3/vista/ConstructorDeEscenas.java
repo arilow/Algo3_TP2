@@ -40,32 +40,22 @@ public class ConstructorDeEscenas {
         anchoPantalla = anchoVentana * 0.5;
     }
 
-    public Scene construirEscenaPrincipal() {
+    public void construirEscenaPrincipal() {
         contruirNodosEscenaPrincipal();
-        VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
-        VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
-
-        HBox layout = new HBox();
-        layout.getChildren().addAll(pantallaIzquierda, pantallaDerecha);
-
-        Scene scene = new Scene(layout, anchoVentana, altoVentana);
-        return scene;
+        mostrarEscenaEnPantalla();
     }
 
-    public Scene construirPantallaSeleccionEdificios(List<String> edificios) {
+    public void construirPantallaSeleccionEdificios(List<String> edificios) {
         contruirNodosEscenaSeleccionEdificios(edificios);
-        VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
-        VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
-
-        HBox layout = new HBox();
-        layout.getChildren().addAll(pantallaIzquierda, pantallaDerecha);
-
-        Scene scene = new Scene(layout, anchoVentana, altoVentana);
-        return scene;
+        mostrarEscenaEnPantalla();
     }
 
     public void construirPantallaEdificio(Pista pista) {
         contruirNodosEscenaEdificio(pista);
+        mostrarEscenaEnPantalla();
+    }
+
+    private void mostrarEscenaEnPantalla() {
         VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
         VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
 
@@ -80,6 +70,7 @@ public class ConstructorDeEscenas {
         altoPantallaDerechaActual = altoVentana * 0.75;
         pantallaDerechaActual = new VistaEdificio(pista, anchoPantalla, altoPantallaDerechaActual);
 
+        // Pantalla Izquierda se mantiene igual.
     }
 
     private void contruirNodosEscenaPrincipal() {
@@ -87,19 +78,11 @@ public class ConstructorDeEscenas {
 
         // Nodo Izquierdo
         double altoCanvasIzquierdo = altoVentana * 0.9;
-        Canvas nodoIzquierdo = new Canvas(anchoCanvas, altoCanvasIzquierdo);
-        GraphicsContext gcI = nodoIzquierdo.getGraphicsContext2D();
-
-        gcI.setFill(Color.RED);
-        gcI.fillRect(0,0, altoCanvasIzquierdo, altoCanvasIzquierdo);
+        Canvas nodoIzquierdo = new VistaImagenCiudad(anchoCanvas, altoCanvasIzquierdo);
 
         // Nodo Derecho
         double altoCanvasDerecho = altoVentana * 0.75;
-        Canvas nodoDerecho = new Canvas(anchoCanvas, altoCanvasDerecho);
-        GraphicsContext gcD = nodoDerecho.getGraphicsContext2D();
-
-        gcD.setFill(Color.BLUE);
-        gcD.fillRect(0,0,anchoCanvas, altoCanvasDerecho);
+        Canvas nodoDerecho = new VistaDescripcionCiudad(anchoCanvas, altoCanvasDerecho);
 
         // Se actualizan pantallas actuales
         pantallaIzquierdaActual = nodoIzquierdo;
@@ -112,46 +95,16 @@ public class ConstructorDeEscenas {
     }
 
     private VBox construirPantallaIzquierda(Node nodo, double anchoNodo, double altoNodo) {
-
-        Label etiquetaCiudad = new Label("Ciudad");
-        Label etiquetaTiempo = new Label("Dia, hora");
-
-        VBox info = new VBox(etiquetaCiudad, etiquetaTiempo);
-        info.setPrefHeight(altoVentana - altoNodo);
-
-        VBox pantallaizquierda = new VBox();
-        pantallaizquierda.getChildren().addAll(info, nodo);
-
+        double altoVistaFecha = altoVentana - altoNodo;
+        VBox infoFecha = new VistaFecha(anchoNodo, altoVistaFecha);
+        VBox pantallaizquierda = new VBox(infoFecha, nodo);
         return pantallaizquierda;
     }
 
     private VBox construirPantallaDerecha(Node nodo, double anchoNodo, double altoNodo) {
-        double altoBotones = altoVentana - altoNodo;
-        Button botonConexiones = new Button("Ver conexiones");
-        botonConexiones.setPrefHeight(altoBotones * 0.25);
-        botonConexiones.setPrefWidth(anchoVentana - anchoNodo);
-
-        Button botonMapa;
-        botonMapa = new Button("Viajar");
-        botonMapa.setPrefHeight(altoBotones * 0.25);
-        botonMapa.setPrefWidth(anchoVentana - anchoNodo);
-
-        Button botonEdificios;
-        botonEdificios = new Button("Investigar");
-        botonEdificios.setPrefHeight(altoBotones * 0.25);
-        botonEdificios.setPrefWidth(anchoVentana - anchoNodo);
-        botonEdificios.setOnAction(new ControladorBotonInvestigar(nivelActual, ventanaPrincipal));
-
-        Button botonCompu;
-        botonCompu = new Button("Visitar Interpol");
-        botonCompu.setPrefHeight(altoBotones * 0.25);
-        botonCompu.setPrefWidth(anchoVentana - anchoNodo);
-
-        VBox optionButons = new VBox();
-        optionButons.getChildren().addAll(botonConexiones, botonMapa, botonEdificios, botonCompu);
-
-        VBox verticalDerecha = new VBox();
-        verticalDerecha.getChildren().addAll(nodo, optionButons);
+        double altoVistaBotones = altoVentana - altoNodo;
+        VBox optionButons = new VistaOpcionesJuego(nivelActual, ventanaPrincipal, anchoNodo, altoVistaBotones);
+        VBox verticalDerecha = new VBox(nodo, optionButons);
         return verticalDerecha;
     }
 
