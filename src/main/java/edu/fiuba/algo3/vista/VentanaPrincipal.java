@@ -7,7 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class VentanaPrincipal {
+import java.util.Observable;
+import java.util.Observer;
+
+public class VentanaPrincipal implements Observer {
     int windowHeight;
     int windowWidth;
 
@@ -21,6 +24,7 @@ public class VentanaPrincipal {
         this.stage = stage;
         windowWidth = 640;
         windowHeight = 480;
+        juego.addObserver(this);
 
         constructorDeEscenas = new ConstructorDeEscenas(this, windowWidth, windowHeight);
         initButton = new Button();
@@ -40,11 +44,14 @@ public class VentanaPrincipal {
     }
 
 
-
     public void mostrarEdificios() {
         Scene escenaSeccionEdificios = constructorDeEscenas.construirPantallaSeleccionEdificios();
         stage.setScene(escenaSeccionEdificios);
     }
 
 
+    @Override
+    public void update(Observable o, Object arg) {
+        abrirPantallaDePartida();
+    }
 }
