@@ -5,7 +5,9 @@ import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.Tiempo;
 import edu.fiuba.algo3.modelo.sitios.Sitio;
 
-public abstract class Edificio implements Sitio {
+import java.util.Observable;
+
+public abstract class Edificio extends Observable implements Sitio {
 
     private Pista pista;
     private int contadorDeEntradas;
@@ -36,6 +38,8 @@ public abstract class Edificio implements Sitio {
     }
 
     public Pista mostrarPista() {
+        setChanged();
+        notifyObservers(pista);
         return pista;
     }
 }

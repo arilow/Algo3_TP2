@@ -17,4 +17,8 @@ public class Juego extends Observable {
         setChanged();
         notifyObservers();
     }
+
+    public Nivel nivelActual() {
+        return partida.nivelActual();
+    }
 }

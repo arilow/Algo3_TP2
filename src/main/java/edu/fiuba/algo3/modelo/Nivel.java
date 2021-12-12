@@ -4,8 +4,10 @@ import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Nivel {
+public class Nivel extends Observable {
     private List<Ciudad> ciudades;
     private Ladron ladron;
     private List<Ladron> ladronesNivel;
@@ -73,7 +75,13 @@ public class Nivel {
 
             }
         }
-        ciudadActual.entrarAEdificio(edificio, tiempo);
+
+        System.out.println("Nivel: entrarAEdificio");
+        System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
+
+        setChanged();
+        notifyObservers();
+
     }
 
     private boolean ladronArrestado() {
@@ -132,4 +140,17 @@ public class Nivel {
     /*public boolean estaEn(String ciudad) {
         return ciudadActual.es(ciudad);
     }*/
+
+    public List<String> listarEdificios() {
+        List<String> edificios = new ArrayList<String>();
+        edificios.add("Edificio1");
+        edificios.add("Edificio2");
+        edificios.add("Edificio3");
+
+        return edificios;
+    }
+
+    public void agregarObservadorDeEdificios(Observer observer) {
+        ciudadActual.agregarObservadorDeEdificios(observer);
+    }
 }

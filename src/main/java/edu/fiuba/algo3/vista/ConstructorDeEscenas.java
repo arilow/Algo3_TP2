@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorBotonEntrarEdificio;
 import edu.fiuba.algo3.controlador.ControladorBotonInvestigar;
+import edu.fiuba.algo3.modelo.Nivel;
+import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -10,9 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+import java.util.List;
 
 public class ConstructorDeEscenas {
     VentanaPrincipal ventanaPrincipal;
+    Stage stage;
+    Nivel nivelActual;
     int anchoVentana;
     int altoVentana;
 
@@ -23,8 +31,10 @@ public class ConstructorDeEscenas {
     Node pantallaIzquierdaActual;
     Node pantallaDerechaActual;
 
-    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, int anchoVentana, int altoVentana) {
+    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Stage stage, Nivel nivel, int anchoVentana, int altoVentana) {
         this.ventanaPrincipal = ventanaPrincipal;
+        this.stage = stage;
+        this.nivelActual = nivel;
         this.anchoVentana = anchoVentana;
         this.altoVentana = altoVentana;
         anchoPantalla = anchoVentana * 0.5;
@@ -42,8 +52,8 @@ public class ConstructorDeEscenas {
         return scene;
     }
 
-    public Scene construirPantallaSeleccionEdificios() {
-        contruirNodosEscenaSeleccionEdificios();
+    public Scene construirPantallaSeleccionEdificios(List<String> edificios) {
+        contruirNodosEscenaSeleccionEdificios(edificios);
         VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
         VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
 
@@ -52,6 +62,24 @@ public class ConstructorDeEscenas {
 
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         return scene;
+    }
+
+    public void construirPantallaEdificio(Pista pista) {
+        contruirNodosEscenaEdificio(pista);
+        VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
+        VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
+
+        HBox layout = new HBox();
+        layout.getChildren().addAll(pantallaIzquierda, pantallaDerecha);
+
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
+
+    private void contruirNodosEscenaEdificio(Pista pista) {
+        altoPantallaDerechaActual = altoVentana * 0.75;
+        pantallaDerechaActual = new VistaEdificio(pista, anchoPantalla, altoPantallaDerechaActual);
+
     }
 
     private void contruirNodosEscenaPrincipal() {
@@ -78,42 +106,9 @@ public class ConstructorDeEscenas {
         pantallaDerechaActual = nodoDerecho;
     }
 
-    private void contruirNodosEscenaSeleccionEdificios() {
-        double anchoCanvas = anchoPantalla;
-
-        // Canvas izquierdo
-        double altoIzquierdo = altoVentana * 0.9;
-        double altoCanvas = altoIzquierdo * 0.8;
-        Canvas canvasIzquierdo = new Canvas(anchoCanvas, altoCanvas);
-        GraphicsContext gcI = canvasIzquierdo.getGraphicsContext2D();
-
-        gcI.setFill(Color.GREEN);
-        gcI.fillRect(0,0, anchoCanvas, altoCanvas);
-
-        // Botones efificios izquierda
-        double altoBotones = altoIzquierdo - altoCanvas;
-        Button botonBanco;
-        botonBanco = new Button("Banco");
-        botonBanco.setPrefHeight(altoVentana - altoBotones);
-        botonBanco.setPrefWidth(anchoVentana * 0.33);
-
-        Button botonBiblioteca;
-        botonBiblioteca = new Button("Biblioteca");
-        botonBiblioteca.setPrefHeight(altoVentana - altoBotones);
-        botonBiblioteca.setPrefWidth(anchoVentana * 0.33);
-
-        Button botonPuerto;
-        botonPuerto = new Button("Puerto");
-        botonPuerto.setPrefHeight(altoVentana - altoBotones);
-        botonPuerto.setPrefWidth(anchoVentana * 0.33);
-
-        HBox botones = new HBox(botonBanco, botonBiblioteca, botonPuerto);
-
-        // Nodo Izquierdo
-        pantallaIzquierdaActual = new VBox(canvasIzquierdo, botones);
-        altoPantallaIzquierdaActual = altoIzquierdo;
-
-        // Pantalla derecha se mantiene igual.
+    private void contruirNodosEscenaSeleccionEdificios(List<String> edificios) {
+        altoPantallaIzquierdaActual = altoVentana * 0.8;
+        pantallaIzquierdaActual = new VistaListaEdificios(nivelActual, anchoPantalla, altoPantallaIzquierdaActual, this);
     }
 
     private VBox construirPantallaIzquierda(Node nodo, double anchoNodo, double altoNodo) {
@@ -145,7 +140,7 @@ public class ConstructorDeEscenas {
         botonEdificios = new Button("Investigar");
         botonEdificios.setPrefHeight(altoBotones * 0.25);
         botonEdificios.setPrefWidth(anchoVentana - anchoNodo);
-        botonEdificios.setOnAction(new ControladorBotonInvestigar(ventanaPrincipal));
+        botonEdificios.setOnAction(new ControladorBotonInvestigar(nivelActual, ventanaPrincipal));
 
         Button botonCompu;
         botonCompu = new Button("Visitar Interpol");

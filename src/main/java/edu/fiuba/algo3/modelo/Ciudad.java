@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.sitios.Sitio;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 
 import java.util.List;
+import java.util.Observer;
 
 public class Ciudad {
     private String nombre;
@@ -53,6 +54,8 @@ public class Ciudad {
 
             }
         }else {*/
+
+        System.out.println("Ciudad: entrarAEdificio");
         return edificios.get(edificio).mostrarPista();
 
     }
@@ -84,4 +87,11 @@ public class Ciudad {
     public void esVisitada() {
         visitada = true;
     }
+
+    public void agregarObservadorDeEdificios(Observer observer) {
+        for(Edificio edificio: edificios) {
+            edificio.addObserver(observer);
+        }
+    }
+
 }

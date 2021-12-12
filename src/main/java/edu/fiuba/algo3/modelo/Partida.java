@@ -48,5 +48,9 @@ public class Partida {
         System.out.println("Paritda: Comienza nivel");
         nivelActual.jugar();
     }
+
+    public Nivel nivelActual() {
+        return nivelActual;
+    }
 }
 
