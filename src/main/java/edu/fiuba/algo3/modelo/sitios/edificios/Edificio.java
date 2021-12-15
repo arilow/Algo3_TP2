@@ -1,14 +1,17 @@
-package edu.fiuba.algo3.modelo.edificios;
+package edu.fiuba.algo3.modelo.sitios.edificios;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.Tiempo;
+import edu.fiuba.algo3.modelo.sitios.Sitio;
 
-public class Edificio {
+public abstract class Edificio implements Sitio {
 
-    private String pista;
+    private Pista pista;
     int contadorDeEntradas;
 
     public Edificio(String pista) {
-        this.pista = pista;
+        this.pista = new Pista(pista);
         contadorDeEntradas = 0;
     }
 
@@ -23,7 +26,7 @@ public class Edificio {
         tiempo.sumarHoras(horasPorSumar);
     }
 
-    public void mostrarPista() {
-        System.out.println(pista);
+    public Pista mostrarPista() {
+        return pista;
     }
 }

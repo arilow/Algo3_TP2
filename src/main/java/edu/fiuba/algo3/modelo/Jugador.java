@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.cargos.*;
-import edu.fiuba.algo3.modelo.ciudades.Ciudad;
 
 public class Jugador {
 
