@@ -16,11 +16,27 @@ public class Tiempo extends Observable {
         horas += horasSumadas;
 
         if(horas >= horasFin) {
-            setChanged();
-            notifyObservers();
+            // throw exception
+            // setChanged();
+            // notifyObservers();
         }
+        System.out.println("La hora es: " + aString());
+        setChanged();
+        notifyObservers(this);
     }
+
     public int obtenerHorasPasadas() {
         return horas;
+    }
+
+    public String aString(){
+        //traducir el tiempo a dia y hora todas arrancan Lunes 7am
+        String[] diasDeLaSemana = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
+
+        int tiempoEnHoras = (horas + 7) % 24;
+        String dia  = diasDeLaSemana[(horas+7)/24];
+        String fecha = String.format("%d",tiempoEnHoras) + "hs, " + dia + ".";
+
+        return fecha;
     }
 }

@@ -150,7 +150,14 @@ public class Nivel extends Observable {
         return edificios;
     }
 
+    public String obtenerFecha() {
+        return tiempo.aString();
+    }
     public void agregarObservadorDeEdificios(Observer observer) {
         ciudadActual.agregarObservadorDeEdificios(observer);
+    }
+
+    public void agregarObervadorDeTiempo(Observer observer) {
+        tiempo.addObserver(observer);
     }
 }

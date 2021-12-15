@@ -96,7 +96,7 @@ public class ConstructorDeEscenas {
 
     private VBox construirPantallaIzquierda(Node nodo, double anchoNodo, double altoNodo) {
         double altoVistaFecha = altoVentana - altoNodo;
-        VBox infoFecha = new VistaFecha(anchoNodo, altoVistaFecha);
+        VBox infoFecha = new VistaFecha(nivelActual, anchoNodo, altoVistaFecha);
         VBox pantallaizquierda = new VBox(infoFecha, nodo);
         return pantallaizquierda;
     }
