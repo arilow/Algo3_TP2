@@ -193,6 +193,4 @@ public class EntregaDosTest {
         assertFalse(nivel2.obtenerLadron().estaLibre());
     }
 
-
-
 }

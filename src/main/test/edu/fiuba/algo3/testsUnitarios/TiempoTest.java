@@ -42,4 +42,44 @@ public class TiempoTest {
 
         assertEquals(1, observadorDeTiempo.obtenerContadorDeUpdates());
     }
+
+    @Test
+    public void test03Las25HorasCorrespondenAlMartesALas8hs() {
+
+        Tiempo tiempo = new Tiempo(45);
+        tiempo.sumarHoras(25);
+        String tiempoString = tiempo.aString();
+
+        assertEquals(tiempoString,"8hs, Martes.");
+    }
+
+    @Test
+    public void test04Las50HorasCorrespondenAlMiercolesALas9hs() {
+
+        Tiempo tiempo = new Tiempo(60);
+        tiempo.sumarHoras(50);
+        String tiempoString = tiempo.aString();
+
+        assertEquals(tiempoString,"9hs, Miercoles.");
+    }
+
+    @Test
+    public void test05Las100HorasCorrespondenAlViernesALas11hs() {
+
+        Tiempo tiempo = new Tiempo(120);
+        tiempo.sumarHoras(100);
+        String tiempoString = tiempo.aString();
+
+        assertEquals(tiempoString,"11hs, Viernes.");
+    }
+
+    @Test
+    public void test06Las150HorasCorrespondenAlDomingoALas13hs() {
+
+        Tiempo tiempo = new Tiempo(178);
+        tiempo.sumarHoras(150);
+        String tiempoString = tiempo.aString();
+
+        assertEquals(tiempoString,"13hs, Domingo.");
+    }
 }

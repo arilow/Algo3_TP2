@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Nivel extends Observable {
+
     private List<Ciudad> ciudades;
     private Ladron ladron;
     private List<Ladron> ladronesNivel;
@@ -15,7 +16,6 @@ public class Nivel extends Observable {
     private Ciudad ciudadActual;
     private Tiempo tiempo;
     private Jugador jugador;
-    private int ciudadesVisitadas;
     private OrdenDeArresto ordenDeArresto;
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
@@ -25,7 +25,6 @@ public class Nivel extends Observable {
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
-        this.ciudadesVisitadas = 1;
         this.ordenDeArresto = new OrdenDeArresto();
     }
 
@@ -38,7 +37,6 @@ public class Nivel extends Observable {
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ladronesNivel= ladronesNivel;
-        this.ciudadesVisitadas = 1;
         this.ordenDeArresto = new OrdenDeArresto();
     }
 
@@ -52,27 +50,23 @@ public class Nivel extends Observable {
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
         this.ciudadActual.esVisitada();
-        ciudadesVisitadas+=1;
     }
 
     public void visitarCiudad(int ciudad) {
         this.ciudadActual = ciudades.get(ciudad);
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
         this.ciudadActual.esVisitada();
-        ciudadesVisitadas+=1;
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
-    public int obtenerCiudadesVisitadas() { return ciudadesVisitadas;}
-
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
         if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){ //La verificación de las ciudades visitadas no funciona. Tira true no importa lo que le pongas
-            if(this.ladronArrestado() && ciudadesVisitadas>=this.tesoro.obtenerCantidadCiudadesEscape()){
+            if(this.ladronArrestado()){
                 jugador.agregarArresto();
             }else{
-
+                // Pierdo el nivel
             }
         }
 

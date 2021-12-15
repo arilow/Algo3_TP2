@@ -47,17 +47,8 @@ public class Ciudad {
         this.sitioActual = edificios.get(edificio);
         edificios.get(edificio).aumentarTiempo(tiempo);
 
-        /*if (ladron.obtenerCiudadActual() == this) {
-            if (edificios.get(edificio).tieneLadron() == true) {
-                //      return "Sí, tiene ladron"
-            } else {
-
-            }
-        }else {*/
-
         System.out.println("Ciudad: entrarAEdificio");
         return edificios.get(edificio).mostrarPista();
-
     }
 
     public Ubicacion obtenerUbicacion(){ return ubicacion; }
