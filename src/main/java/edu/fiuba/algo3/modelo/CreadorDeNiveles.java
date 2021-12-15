@@ -50,7 +50,7 @@ public class CreadorDeNiveles {
     private void inicializarCiudades() {
         ciudades = new ArrayList<>();
 
-        Edificio banco = new Banco("Soy una Pista de un banco.");
+        Edificio banco = new Banco("Soy una Pista de un bancqo.");
         Edificio biblioteca = new Biblioteca("Soy una Pista de una biblioteca.");
         Edificio aeropuerto = new Aeropuerto("Soy una Pista de una aeropuerto.");
         List<Edificio> edificios = new ArrayList<>();
