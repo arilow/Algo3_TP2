@@ -25,6 +25,6 @@ public class CreadorDeNivelTest {
         Ciudad ciudad = nivel.obtenerCiudadActual();
         assertTrue(ciudad.es("pekin"));
 
-//        assertTrue(nivel.tieneTesoro("Huevo de 1000 anios"));
+        assertTrue(nivel.tieneTesoro("Huevo de 1000 anios"));
     }
 }

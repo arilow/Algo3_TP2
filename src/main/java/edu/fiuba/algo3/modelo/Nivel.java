@@ -97,7 +97,7 @@ public class Nivel {
     }
 
     public boolean tieneTesoro(String tesoro) {
-        return this.tesoro.es(tesoro);
+        return  this.tesoro.es(tesoro);
     }
 
     public boolean constatarDatosLadron(DatosLadron datos) {
