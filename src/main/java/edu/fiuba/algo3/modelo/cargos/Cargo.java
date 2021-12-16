@@ -7,4 +7,5 @@ public interface Cargo {
     void agregarArresto();
     void viajar(double diatancia, Tiempo tiempo);
     void asignarJugador(Jugador jugador);
+    String obtenerCargo();
 }

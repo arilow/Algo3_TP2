@@ -22,4 +22,6 @@ public class Sargento implements Cargo {
         this.jugador = jugador;
     }
 
+    @Override
+    public String obtenerCargo() {return "sargento";}
 }
