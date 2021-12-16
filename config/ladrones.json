@@ -1,0 +1,80 @@
+[{
+    "nombre": "Nick Brunch",
+    "genero": "hombre",
+    "hobby": "escalar motañas",
+    "pelo": "negro",
+    "seña": "anillo",
+    "auto": "moto"
+},
+{
+    "nombre": "Len Buck",
+    "genero": "hombre",
+    "hobby": "escalar motañas",
+    "pelo": "rojo",
+    "seña": "tatuaje",
+    "auto": "convertible"
+},
+{
+    "nombre": "Ihor Ihorovitch",
+    "genero": "hombre",
+    "hobby": "croquet",
+    "pelo": "rubio",
+    "seña": "tatuaje",
+    "auto": "limusina"
+},
+{
+    "nombre": "Fast Eddie B.",
+    "genero": "hombre",
+    "hobby": "croquet",
+    "pelo": "negro",
+    "seña": "joyeria",
+    "auto": "convertible"
+},
+{
+    "nombre": "Scar Graynolt",
+    "genero": "hombre",
+    "hobby": "croquet",
+    "pelo": "red",
+    "seña": "añillo",
+    "auto": "limusina"
+},
+{
+    "nombre": "Merey Laroc",
+    "genero": "mujer",
+    "hobby": "escalar montaña",
+    "pelo": "marron",
+    "seña": "limusina",
+    "auto": "limusina"
+},
+{
+    "nombre": "Lady Agatha",
+    "genero": "mujer",
+    "hobby": "tenis",
+    "pelo": "rojo",
+    "seña": "añillo",
+    "auto": "convertible"
+},
+{
+    "nombre": "Katherine Drib",
+    "genero": "mujer",
+    "hobby": "escalar montaña",
+    "pelo": "marron",
+    "seña": "tatuaje",
+    "auto": "motocicleta"
+},
+{
+    "nombre": "Dazzle Annie",
+    "genero": "mujer",
+    "hobby": "tenis",
+    "pelo": "rubia",
+    "seña": "tatuaje",
+    "auto": "limusina"
+},
+{
+    "nombre": "Carmen Sandiego",
+    "genero": "mujer",
+    "hobby": "tenis",
+    "pelo": "marron",
+    "seña": "joyeria",
+    "auto": "convertible"
+}]
