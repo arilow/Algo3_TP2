@@ -47,4 +47,8 @@ public class Jugador {
     public Cargo getCargo() {
         return this.cargo;
     }
+    public String obtenerCargo() {
+        return this.cargo.obtenerCargo();
+    }
+
 }

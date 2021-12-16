@@ -1,0 +1,115 @@
+[{
+    "nombre": "pekin",
+    "objetoRobado": ["Huevo de 1000 años"],
+    "edificios": ["Bolsa", "Aeropuerto", "Biblioteca"]
+},
+{
+    "nombre": "Baghdad",
+    "objetoRobado": ["Tableta de Babilonia", "alfombra voladora"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Puerto Moresby",
+    "objetoRobado": ["Colmillo de jabali"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Sydney",
+    "objetoRobado": ["Candelabro de la casa de opera"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Estambul",
+    "objetoRobado": ["Cruz enjoyada de constantino"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Londres",
+    "objetoRobado": ["joyas de la corona"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Bangkok",
+    "objetoRobado": ["Buddha de oro"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Lima",
+    "objetoRobado": ["Mascara de oro Inca", "LLama de plata"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Bamako",
+    "objetoRobado": ["Manuscrito islamico", "Ceramica del imperio Mali"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Moscu",
+    "objetoRobado": ["Corona de Ivan el terrible", "Pintura de Kremlin"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Cairo",
+    "objetoRobado": ["Mascara de King Tut"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Distrito Federal de Mexico",
+    "objetoRobado": ["Mascara de Montezuma"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Atenas",
+    "objetoRobado": ["Mascara de Priam"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Singapur",
+    "objetoRobado": ["Merlion el leon dorado"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Roma",
+    "objetoRobado": ["Anillo del Papa"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Colombo",
+    "objetoRobado": ["Planta de te excepcional", "Rubi de Serendip"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Kathmandu",
+    "objetoRobado": ["Coleccion de cuarzo Real"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Buenos Aires",
+    "objetoRobado": ["Bola de oro macizo"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Montreal",
+    "objetoRobado": ["Bola de Stanley"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Rio de Janeiro",
+    "objetoRobado": ["Perico embalsamado"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Nueva York",
+    "objetoRobado": ["Los Rockettes"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Oslo",
+    "objetoRobado": ["Casco Vikingo"],
+    "edificios": ["", "", ""]
+},
+{
+    "nombre": "Kigali",
+    "objetoRobado": ["Tocado del rey Watusi"],
+    "edificios": ["", "", ""]
+}]

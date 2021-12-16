@@ -1,0 +1,79 @@
+{
+  "ciudades":[
+    {
+      "nombre": "pekin",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Pidio Drachmas"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": "LLego en un auto con una bandera roja, blanca y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre el desierto"
+
+        }]
+    },
+    {
+      "nombre": "Baghdad",
+      "edificios": [
+        {
+          "nombre": "Banco",
+          "pista": "Un hombre de cabello negro cambio su dinero a Kinas"
+        },
+        {
+          "nombre": "Aeropuerto",
+          "pista": "Tenia una bandera amarilla, roja y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre rocas volcanicas"
+        }]
+    },
+    {
+      "nombre": "Puerto Moresby",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Estaba muy interesade en saber sobre el mercado de la lana"
+        },
+        {
+          "nombre": "Puerto",
+          "pista":  "Se fue en un barco que tenia una bandera roja, blanca y azul"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Llego en un combertible y se llevo un libro sobre las casas de opera mas famosas del mundo"
+        }]
+    },
+    {
+      "nombre": "Sydney",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Estaba interesado en conseguir libras"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": "Lo escuche hablando de croquet con un nubio"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Parecia muy interesado en las tumbas de los faraones."
+        }]
+    }
+  ],
+  "ladron":
+    {
+      "nombre": "Fast Eddie B.",
+      "sexo": "hombre",
+      "hobby": "croquet",
+      "cabello": "negro",
+      "senia": "joyeria",
+      "vehiculo": "convertible"
+    },
+    "ObjetoRobado": "Huevo de 1000 anios"
+}
