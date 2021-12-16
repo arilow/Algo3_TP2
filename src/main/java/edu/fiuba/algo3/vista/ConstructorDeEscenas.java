@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorBotonEntrarEdificio;
 import edu.fiuba.algo3.controlador.ControladorBotonInvestigar;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
@@ -20,7 +21,7 @@ import java.util.List;
 public class ConstructorDeEscenas {
     VentanaPrincipal ventanaPrincipal;
     Stage stage;
-    Nivel nivelActual;
+    Juego juego;
     int anchoVentana;
     int altoVentana;
 
@@ -31,10 +32,10 @@ public class ConstructorDeEscenas {
     Node pantallaIzquierdaActual;
     Node pantallaDerechaActual;
 
-    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Stage stage, Nivel nivel, int anchoVentana, int altoVentana) {
+    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Stage stage, Juego juego, int anchoVentana, int altoVentana) {
         this.ventanaPrincipal = ventanaPrincipal;
         this.stage = stage;
-        this.nivelActual = nivel;
+        this.juego = juego;
         this.anchoVentana = anchoVentana;
         this.altoVentana = altoVentana;
         anchoPantalla = anchoVentana * 0.5;
@@ -57,6 +58,11 @@ public class ConstructorDeEscenas {
 
     public void construirPantallaEdificio(Pista pista) {
         contruirNodosEscenaEdificio(pista);
+        mostrarEscenaEnPantalla();
+    }
+
+    public void construirPantallaRegistroJugador() {
+        construirNodosEscenaRegistroJugador();
         mostrarEscenaEnPantalla();
     }
 
@@ -101,19 +107,34 @@ public class ConstructorDeEscenas {
 
     private void contruirNodosEscenaSeleccionEdificios(List<String> edificios) {
         altoPantallaIzquierdaActual = altoVentana * 0.8;
-        pantallaIzquierdaActual = new VistaListaEdificios(nivelActual, anchoPantalla, altoPantallaIzquierdaActual, this);
+        pantallaIzquierdaActual = new VistaListaEdificios(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual, this);
+    }
+
+    private void construirNodosEscenaRegistroJugador() {
+        altoPantallaIzquierdaActual = altoVentana * 0.8;
+        pantallaIzquierdaActual = new VistaRegistroJugador(juego.partidaActual(), anchoPantalla, altoPantallaIzquierdaActual, this);
+
+        altoPantallaDerechaActual = altoVentana * 0.75;
+
+        double anchoCanvas = anchoPantalla;
+        double altoCanvas = altoPantallaDerechaActual;
+        Canvas canvas = new Canvas(anchoCanvas, altoCanvas);
+        GraphicsContext gcD = canvas.getGraphicsContext2D();
+        gcD.setFill(Color.BLACK);
+        gcD.fillRect(0,0, anchoCanvas, altoCanvas);
+        pantallaDerechaActual = canvas;
     }
 
     private VBox construirPantallaIzquierda(Node nodo, double anchoNodo, double altoNodo) {
         double altoVistaFecha = altoVentana - altoNodo;
-        VBox infoFecha = new VistaFecha(nivelActual, anchoNodo, altoVistaFecha);
+        VBox infoFecha = new VistaFecha(juego.nivelActual(), anchoNodo, altoVistaFecha);
         VBox pantallaizquierda = new VBox(infoFecha, nodo);
         return pantallaizquierda;
     }
 
     private VBox construirPantallaDerecha(Node nodo, double anchoNodo, double altoNodo) {
         double altoVistaBotones = altoVentana - altoNodo;
-        VBox optionButons = new VistaOpcionesJuego(nivelActual, ventanaPrincipal, anchoNodo, altoVistaBotones);
+        VBox optionButons = new VistaOpcionesJuego(juego.nivelActual(), ventanaPrincipal, anchoNodo, altoVistaBotones);
         VBox verticalDerecha = new VBox(nodo, optionButons);
         return verticalDerecha;
     }

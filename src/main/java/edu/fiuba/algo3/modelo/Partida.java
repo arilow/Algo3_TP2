@@ -15,13 +15,13 @@ public class Partida {
     }
 
     public void empezar() {
-        registrarJugador();
+        // registrarJugador();
         crearNivel();
         comenzarNivel();
     }
 
-    public void registrarJugador() {
-        jugador = new Jugador("Buquitas Lurna");
+    public void registrarJugador(String nombre) {
+        jugador = new Jugador(nombre);
     }
 
     public void crearNivel() {

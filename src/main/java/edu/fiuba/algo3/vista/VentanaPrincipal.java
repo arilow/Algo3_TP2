@@ -38,8 +38,12 @@ public class VentanaPrincipal implements Observer {
         stage.setScene(scene);
     }
 
+    public void abrirPantallaRegistroJugador() {
+        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego, windowWidth, windowHeight);
+        constructorDeEscenas.construirPantallaRegistroJugador();
+    }
+
     public void abrirPantallaDePartida() {
-        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego.nivelActual(), windowWidth, windowHeight);
         constructorDeEscenas.construirEscenaPrincipal();
     }
 
@@ -55,6 +59,7 @@ public class VentanaPrincipal implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        abrirPantallaDePartida();
+        abrirPantallaRegistroJugador();
+        //abrirPantallaDePartida();
     }
 }

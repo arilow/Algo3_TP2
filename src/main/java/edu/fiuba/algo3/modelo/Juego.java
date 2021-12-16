@@ -21,4 +21,6 @@ public class Juego extends Observable {
     public Nivel nivelActual() {
         return partida.nivelActual();
     }
+
+    public Partida partidaActual() { return partida;}
 }
