@@ -12,6 +12,7 @@ public class Ladron {
 
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
+        this.esLibre = true;
     };
 
     /*public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual){
@@ -45,6 +46,7 @@ public class Ladron {
     public Ladron(String nombre, String sexo, String hobby, String cabello, String senia, String vehiculo) {
         this.nombreLadron = nombre;
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
+        this.esLibre = true;
     };
 
     public DatosLadron obtenerDatos()
@@ -55,6 +57,7 @@ public class Ladron {
     {
         return datos.toString();
     }
+
     public boolean constatarDatos(DatosLadron datos) {
         return this.datos.constatar(datos);
     }

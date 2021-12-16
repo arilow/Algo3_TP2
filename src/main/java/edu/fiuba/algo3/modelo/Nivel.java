@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+//import javafx.beans.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Nivel extends Observable {
     private Tiempo tiempo;
     private Jugador jugador;
     private OrdenDeArresto ordenDeArresto;
+    private Interpol interpol;
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
@@ -110,14 +112,8 @@ public class Nivel extends Observable {
     //}
 
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){
-        List<Ladron> sospechosos= new ArrayList<>();
-        Ladron aux= new Ladron(null,null,null,null,null);
-        for(Ladron ladron: ladronesNivel){
-            if(ladron.constatarDatos(datosLadron)) {
-                sospechosos.add(ladron);
-            }
-        }
-        return sospechosos;
+        interpol = new Interpol();
+        return interpol.buscarLadrones(datosLadron);
     }
 
     public int obtenerCantidadCiudadesEscape() {
