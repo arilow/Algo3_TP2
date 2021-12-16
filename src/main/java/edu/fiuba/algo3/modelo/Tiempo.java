@@ -45,14 +45,4 @@ public class Tiempo extends Observable {
         return horas;
     }
 
-    public String aString(){
-        //traducir el tiempo a dia y hora todas arrancan Lunes 7am
-        String[] diasDeLaSemana = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
-
-        int tiempoEnHoras = (horas + 7) % 24;
-        String dia  = diasDeLaSemana[(horas+7)/24];
-        String fecha = String.format("%d",tiempoEnHoras) + "hs, " + dia + ".";
-
-        return fecha;
-    }
 }

@@ -50,6 +50,11 @@ public class ConstructorDeEscenas {
         mostrarEscenaEnPantalla();
     }
 
+    public void construirPantallaComputadoraInterpol() {
+        construirNodosComputadoraInterpol();
+        mostrarEscenaEnPantalla();
+    }
+
     public void construirPantallaEdificio(Pista pista) {
         contruirNodosEscenaEdificio(pista);
         mostrarEscenaEnPantalla();
@@ -71,6 +76,11 @@ public class ConstructorDeEscenas {
         pantallaDerechaActual = new VistaEdificio(pista, anchoPantalla, altoPantallaDerechaActual);
 
         // Pantalla Izquierda se mantiene igual.
+    }
+
+    private void construirNodosComputadoraInterpol() {
+        altoPantallaDerechaActual = altoVentana * 0.75;
+        pantallaDerechaActual = new VistaComputadoraInterpol(anchoPantalla, altoPantallaDerechaActual);
     }
 
     private void contruirNodosEscenaPrincipal() {
@@ -107,5 +117,4 @@ public class ConstructorDeEscenas {
         VBox verticalDerecha = new VBox(nodo, optionButons);
         return verticalDerecha;
     }
-
 }

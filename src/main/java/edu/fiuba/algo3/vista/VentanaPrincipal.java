@@ -49,6 +49,10 @@ public class VentanaPrincipal implements Observer {
     }
 
 
+    public void mostrarComputadoraInterpol() {
+        constructorDeEscenas.construirPantallaComputadoraInterpol();
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         abrirPantallaDePartida();

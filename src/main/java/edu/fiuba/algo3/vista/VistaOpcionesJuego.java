@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorBotonInterpol;
 import edu.fiuba.algo3.controlador.ControladorBotonInvestigar;
 import edu.fiuba.algo3.modelo.Nivel;
 import javafx.scene.control.Button;
@@ -7,6 +8,7 @@ import javafx.scene.layout.VBox;
 
 public class VistaOpcionesJuego extends VBox {
     public VistaOpcionesJuego(Nivel nivelActual, VentanaPrincipal ventanaPrincipal, double ancho, double alto) {
+
         Button botonConexiones = new Button("Ver conexiones");
         botonConexiones.setPrefHeight(alto * 0.25);
         botonConexiones.setPrefWidth(ancho);
@@ -26,6 +28,7 @@ public class VistaOpcionesJuego extends VBox {
         botonCompu = new Button("Visitar Interpol");
         botonCompu.setPrefHeight(alto * 0.25);
         botonCompu.setPrefWidth(ancho);
+        botonCompu.setOnAction(new ControladorBotonInterpol(nivelActual, ventanaPrincipal));
 
         getChildren().addAll(botonConexiones, botonMapa, botonEdificios, botonCompu);
     }

@@ -28,7 +28,7 @@ public class VistaListaEdificios extends VBox implements Observer{
 
         // Canvas izquierdo
         double altoIzquierdo = alto;
-        double altoCanvas = altoIzquierdo * 0.8;
+        double altoCanvas = altoIzquierdo * 0.95;
         Canvas canvasIzquierdo = new Canvas(anchoCanvas, altoCanvas);
         GraphicsContext gcI = canvasIzquierdo.getGraphicsContext2D();
 
