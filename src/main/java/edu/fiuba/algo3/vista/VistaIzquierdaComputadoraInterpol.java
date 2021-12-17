@@ -6,6 +6,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.util.List;
 
@@ -17,10 +19,13 @@ public class VistaIzquierdaComputadoraInterpol extends Canvas {
         super(anchoPantalla, altoPantallaIzquierdaActual);
         gcI = getGraphicsContext2D();
 
+        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12 );
+        gcI.setFont( theFont );
+        gcI.fillText("LISTO", 200,200 );
 
         gcI.setFill(Color.YELLOWGREEN);
         gcI.setLineWidth(2);
-        gcI.strokeText("READY", 0,0 );
+
         gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
 
     }
