@@ -16,10 +16,11 @@ public class VistaRegistroJugador extends VBox {
         Label labelNombreJugador = new Label("Nombre:");
         labelNombreJugador.setPrefWidth(ancho);
         entradaNombreJugador = new TextField();
-        getChildren().addAll(labelNombreJugador, entradaNombreJugador);
 
         Button botonRegistrarJugador = new Button("Registrar");
-        botonRegistrarJugador.setOnAction(new ControladorBotonRegistrarJugador(partida));
+        botonRegistrarJugador.setOnAction(new ControladorBotonRegistrarJugador(partida, this));
+
+        getChildren().addAll(labelNombreJugador, entradaNombreJugador, botonRegistrarJugador);
     }
 
     public String obtenerInfoJugador() {

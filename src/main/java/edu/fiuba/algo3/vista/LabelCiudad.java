@@ -6,13 +6,8 @@ import javafx.scene.control.Label;
 import java.util.Observable;
 import java.util.Observer;
 
-public class LabelCiudad extends Label implements Observer {
+public class LabelCiudad extends Label {
     public LabelCiudad(Nivel nivel) {
-        setText(nivel.obtenerCiudadActual().obtenerNombre());
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
+        setText("Cuartel General");
     }
 }

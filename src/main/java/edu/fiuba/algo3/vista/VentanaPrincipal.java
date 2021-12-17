@@ -25,33 +25,38 @@ public class VentanaPrincipal implements Observer {
         this.stage = stage;
         windowWidth = 640;
         windowHeight = 480;
+
+        // Borrar.
         juego.addObserver(this);
 
         initButton = new Button();
         initButton.setText("Iniciar juego");
-        initButton.setOnAction(new ControladorBotonIniciarJuego(juego, this));
+        initButton.setOnAction(new ControladorBotonIniciarJuego(juego, new OyenteEstadoPartida(this)));
         StackPane layout = new StackPane();
 
         layout.getChildren().add(initButton);
 
         Scene scene = new Scene(layout, windowWidth, windowHeight);
         stage.setScene(scene);
+
+        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego, windowWidth, windowHeight);
     }
 
     public void abrirPantallaRegistroJugador() {
-        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego, windowWidth, windowHeight);
         constructorDeEscenas.construirPantallaRegistroJugador();
     }
 
-    public void abrirPantallaDePartida() {
-        constructorDeEscenas.construirEscenaPrincipal();
+    public void mostrarPantallaInicioNivel() {
+        constructorDeEscenas.construirPantallaInicioNivel();
     }
 
+    public void mostrarPantallaInicioCiudad() {
+        constructorDeEscenas.construirPantallaInicioCiudad();
+    }
 
     public void mostrarEdificios(List<String> edificios) {
         constructorDeEscenas.construirPantallaSeleccionEdificios(edificios);
     }
-
 
     public void mostrarComputadoraInterpol() {
         constructorDeEscenas.construirPantallaComputadoraInterpol();
@@ -59,7 +64,7 @@ public class VentanaPrincipal implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        abrirPantallaRegistroJugador();
-        //abrirPantallaDePartida();
+        // abrirPantallaRegistroJugador();
+        // abrirPantallaDePartida();
     }
 }

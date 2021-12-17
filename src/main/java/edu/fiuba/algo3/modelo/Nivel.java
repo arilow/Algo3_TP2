@@ -20,6 +20,8 @@ public class Nivel extends Observable {
     private OrdenDeArresto ordenDeArresto;
     private Interpol interpol;
 
+    ComunicadorEstadoPartida comunicadorEstadoPartida;
+
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
         this.ciudades = ciudades;
@@ -42,7 +44,8 @@ public class Nivel extends Observable {
         this.ordenDeArresto = new OrdenDeArresto();
     }
 
-    public void jugar(/*Jugador jugador*/) {
+    public void jugar(ComunicadorEstadoPartida comunicadorEstadoPartida) {
+        this.comunicadorEstadoPartida = comunicadorEstadoPartida;
 //        this.jugador = jugador;
 
         //aca va el game loop.
@@ -133,6 +136,7 @@ public class Nivel extends Observable {
 
     public List<String> listarEdificios() {
         List<String> edificios = new ArrayList<String>();
+        // TODO: pasar la listas de edificios actuales.
         edificios.add("Edificio1");
         edificios.add("Edificio2");
         edificios.add("Edificio3");
@@ -149,5 +153,10 @@ public class Nivel extends Observable {
 
     public void agregarObervadorDeTiempo(Observer observer) {
         tiempo.addObserver(observer);
+    }
+
+    public void arribarACiudadActual() {
+        comunicadorEstadoPartida.definirEstado(EstadoPartida.ARRIBADO_A_CIUDAD_ACTUAL);
+        System.out.println("Empezando Investigacion");
     }
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.vista.OyenteEstadoPartida;
 
 import java.util.List;
 
@@ -9,19 +10,23 @@ public class Partida {
     private Nivel nivelActual;
     private Jugador jugador;
 
-    public Partida()
-    {
+    private ComunicadorEstadoPartida estado;
+
+    public Partida(OyenteEstadoPartida oyenteEstadoPartida) {
+        estado = new ComunicadorEstadoPartida(EstadoPartida.CREAR);
+        estado.addObserver(oyenteEstadoPartida);
+
         creadorDeNiveles = new CreadorDeNiveles();
     }
 
     public void empezar() {
-        // registrarJugador();
-        crearNivel();
-        comenzarNivel();
+        estado.definirEstado(EstadoPartida.EMPEZAR);
     }
 
     public void registrarJugador(String nombre) {
         jugador = new Jugador(nombre);
+        crearNivel();
+        comenzarNivel();
     }
 
     public void crearNivel() {
@@ -29,7 +34,8 @@ public class Partida {
     }
 
     public void comenzarNivel() {
-        nivelActual.jugar();
+        nivelActual.jugar(estado);
+        estado.definirEstado(EstadoPartida.COMIENZA_NIVEL);
     }
 
     public Nivel nivelActual() {

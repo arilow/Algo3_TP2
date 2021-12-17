@@ -41,8 +41,8 @@ public class ConstructorDeEscenas {
         anchoPantalla = anchoVentana * 0.5;
     }
 
-    public void construirEscenaPrincipal() {
-        contruirNodosEscenaPrincipal();
+    public void construirPantallaInicioCiudad() {
+        construirNodosPantallaInicioCiudad();
         mostrarEscenaEnPantalla();
     }
 
@@ -67,6 +67,12 @@ public class ConstructorDeEscenas {
         mostrarEscenaEnPantalla();
     }
 
+    public void construirPantallaInicioNivel() {
+        construirNodosEscenaInicioNivel();
+        mostrarEscenaEnPantalla();
+
+    }
+
     private void mostrarEscenaEnPantalla() {
         VBox pantallaIzquierda = construirPantallaIzquierda(pantallaIzquierdaActual, anchoPantalla, altoPantallaIzquierdaActual);
         VBox pantallaDerecha = construirPantallaDerecha(pantallaDerechaActual, anchoPantalla, altoPantallaDerechaActual);
@@ -87,14 +93,14 @@ public class ConstructorDeEscenas {
 
     private void construirNodosComputadoraInterpol() {
         altoPantallaDerechaActual = altoVentana * 0.75;
-        pantallaDerechaActual = new VistaComputadoraInterpol(nivelActual, anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual);
         double anchoCanvas = anchoPantalla;
         // Nodo Izquierdo
         double altoCanvasIzquierdo = altoVentana * 0.9;
-        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(nivelActual, anchoCanvas, altoCanvasIzquierdo);
+        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoCanvas, altoCanvasIzquierdo);
     }
 
-    private void contruirNodosEscenaPrincipal() {
+    private void construirNodosPantallaInicioCiudad() {
         double anchoCanvas = anchoPantalla;
 
         // Nodo Izquierdo
@@ -128,6 +134,12 @@ public class ConstructorDeEscenas {
         gcD.setFill(Color.BLACK);
         gcD.fillRect(0,0, anchoCanvas, altoCanvas);
         pantallaDerechaActual = canvas;
+    }
+
+    private void construirNodosEscenaInicioNivel() {
+        altoPantallaIzquierdaActual = altoVentana * 0.8;
+        pantallaIzquierdaActual = new VistaExplicacionNivel(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
+
     }
 
     private VBox construirPantallaIzquierda(Node nodo, double anchoNodo, double altoNodo) {

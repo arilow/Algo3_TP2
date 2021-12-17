@@ -7,15 +7,9 @@ import javafx.scene.control.Label;
 import java.util.Observable;
 import java.util.Observer;
 
-public class LabelFecha extends Label implements Observer {
+public class LabelFecha extends Label {
 
     public LabelFecha(Nivel nivel) {
-        setText(nivel.obtenerFecha());
-        nivel.agregarObervadorDeTiempo(this);
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        setText(((Tiempo)arg).aString());
+        setText("Lunes, 7hs");
     }
 }

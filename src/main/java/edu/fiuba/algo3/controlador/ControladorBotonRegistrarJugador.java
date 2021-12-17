@@ -12,8 +12,9 @@ public class ControladorBotonRegistrarJugador implements EventHandler<ActionEven
     private VistaRegistroJugador vista;
     private Partida partida;
 
-    public ControladorBotonRegistrarJugador(Partida partida) {
+    public ControladorBotonRegistrarJugador(Partida partida, VistaRegistroJugador vista) {
         this.partida = partida;
+        this.vista = vista;
     }
 
     @Override
