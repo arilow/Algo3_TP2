@@ -18,5 +18,7 @@ public class Mapa {
     public void viajar(Jugador jugador,Ciudad ciudadPartida, String ciudadLLlegada, Tiempo tiempo) {
             jugador.viajar(ciudadPartida.obtenerDistancia(mapeo_aux.get(ciudadLLlegada)), tiempo);
     }
-
+    public void viajar(Jugador jugador,Ciudad ciudadPartida, Ciudad ciudadLLlegada, Tiempo tiempo) {
+        jugador.viajar(ciudadPartida.obtenerDistancia(ciudadLLlegada), tiempo);
+    }
 }

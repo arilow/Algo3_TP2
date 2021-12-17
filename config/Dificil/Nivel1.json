@@ -15,7 +15,8 @@
           "nombre": "Biblioteca",
           "pista": "Pidio un libro sobre el desierto"
 
-        }]
+        }],
+      "ciudadesVisitables": ["Seul", "Baghdad", "Astana"]
     },
     {
       "nombre": "Baghdad",
@@ -31,7 +32,8 @@
         {
           "nombre": "Biblioteca",
           "pista": "Pidio un libro sobre rocas volcanicas"
-        }]
+        }],
+      "ciudadesVisitables": ["Pekin", "Puerto Moresby", "Tel Aviv"]
     },
     {
       "nombre": "Puerto Moresby",
@@ -47,7 +49,9 @@
         {
           "nombre": "Biblioteca",
           "pista": "Llego en un combertible y se llevo un libro sobre las casas de opera mas famosas del mundo"
-        }]
+        }],
+      "ciudadesVisitables": ["Baghdad", "Sydney", "Ciudad del Cabo"]
+
     },
     {
       "nombre": "Sydney",
@@ -63,9 +67,11 @@
         {
           "nombre": "Biblioteca",
           "pista": "Parecia muy interesado en las tumbas de los faraones."
-        }]
+        }],
+      "ciudadesVisitables": ["Puerto Moresby", "Nom Pen", "Auckland"]
     }
   ],
+  "ciudadesComodin": ["Seul", "Astana", "Tel Aviv", "Ciudad del Cabo", "Nom Pen", "Auckland"],
   "ladron":
     {
       "nombre": "Fast Eddie B.",

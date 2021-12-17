@@ -19,6 +19,7 @@ public class Nivel extends Observable {
     private Jugador jugador;
     private OrdenDeArresto ordenDeArresto;
     private Interpol interpol;
+    private Mapa mapa;
 
     ComunicadorEstadoPartida comunicadorEstadoPartida;
 
@@ -30,6 +31,7 @@ public class Nivel extends Observable {
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ordenDeArresto = new OrdenDeArresto();
+//        this.mapa = new Mapa(ciudades);
     }
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
@@ -62,6 +64,7 @@ public class Nivel extends Observable {
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
         this.ciudadActual.esVisitada();
     }
+
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
@@ -136,7 +139,6 @@ public class Nivel extends Observable {
 
     public List<String> listarEdificios() {
         List<String> edificios = new ArrayList<String>();
-        // TODO: pasar la listas de edificios actuales.
         edificios.add("Edificio1");
         edificios.add("Edificio2");
         edificios.add("Edificio3");
@@ -153,6 +155,13 @@ public class Nivel extends Observable {
 
     public void agregarObervadorDeTiempo(Observer observer) {
         tiempo.addObserver(observer);
+    }
+
+    public void agregarObservadorDeCiudades(Observer observer) {
+        ciudadActual.agregarObservadorDeCiudades(observer);
+    }
+    public List<Ciudad> listarCiudades() {
+        return ciudades;
     }
 
     public void arribarACiudadActual() {

@@ -9,6 +9,8 @@ import edu.fiuba.algo3.modelo.Ladron;
 import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.cargos.*;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreadorDeNivelTest {
@@ -25,6 +27,11 @@ public class CreadorDeNivelTest {
 
         Ciudad ciudad = nivel.obtenerCiudadActual();
         assertTrue(ciudad.es("pekin"));
+
+        List<Ciudad> ciudades = nivel.listarCiudades();
+        for(Ciudad c : ciudades) {
+            System.out.print(c.obtenerNombre() + " - ");
+        }
 
         assertTrue(nivel.tieneTesoro("Huevo de 1000 anios"));
     }
