@@ -24,4 +24,7 @@ public class Investigador implements Cargo {
     public void asignarJugador(Jugador jugador) {
         this.jugador = jugador;
     }
+
+    @Override
+    public String obtenerCargo() {return "investigador";}
 }

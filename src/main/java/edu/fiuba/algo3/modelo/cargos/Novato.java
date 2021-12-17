@@ -34,4 +34,7 @@ public class Novato implements Cargo {
         this.jugador = jugador;
     }
 
+    @Override
+    public String obtenerCargo() {return "novato";}
+
 }
