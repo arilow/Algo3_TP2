@@ -3,10 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 //import javafx.beans.Observable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class Nivel extends Observable {
 
@@ -19,6 +16,7 @@ public class Nivel extends Observable {
     private Jugador jugador;
     private OrdenDeArresto ordenDeArresto;
     private Interpol interpol;
+    private Mapa mapa;
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
         tiempo = new Tiempo(10);
@@ -59,6 +57,7 @@ public class Nivel extends Observable {
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
         this.ciudadActual.esVisitada();
     }
+
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
@@ -149,5 +148,12 @@ public class Nivel extends Observable {
 
     public void agregarObervadorDeTiempo(Observer observer) {
         tiempo.addObserver(observer);
+    }
+
+    public void agregarObservadorDeCiudades(Observer observer) {
+        ciudadActual.agregarObservadorDeCiudades(observer);
+    }
+    public List<Ciudad> listarCiudades() {
+        return ciudades;
     }
 }

@@ -5,9 +5,10 @@ import edu.fiuba.algo3.modelo.sitios.Sitio;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 
 import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 
-public class Ciudad {
+public class Ciudad extends Observable {
     private String nombre;
     private List<Edificio> edificios;
     private Sitio sitioActual;
@@ -16,6 +17,7 @@ public class Ciudad {
     private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
+    private List<Ciudad> ciudadesVisitables
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
@@ -82,6 +84,12 @@ public class Ciudad {
     public void agregarObservadorDeEdificios(Observer observer) {
         for(Edificio edificio: edificios) {
             edificio.addObserver(observer);
+        }
+    }
+
+    public void agregarObservadorDeCiudades(Observer observer) {
+        for(Ciudad ciudad: ciudadesVisitables) {
+            ciudad.addObserver(observer);
         }
     }
 
