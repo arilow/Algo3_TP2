@@ -21,5 +21,4 @@ public class Mapa {
     public void viajar(Jugador jugador,Ciudad ciudadPartida, Ciudad ciudadLLlegada, Tiempo tiempo) {
         jugador.viajar(ciudadPartida.obtenerDistancia(ciudadLLlegada), tiempo);
     }
-
 }

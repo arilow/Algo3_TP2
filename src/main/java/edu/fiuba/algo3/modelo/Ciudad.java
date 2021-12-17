@@ -12,12 +12,13 @@ public class Ciudad extends Observable {
     private String nombre;
     private List<Edificio> edificios;
     private Sitio sitioActual;
-    // Representa el espacio fuera de los edificios de la ciudad
-    private Sitio aireLibre;
+
+    private Sitio aireLibre;  // Espacio fuera de los edificios
     private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
-    private List<Ciudad> ciudadesVisitables
+    private List<Ciudad> ciudadesVisitables;
+    private Mapa mapaJuego;
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */

@@ -26,6 +26,7 @@ public class Nivel extends Observable {
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ordenDeArresto = new OrdenDeArresto();
+//        this.mapa = new Mapa(ciudades);
     }
 
     public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
