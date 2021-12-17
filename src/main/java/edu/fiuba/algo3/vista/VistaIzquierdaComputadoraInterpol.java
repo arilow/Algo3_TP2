@@ -19,12 +19,13 @@ public class VistaIzquierdaComputadoraInterpol extends Canvas {
         super(anchoPantalla, altoPantallaIzquierdaActual);
         gcI = getGraphicsContext2D();
 
+        gcI.setFill(Color.YELLOWGREEN);
+        gcI.setLineWidth(2);
         Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12 );
         gcI.setFont( theFont );
         gcI.fillText("LISTO", 200,200 );
+        gcI.setFill(Color.BLACK);
 
-        gcI.setFill(Color.YELLOWGREEN);
-        gcI.setLineWidth(2);
 
         gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
 

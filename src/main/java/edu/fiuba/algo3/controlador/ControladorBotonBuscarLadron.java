@@ -7,6 +7,8 @@ import edu.fiuba.algo3.vista.VistaComputadoraInterpol;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.util.List;
+
 public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
 
     Nivel nivel;
@@ -20,9 +22,18 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         DatosLadron datosLadron = vistaComputadoraInterpol.obtenerDatosLadron();
+        List<Ladron> listaLadrones = nivel.buscarLadrones(datosLadron);
 
-        for(Ladron ladron: nivel.buscarLadrones(datosLadron)){
-            System.out.println(ladron.obtenerNombre());
+        if (listaLadrones.size() == 1){
+            String nombre = listaLadrones.get(0).obtenerNombre();
+            nivel.emitirOrdenDeArresto(listaLadrones.get(0).obtenerNombre());
+            System.out.println("Se emite orden de arresto a : "+ nombre );
+            // todo Esto imprimir en vista izquierda
+        } else{
+            for(Ladron ladron: nivel.buscarLadrones(datosLadron)){
+                System.out.println(ladron.obtenerNombre());
+                // todo: esto imprimir en vista izquierda
+            }
         }
 
         //si la lista es unitaria asiganar orden de arresto al ladron
