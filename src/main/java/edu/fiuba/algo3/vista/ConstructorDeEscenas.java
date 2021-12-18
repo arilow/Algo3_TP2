@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -69,7 +70,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha
-        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -106,6 +107,16 @@ public class ConstructorDeEscenas {
         VBox pantallaDerecha = new VBox(pantallaDerechaActual);
 
         return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    private void construirNodosComputadoraInterpol() {
+        altoPantallaDerechaActual = altoVentana * 0.75;
+        double anchoCanvas = anchoPantalla;
+        // Nodo Izquierdo
+        double altoCanvasIzquierdo = altoVentana * 0.9;
+        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoCanvas, altoCanvasIzquierdo);
+        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
+
     }
 
     public HBox construirPantallaInicioNivel() {

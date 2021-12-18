@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.Ladron;
 import edu.fiuba.algo3.modelo.Nivel;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -14,27 +15,38 @@ import java.util.List;
 public class VistaIzquierdaComputadoraInterpol extends Canvas {
 
     private GraphicsContext gcI;
+    private double anchoPantalla;
+    private double altoPantallaIzquierdaActual;
     public VistaIzquierdaComputadoraInterpol(Nivel nivelActual, double anchoPantalla, double altoPantallaIzquierdaActual) {
 
         super(anchoPantalla, altoPantallaIzquierdaActual);
+
+        this.altoPantallaIzquierdaActual = altoPantallaIzquierdaActual;
+        this.anchoPantalla = anchoPantalla;
         gcI = getGraphicsContext2D();
 
         gcI.setFill(Color.YELLOWGREEN);
         gcI.setLineWidth(2);
-        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12 );
-        gcI.setFont( theFont );
-        gcI.fillText("LISTO", 200,200 );
-        gcI.setFill(Color.BLACK);
-
-
         gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
+
+        gcI.setFill(Color.BLACK);
+        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 15 );
+        gcI.setFont( theFont );
+        gcI.fillText("Listo para buscar", 91,200 );
+        gcI.fillText("en computadora.", 95,220 );
 
     }
 
-    public void enlistarLadrones(List<String> nombreLadrones){
+    public void enlistarLadrones(List<Ladron> nombreLadrones){
 
-        //  desplegar una lista de ladrones
-        //  si la lista es unitaria asiganar orden de arresto al ladron
+        gcI.setFill(Color.YELLOWGREEN);
+        gcI.setLineWidth(2);
+        gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
 
+        gcI.setFill(Color.YELLOWGREEN);
+
+        for (Ladron ladron: nombreLadrones){
+            gcI.fillText(ladron.obtenerNombre(), 91,200 );
+        }
     }
 }
