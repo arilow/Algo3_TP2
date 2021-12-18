@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Nivel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ public class VistaComputadoraInterpol extends GridPane {
     TextField inputCabello;
     TextField inputCabllo;
 
-    public VistaComputadoraInterpol (Nivel nivelActual, double ancho, double alto) {
+    public VistaComputadoraInterpol (Nivel nivelActual, double ancho, double alto, Node vistaIzquierdaComputadoraInterpol) {
 
         this.nivelActual = nivelActual;
 
@@ -66,7 +67,7 @@ public class VistaComputadoraInterpol extends GridPane {
         checkLadronBoton.setOnAction(e -> System.out.println(inputCabello.getText()));
         checkLadronBoton.setOnAction(e -> System.out.println(inputSenia.getText()));*/
 
-        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual,this ));
+        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual,this, vistaIzquierdaComputadoraInterpol ));
 
         this.getChildren().addAll(labelSexo,inputSexo,labelHobby,inputHobby,labelCabello,inputCabello,labelSenia,inputSenia,labelVehiculo,inputVehiculo,checkLadronBoton);
 

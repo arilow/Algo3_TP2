@@ -81,11 +81,12 @@ public class ConstructorDeEscenas {
 
     private void construirNodosComputadoraInterpol() {
         altoPantallaDerechaActual = altoVentana * 0.75;
-        pantallaDerechaActual = new VistaComputadoraInterpol(nivelActual, anchoPantalla, altoPantallaDerechaActual);
         double anchoCanvas = anchoPantalla;
         // Nodo Izquierdo
         double altoCanvasIzquierdo = altoVentana * 0.9;
         pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(nivelActual, anchoCanvas, altoCanvasIzquierdo);
+        pantallaDerechaActual = new VistaComputadoraInterpol(nivelActual, anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
+
     }
 
     private void contruirNodosEscenaPrincipal() {
