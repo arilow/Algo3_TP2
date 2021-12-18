@@ -16,7 +16,7 @@ public class VistaEdificio extends Canvas {
         Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12 );
         gcI.setFont( theFont );
 
-        gcI.fillText(pista.mostrar(), 10, 10 );
+        gcI.fillText(pista.mostrar(), 10, 90, 310);
 
         Image image = new Image(pista.obtenerImagen());
         // TODO: des-hardcodear valores.
