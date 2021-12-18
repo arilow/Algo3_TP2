@@ -31,7 +31,7 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
         if (listaLadrones.size() == 1){
             String nombre = listaLadrones.get(0).obtenerNombre();
             nivel.emitirOrdenDeArresto(listaLadrones.get(0).obtenerNombre());
-            System.out.println("Se emite orden de arresto a : "+ nombre );
+            System.out.println("Ya tienes la orden para arrestar a: "+ nombre );
             // todo Esto imprimir en vista izquierda
         } else{
             for(Ladron ladron: nivel.buscarLadrones(datosLadron)){
@@ -40,7 +40,8 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
             }
         }
 
-        VistaIzquierdaComputadoraInterpol.enlistarLadrones(listaLadrones);
+
+        //VistaIzquierdaComputadoraInterpol.enlistarLadrones(listaLadrones);
 
         //si la lista es unitaria asiganar orden de arresto al ladron
 
