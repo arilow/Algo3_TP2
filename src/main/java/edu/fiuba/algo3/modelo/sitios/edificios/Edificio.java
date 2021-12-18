@@ -8,13 +8,14 @@ import edu.fiuba.algo3.modelo.sitios.Sitio;
 import java.util.Observable;
 
 public abstract class Edificio extends Observable implements Sitio {
-
+    protected String nombre;
     private Pista pista;
     private int contadorDeEntradas;
     private boolean tieneLadron;
 
-    public Edificio(String pista) {
+    public Edificio(String pista, String nombre) {
         this.pista = new Pista(pista);
+        this.nombre = nombre;
         contadorDeEntradas = 0;
         tieneLadron = false;
     }
@@ -41,5 +42,9 @@ public abstract class Edificio extends Observable implements Sitio {
         setChanged();
         notifyObservers(pista);
         return pista;
+    }
+
+    public String nombre() {
+        return nombre;
     }
 }

@@ -51,4 +51,7 @@ public class Jugador {
         return this.cargo.obtenerCargo();
     }
 
+    public String nombre() {
+        return nombre;
+    }
 }

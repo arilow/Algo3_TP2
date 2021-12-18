@@ -4,18 +4,22 @@ import edu.fiuba.algo3.modelo.sitios.AireLibre;
 import edu.fiuba.algo3.modelo.sitios.Sitio;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 
-public class Ciudad {
+public class Ciudad extends Observable {
     private String nombre;
     private List<Edificio> edificios;
     private Sitio sitioActual;
-    // Representa el espacio fuera de los edificios de la ciudad
-    private Sitio aireLibre;
+
+    private Sitio aireLibre;  // Espacio fuera de los edificios
     private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
+    private List<Ciudad> ciudadesVisitables;
+    private Mapa mapaJuego;
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
@@ -85,4 +89,22 @@ public class Ciudad {
         }
     }
 
+    public void agregarObservadorDeCiudades(Observer observer) {
+        for(Ciudad ciudad: ciudadesVisitables) {
+            ciudad.addObserver(observer);
+        }
+    }
+
+    public Edificio obtenerEdificioActual() {
+        return (Edificio) sitioActual;
+    }
+
+    public List<String> listarEdificios() {
+        List<String> strEdifLista = new ArrayList<>();
+        for(Edificio edificio: edificios) {
+            strEdifLista.add(edificio.nombre());
+        }
+
+        return strEdifLista;
+    }
 }

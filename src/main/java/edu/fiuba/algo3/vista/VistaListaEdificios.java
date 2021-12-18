@@ -15,14 +15,10 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VistaListaEdificios extends VBox implements Observer{
-    ConstructorDeEscenas constructorDeEscenas;
+public class VistaListaEdificios extends VBox {
 
-    public VistaListaEdificios(Nivel nivelActual, double ancho, double alto, ConstructorDeEscenas constructorDeEscenas) {
-        this.constructorDeEscenas = constructorDeEscenas;
+    public VistaListaEdificios(Nivel nivelActual, double ancho, double alto) {
         List<String> edificios =  nivelActual.listarEdificios();
-        nivelActual.agregarObservadorDeEdificios(this);
-
 
         double anchoCanvas = ancho;
 
@@ -58,10 +54,5 @@ public class VistaListaEdificios extends VBox implements Observer{
         HBox botones = new HBox(botonEdificio1, botonEdificio2, botonEdificio3);
 
         this.getChildren().addAll(canvasIzquierdo, botones);
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        constructorDeEscenas.construirPantallaEdificio((Pista)arg);
     }
 }

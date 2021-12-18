@@ -25,14 +25,17 @@ public class CreadorDeNiveles {
 
         String cargoJugador = jugador.obtenerCargo();
 
-//      JSONObject lecturaArchivo = (JSONObject) parser.parse(new FileReader("config/Nivel1.json"));
+        // Lectura del archivo
         JSONObject lecturaArchivo = cargarArchivo(cargoJugador);
 
-        JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
-
         // Obtiene una lista de ciudades a partir del archivo JSON
+        JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
         cargarCiudades(ciudades, lecturaCiudades);
+
+        // Obtiene una lista de ciudades 'comodin' a partir del archivo JSON
+        JSONArray lecturaCiudadesComodin = (JSONArray) lecturaArchivo.get("ciudadesComodin");
+        cargarCiudadesNoVisitables(ciudades, lecturaCiudadesComodin);
 
         // Obtiene un ladron a partir del archivo JSON
         JSONObject lecturaLadron = (JSONObject) lecturaArchivo.get("ladron");
@@ -41,6 +44,7 @@ public class CreadorDeNiveles {
         // Obtiene un objeto robado a partir del archivo JSON
         String nombreObjetoRobado = (String) lecturaArchivo.get("ObjetoRobado");
         ObjetoRobado tesoro = cargarObjetoRobado(cargoJugador, nombreObjetoRobado);
+
 
         return new Nivel(ciudades.get(0), jugador, tesoro, ladron, ciudades);
     }
@@ -112,6 +116,26 @@ public class CreadorDeNiveles {
         }
     }
 
+    private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades) {
+
+        int i = 0;
+        for(Object ciudad_ : listaCiudades) {
+            String nombreCiudad = (String) ciudad_;
+            String pistaCiudad = "No tengo informacion sobre el asunto";
+
+            List<Edificio> edificios = new ArrayList<Edificio>();
+            Aeropuerto aeropuerto = new Aeropuerto(pistaCiudad);
+            edificios.add(aeropuerto);
+            Banco banco = new Banco(pistaCiudad);
+            edificios.add(banco);
+            Biblioteca biblioteca = new Biblioteca(pistaCiudad);
+            edificios.add(biblioteca);
+
+            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios);
+            ciudades.add(ciudadComodin);
+        }
+
+    }
     private Ladron cargarLadron(JSONObject lecturaLadron, List<Ciudad> ciudades) {
         String nombre = (String) lecturaLadron.get("nombre");
         String sexo = (String) lecturaLadron.get("sexo");

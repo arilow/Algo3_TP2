@@ -2,8 +2,10 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorBotonIniciarJuego;
 import edu.fiuba.algo3.modelo.Juego;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -11,9 +13,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VentanaPrincipal implements Observer {
-    int windowHeight;
-    int windowWidth;
+public class VentanaPrincipal {
+    int anchoVentana;
+    int altoVentana;
 
     ConstructorDeEscenas constructorDeEscenas;
     Button initButton;
@@ -23,38 +25,56 @@ public class VentanaPrincipal implements Observer {
     public VentanaPrincipal(Stage stage, Juego juego) {
         this.juego = juego;
         this.stage = stage;
-        windowWidth = 640;
-        windowHeight = 480;
-        juego.addObserver(this);
+        anchoVentana = 640;
+        altoVentana = 480;
 
         initButton = new Button();
         initButton.setText("Iniciar juego");
-        initButton.setOnAction(new ControladorBotonIniciarJuego(juego, this));
+        initButton.setOnAction(new ControladorBotonIniciarJuego(juego, new OyenteEstadoPartida(this)));
         StackPane layout = new StackPane();
 
         layout.getChildren().add(initButton);
 
-        Scene scene = new Scene(layout, windowWidth, windowHeight);
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+
+        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego, anchoVentana, altoVentana);
+    }
+
+    public void abrirPantallaRegistroJugador() {
+        HBox layout = constructorDeEscenas.construirPantallaRegistroJugador();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
     }
 
-    public void abrirPantallaDePartida() {
-        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego.nivelActual(), windowWidth, windowHeight);
-        constructorDeEscenas.construirEscenaPrincipal();
+    public void mostrarPantallaInicioNivel() {
+        HBox layout = constructorDeEscenas.construirPantallaInicioNivel();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
 
-
-    public void mostrarEdificios(List<String> edificios) {
-        constructorDeEscenas.construirPantallaSeleccionEdificios(edificios);
+    public void mostrarPantallaInicioCiudad() {
+        HBox layout = constructorDeEscenas.construirPantallaInicioCiudad();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
 
+    public void mostrarEdificios() {
+        HBox layout = constructorDeEscenas.construirPantallaSeleccionEdificios();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
 
     public void mostrarComputadoraInterpol() {
-        constructorDeEscenas.construirPantallaComputadoraInterpol();
+        HBox layout = constructorDeEscenas.construirPantallaComputadoraInterpol();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        abrirPantallaDePartida();
+    public void mostrarPantallaEdificio() {
+        HBox layout = constructorDeEscenas.construirPantallaEdificio(juego.nivelActual().obtenerEdificioActual().mostrarPista());
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
+
 }
