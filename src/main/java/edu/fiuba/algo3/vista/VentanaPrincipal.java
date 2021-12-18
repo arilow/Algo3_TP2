@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VentanaPrincipal implements Observer {
+public class VentanaPrincipal {
     int anchoVentana;
     int altoVentana;
 
@@ -27,9 +27,6 @@ public class VentanaPrincipal implements Observer {
         this.stage = stage;
         anchoVentana = 640;
         altoVentana = 480;
-
-        // Borrar.
-        juego.addObserver(this);
 
         initButton = new Button();
         initButton.setText("Iniciar juego");
@@ -62,19 +59,22 @@ public class VentanaPrincipal implements Observer {
         stage.setScene(scene);
     }
 
-    public void mostrarEdificios(List<String> edificios) {
-        HBox layout = constructorDeEscenas.construirPantallaSeleccionEdificios(edificios);
+    public void mostrarEdificios() {
+        HBox layout = constructorDeEscenas.construirPantallaSeleccionEdificios();
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
     }
 
     public void mostrarComputadoraInterpol() {
-        constructorDeEscenas.construirPantallaComputadoraInterpol();
+        HBox layout = constructorDeEscenas.construirPantallaComputadoraInterpol();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        // abrirPantallaRegistroJugador();
-        // abrirPantallaDePartida();
+    public void mostrarPantallaEdificio() {
+        HBox layout = constructorDeEscenas.construirPantallaEdificio(juego.nivelActual().obtenerEdificioActual().mostrarPista());
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
     }
+
 }

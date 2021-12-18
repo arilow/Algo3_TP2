@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.sitios.AireLibre;
 import edu.fiuba.algo3.modelo.sitios.Sitio;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -94,4 +95,16 @@ public class Ciudad extends Observable {
         }
     }
 
+    public Edificio obtenerEdificioActual() {
+        return (Edificio) sitioActual;
+    }
+
+    public List<String> listarEdificios() {
+        List<String> strEdifLista = new ArrayList<>();
+        for(Edificio edificio: edificios) {
+            strEdifLista.add(edificio.nombre());
+        }
+
+        return strEdifLista;
+    }
 }

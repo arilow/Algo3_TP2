@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
 //import javafx.beans.Observable;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Nivel extends Observable {
+public class Nivel {
 
     private List<Ciudad> ciudades;
     private Ladron ladron;
@@ -65,7 +67,6 @@ public class Nivel extends Observable {
         this.ciudadActual.esVisitada();
     }
 
-
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
     //TODO edificio no es un int
@@ -77,12 +78,10 @@ public class Nivel extends Observable {
                 // Pierdo el nivel
             }
         }
-
         System.out.println("Nivel: entrarAEdificio");
         System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
 
-        setChanged();
-        notifyObservers();
+        comunicadorEstadoPartida.definirEstado(EstadoPartida.ENTRAR_A_EDIFICIO);
 
     }
 
@@ -98,8 +97,6 @@ public class Nivel extends Observable {
         ciudadActual.salirDeEdificio();
     }
 
-    //TODO reemplazar por fecha
-    // Obtiene la cantidad de tiempo que paso en la partida
     public int obtenerTiempo() {
         return tiempo.obtenerHorasPasadas();
     }
@@ -111,11 +108,6 @@ public class Nivel extends Observable {
     public boolean constatarDatosLadron(DatosLadron datos) {
         return ladron.constatarDatos(datos);
     }//Usado unicamente en un assert dentro de NivelTest
-
-    //public List<Ladron> buscarLadrones(DatosLadron datosLadron, List<Ladron> listaLadrones){
-        //TODO: mejorar el método de búsqueda para que no sea tan restrictivo(utilizacción de ANDs en contrastarDatos()) de filtros para encontrar los ladrones que tienen los datos buscados
-    //    return listaLadrones.stream().filter( l-> l.constatarDatos(datosLadron)).collect(Collectors.toList());
-    //}
 
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
@@ -138,12 +130,7 @@ public class Nivel extends Observable {
     }*/
 
     public List<String> listarEdificios() {
-        List<String> edificios = new ArrayList<String>();
-        edificios.add("Edificio1");
-        edificios.add("Edificio2");
-        edificios.add("Edificio3");
-
-        return edificios;
+        return ciudadActual.listarEdificios();
     }
 
     public String obtenerFecha() {
@@ -153,19 +140,23 @@ public class Nivel extends Observable {
         ciudadActual.agregarObservadorDeEdificios(observer);
     }
 
-    public void agregarObervadorDeTiempo(Observer observer) {
-        tiempo.addObserver(observer);
-    }
-
-    public void agregarObservadorDeCiudades(Observer observer) {
-        ciudadActual.agregarObservadorDeCiudades(observer);
-    }
     public List<Ciudad> listarCiudades() {
         return ciudades;
     }
 
     public void arribarACiudadActual() {
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ARRIBADO_A_CIUDAD_ACTUAL);
-        System.out.println("Empezando Investigacion");
+    }
+
+    public Edificio obtenerEdificioActual() {
+        return ciudadActual.obtenerEdificioActual();
+    }
+
+    public Jugador obtenerJugador() {
+        return jugador;
+    }
+
+    public String nombreTesoro() {
+        return ((ObjetoComun)tesoro).nombre();
     }
 }

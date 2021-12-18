@@ -4,7 +4,7 @@ public class Aeropuerto extends Edificio{
 
     boolean tieneLadron;
     public Aeropuerto(String pista) {
-        super(pista);
+        super(pista, "Aeropuerto");
     }
 
 }

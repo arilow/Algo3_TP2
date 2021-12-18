@@ -5,14 +5,13 @@ import edu.fiuba.algo3.vista.OyenteEstadoPartida;
 import java.util.List;
 import java.util.Observable;
 
-public class Juego extends Observable {
+public class Juego {
     private Partida partida;
 
     public Juego() {
     }
 
     public void comenzarPartida(OyenteEstadoPartida oyenteEstadoPartida) {
-        System.out.println("Juego: Comienza Partida");
         partida = new Partida(oyenteEstadoPartida);
         partida.empezar();
     }
