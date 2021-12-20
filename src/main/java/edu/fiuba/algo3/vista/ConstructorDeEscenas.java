@@ -141,6 +141,7 @@ public class ConstructorDeEscenas {
 
     private VBox construirPantallaDatos(String ciudad, String fecha) {
         double altoVistaFecha = altoVentana - altoPantallaIzquierdaActual;
+        //System.out.println(ciudad + fecha);
         pantallaDatos = new VistaDatos(ciudad, fecha, anchoPantalla, altoVistaFecha);
         return (VBox) pantallaDatos;
     }

@@ -18,7 +18,7 @@ public class Ciudad extends Observable {
     private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
-    private List<Ciudad> ciudadesVisitables;
+    private List<String> ciudadesVisitables;
     private Mapa mapaJuego;
     private String imagen;
 
@@ -118,14 +118,12 @@ public class Ciudad extends Observable {
         }
     }
 
-    public void agregarObservadorDeCiudades(Observer observer) {
-        for (Ciudad ciudad : ciudadesVisitables) {
-            ciudad.addObserver(observer);
-        }
-    }
-
     public Edificio obtenerEdificioActual() {
         return (Edificio) sitioActual;
+    }
+
+    public List<String> obtenerCiudadesVisitables() {
+        return ciudadesVisitables;
     }
 
     public List<String> listarEdificios() {

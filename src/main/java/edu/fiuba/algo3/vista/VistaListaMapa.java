@@ -21,7 +21,6 @@ public class VistaListaMapa extends VBox{
 
     public VistaListaMapa(Nivel nivelActual, double ancho, double alto) {
         List<Ciudad> ciudades =  nivelActual.listarCiudades();
-        Ciudad ciudadActual=nivelActual.obtenerCiudadActual();
 
         double anchoCanvas = ancho;
 
