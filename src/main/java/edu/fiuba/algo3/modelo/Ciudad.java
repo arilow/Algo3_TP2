@@ -18,11 +18,31 @@ public class Ciudad extends Observable {
     private boolean visitada;
     private Ubicacion ubicacion;
     private boolean tieneLadron;
-    private List<Ciudad> ciudadesVisitables;
+    private List<String> ciudadesVisitables;
     private Mapa mapaJuego;
+    private String imagen;
 
     protected void recibirJugador(Jugador jugador) {
         /* TODO */
+    }
+    public Ciudad(String nombre, List<Edificio> edificio,double longitud,double latitud) {
+        this.nombre = nombre;
+        this.edificios = edificio;
+        this.ubicacion= new Ubicacion(longitud,latitud);
+        this.aireLibre = new AireLibre();
+        this.sitioActual = aireLibre;
+        this.tieneLadron = false;
+        this.imagen=this.nombre+".png";
+    }
+
+    public Ciudad(String nombre, List<Edificio> edificio,String longitud,String latitud) {
+        this.nombre = nombre;
+        this.edificios = edificio;
+        this.ubicacion= new Ubicacion(longitud,latitud);
+        this.aireLibre = new AireLibre();
+        this.sitioActual = aireLibre;
+        this.tieneLadron = false;
+        this.imagen=this.nombre+".png";
     }
 
     public Ciudad(String nombre, List<Edificio> edificio) {
@@ -31,6 +51,7 @@ public class Ciudad extends Observable {
         this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
         this.tieneLadron = false;
+        this.imagen=this.nombre+".png";
     }
 
     public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
@@ -55,7 +76,13 @@ public class Ciudad extends Observable {
         return edificios.get(edificio).mostrarPista();
     }
 
-    public Ubicacion obtenerUbicacion(){ return ubicacion; }
+    public void agregarUbicacion(double longitud, double latitud) {
+        this.ubicacion= new Ubicacion(longitud,latitud);
+    }
+
+    public Ubicacion obtenerUbicacion() {
+        return ubicacion;
+    }
 
     public void salirDeEdificio() {
         this.sitioActual = aireLibre;
@@ -65,15 +92,17 @@ public class Ciudad extends Observable {
         return this.ubicacion.calcularDistancia(otraCiudad.obtenerUbicacion());
     }
 
-    public void asignarLadronAEdificio(int edificio){
+    public void asignarLadronAEdificio(int edificio) {
         edificios.get(edificio).asignarLadron();
     }
 
-    public void asignarLadron(){
+    public void asignarLadron() {
         this.tieneLadron = true;
     }
 
-    public boolean tieneLadron(){ return tieneLadron; }
+    public boolean tieneLadron() {
+        return tieneLadron;
+    }
 
     public String obtenerNombre() {
         return nombre;
@@ -84,14 +113,8 @@ public class Ciudad extends Observable {
     }
 
     public void agregarObservadorDeEdificios(Observer observer) {
-        for(Edificio edificio: edificios) {
+        for (Edificio edificio : edificios) {
             edificio.addObserver(observer);
-        }
-    }
-
-    public void agregarObservadorDeCiudades(Observer observer) {
-        for(Ciudad ciudad: ciudadesVisitables) {
-            ciudad.addObserver(observer);
         }
     }
 
@@ -99,12 +122,20 @@ public class Ciudad extends Observable {
         return (Edificio) sitioActual;
     }
 
+    public List<String> obtenerCiudadesVisitables() {
+        return ciudadesVisitables;
+    }
+
     public List<String> listarEdificios() {
         List<String> strEdifLista = new ArrayList<>();
-        for(Edificio edificio: edificios) {
+        for (Edificio edificio : edificios) {
             strEdifLista.add(edificio.nombre());
         }
 
         return strEdifLista;
+    }
+
+    public String obtenerImagen() {
+        return imagen;
     }
 }

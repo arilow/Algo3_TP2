@@ -1,0 +1,115 @@
+[{
+  "nombre": "pekin",
+  "latitud": "2.918359",
+  "longitud": "117.659691"
+},
+  {
+    "nombre": "Baghdad",
+    "latitud": "33.302430",
+    "longitud": "44.378799"
+  },
+  {
+    "nombre": "Puerto Moresby",
+    "latitud": "-9.25",
+    "longitud": "147.33333"
+  },
+  {
+    "nombre": "Sydney",
+    "latitud": "-33.854815",
+    "longitud": "151.216453"
+  },
+  {
+    "nombre": "Estambul",
+    "latitud": "41.008683",
+    "longitud": "28.977491"
+  },
+  {
+    "nombre": "Londres",
+    "latitud": "51.489333",
+    "longitud": "-0.144055"
+  },
+  {
+    "nombre": "Bangkok",
+    "latitud": "13.824579",
+    "longitud": "100.62244"
+  },
+  {
+    "nombre": "Lima",
+    "latitud": "-12.200109",
+    "longitud": "-76.285057"
+  },
+  {
+    "nombre": "Bamako",
+    "latitud": "",
+    "longitud": ""
+  },
+  {
+    "nombre": "Moscu",
+    "latitud": "12.64931",
+    "longitud": "-8.00033"
+  },
+  {
+    "nombre": "Cairo",
+    "latitud": "4.762188",
+    "longitud": "-76.22076"
+  },
+  {
+    "nombre": "Distrito Federal de Mexico",
+    "latitud": "19.394067",
+    "longitud": "-99.228515"
+  },
+  {
+    "nombre": "Atenas",
+    "latitud": "37.983941",
+    "longitud": "23.728305"
+  },
+  {
+    "nombre": "Singapur",
+    "latitud": "19.014221",
+    "longitud": "84.506412"
+  },
+  {
+    "nombre": "Roma",
+    "latitud": "41.893320",
+    "longitud": "12.482932"
+  },
+  {
+    "nombre": "Colombo",
+    "latitud": "6.9319400",
+    "longitud": "79.8477800"
+  },
+  {
+    "nombre": "Kathmandu",
+    "latitud": "27.70831",
+    "longitud": "85.32058"
+  },
+  {
+    "nombre": "Buenos Aires",
+    "latitud": "-34.6083",
+    "longitud": "-58.3712"
+  },
+  {
+    "nombre": "Montreal",
+    "latitud": "45.498646",
+    "longitud": "-73.575439"
+  },
+  {
+    "nombre": "Rio de Janeiro",
+    "latitud": "-22.275276",
+    "longitud": "-42.41941"
+  },
+  {
+    "nombre": "Nueva York",
+    "latitud": "43.156168",
+    "longitud": "-75.844994"
+  },
+  {
+    "nombre": "Oslo",
+    "latitud": "59.913330",
+    "longitud": "10.73897"
+  },
+  {
+    "nombre": "Kigali",
+    "latitud": "-1.885959",
+    "longitud": "30.129675"
+  }]
