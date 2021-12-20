@@ -43,6 +43,9 @@ public abstract class Edificio extends Observable implements Sitio {
         notifyObservers(pista);
         return pista;
     }
+    public String mostrarInfo() {
+        return "Edificio";
+    }
 
     public String nombre() {
         return nombre;

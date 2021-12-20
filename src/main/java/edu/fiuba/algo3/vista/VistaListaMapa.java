@@ -16,14 +16,12 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VistaListaMapa extends VBox implements Observer{
+public class VistaListaMapa extends VBox{
     ConstructorDeEscenas constructorDeEscenas;
 
-    public VistaListaMapa(Nivel nivelActual, double ancho, double alto, ConstructorDeEscenas constructorDeEscenas) {
-        this.constructorDeEscenas = constructorDeEscenas;
+    public VistaListaMapa(Nivel nivelActual, double ancho, double alto) {
         List<Ciudad> ciudades =  nivelActual.listarCiudades();
-        nivelActual.agregarObservadorDeEdificios(this);
-
+        Ciudad ciudadActual=nivelActual.obtenerCiudadActual();
 
         double anchoCanvas = ancho;
 
@@ -36,22 +34,22 @@ public class VistaListaMapa extends VBox implements Observer{
         gcI.setFill(Color.BLUE);
         gcI.fillRect(0,0, anchoCanvas, altoCanvas);
 
-        // Botones efificios izquierda
+        // Botones Ciudades izquierda
         double altoBotones = altoIzquierdo - altoCanvas;
         Button botonCiudad1;
-        botonCiudad1 = new Button(ciudades.get(0).toString());
+        botonCiudad1 = new Button(ciudades.get(0).obtenerNombre());
         botonCiudad1.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad1.setPrefWidth(ancho * 0.33);
         botonCiudad1.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(0)));
 
         Button botonCiudad2;
-        botonCiudad2 = new Button(ciudades.get(1).toString());
+        botonCiudad2 = new Button(ciudades.get(1).obtenerNombre());
         botonCiudad2.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad2.setPrefWidth(ancho * 0.33);
         botonCiudad2.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(1)));
 
         Button botonCiudad3;
-        botonCiudad3 = new Button(ciudades.get(2).toString());
+        botonCiudad3 = new Button(ciudades.get(2).obtenerNombre());
         botonCiudad3.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad3.setPrefWidth(ancho * 0.33);
         botonCiudad3.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(2)));
@@ -60,9 +58,4 @@ public class VistaListaMapa extends VBox implements Observer{
 
         this.getChildren().addAll(canvasIzquierdo, botones);
     }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        constructorDeEscenas.construirPantallaEdificio((Pista)arg);
-    }// Falta implementar construir pantallaMapa
 }

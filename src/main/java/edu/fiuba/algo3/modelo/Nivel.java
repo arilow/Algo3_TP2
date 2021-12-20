@@ -59,6 +59,7 @@ public class Nivel {
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
         this.ciudadActual.esVisitada();
+        comunicadorEstadoPartida.definirEstado(EstadoPartida.VIAJAR);
     }
 
     public void visitarCiudad(int ciudad) {
@@ -158,5 +159,10 @@ public class Nivel {
 
     public String nombreTesoro() {
         return ((ObjetoComun)tesoro).nombre();
+    }
+
+
+    public void cambiarCiudadActual(Ciudad ciudad) {
+        this.ciudadActual = ciudad;
     }
 }

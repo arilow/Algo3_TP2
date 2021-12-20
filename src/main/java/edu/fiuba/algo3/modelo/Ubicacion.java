@@ -8,6 +8,10 @@ public class Ubicacion {
         this.longitud = longitud;
         this.latitud = latitud;
     }
+    public Ubicacion(String longitud, String latitud){
+        this.longitud = Double.parseDouble(longitud);
+        this.latitud = Double.parseDouble(latitud);
+    }
 
     public double obtenerLatitud() { return latitud; }
     public double obtenerLongitud() { return longitud; }

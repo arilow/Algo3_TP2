@@ -32,6 +32,8 @@ public class OyenteEstadoPartida implements Observer {
                 break;
             case ENTRAR_A_EDIFICIO:
                 ventana.mostrarPantallaEdificio();
+            case VIAJAR:
+                ventana.mostrarPantallaMapa();
             default:
                 System.out.println("Ninguno");
         }

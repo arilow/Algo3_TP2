@@ -77,4 +77,16 @@ public class VentanaPrincipal {
         stage.setScene(scene);
     }
 
+    public void mostrarPantallaMapa() {
+        HBox layout = constructorDeEscenas.construirPantallaMapa(juego.nivelActual().obtenerCiudadActual());
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
+    public void mostrarCiudades() {
+        HBox layout = constructorDeEscenas.construirPantallaSeleccionCiudades();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
@@ -78,7 +79,7 @@ public class ConstructorDeEscenas {
 
 
     public HBox construirPantallaEdificio(Pista pista) {
-        //Pantalla izquierda
+        //Pantalla derecha
         pantallaDerechaActual = new VistaEdificio(pista, anchoPantalla, altoPantallaDerechaActual);
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
@@ -142,5 +143,29 @@ public class ConstructorDeEscenas {
         double altoVistaFecha = altoVentana - altoPantallaIzquierdaActual;
         pantallaDatos = new VistaDatos(ciudad, fecha, anchoPantalla, altoVistaFecha);
         return (VBox) pantallaDatos;
+    }
+
+    public HBox construirPantallaSeleccionCiudades() {
+        // Pantalla izquierda
+        pantallaIzquierdaActual = new VistaListaMapa(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        // Pantalla derecha no cambia (Por ahora)
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    public HBox construirPantallaMapa(Ciudad ciudad) {
+        //Pantalla izquierda
+        pantallaIzquierdaActual = new VistaMapa(ciudad, anchoPantalla, altoPantallaDerechaActual);
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        // Pantalla Derecha no cambia (En principio)
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
     }
 }
