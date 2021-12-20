@@ -15,6 +15,7 @@ public class Nivel {
     private List<Ciudad> ciudades;
     private Ladron ladron;
     private List<Ladron> ladronesNivel;
+    private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
     private Tiempo tiempo;
@@ -111,9 +112,14 @@ public class Nivel {
 
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
+        ladronesSospechosos = interpol.buscarLadrones(datosLadron);
+        comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
         return interpol.buscarLadrones(datosLadron);
     }
 
+    public List<Ladron> obtenerListaSospechosos(){
+        return ladronesSospechosos;
+    }
     public int obtenerCantidadCiudadesEscape() {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }

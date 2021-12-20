@@ -39,6 +39,7 @@ public class DatosLadron {
         }
         return output;
     }
+
     public String toString(){
         return sexo + " " + hobby + " " + cabello + " " + senia + " " + vehiculo;
     }

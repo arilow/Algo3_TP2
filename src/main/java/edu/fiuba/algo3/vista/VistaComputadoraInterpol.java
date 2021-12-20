@@ -17,11 +17,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class VistaComputadoraInterpol extends VBox {
 
     Nivel nivelActual;
     DatosLadron datosLadron;
-    TextField inputSexo;
+    public TextField inputSexo;
     TextField inputHobby;
     TextField inputSenia;
     TextField inputVehiculo;
@@ -75,22 +77,14 @@ public class VistaComputadoraInterpol extends VBox {
         Button checkLadronBoton = new Button("Buscar ladrones");
         gridPane.setConstraints(checkLadronBoton,1, 5);
 
-        /*checkLadronBoton.setOnAction(e -> System.out.println(inputSexo.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputHobby.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputCabello.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputSenia.getText()));*/
-
-        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual,this, vistaIzquierdaComputadoraInterpol ));
-
         this.getChildren().addAll(labelSexo,inputSexo,labelHobby,inputHobby,labelCabello,inputCabello,labelSenia,inputSenia,labelVehiculo,inputVehiculo,checkLadronBoton,canvasDerecho);
 
-        //Scene scene = new Scene(this, ancho,alto);
+        obtenerDatosLadron();
+        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual, datosLadron, vistaIzquierdaComputadoraInterpol ));
 
     }
-
-    public DatosLadron obtenerDatosLadron() {
-
-        datosLadron = new DatosLadron(inputSexo.getText(), inputHobby.getText(), inputCabello.getText(), inputSenia.getText(), inputVehiculo.getText());
-        return datosLadron;
+    public void obtenerDatosLadron() {
+        this.datosLadron = new DatosLadron(inputSexo.getText(), inputHobby.getText(), inputCabello.getText(),
+                inputSenia.getText(), inputVehiculo.getText());
     }
 }

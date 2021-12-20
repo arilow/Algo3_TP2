@@ -77,4 +77,10 @@ public class VentanaPrincipal {
         stage.setScene(scene);
     }
 
+    public void mostrarPantallaInterpol() {
+        HBox layout = constructorDeEscenas.construirPantallaInterpol();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
+
 }
