@@ -15,6 +15,7 @@ public class Nivel {
     private List<Ciudad> ciudades;
     private Ladron ladron;
     private List<Ladron> ladronesNivel;
+    private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
     private Tiempo tiempo;
@@ -110,11 +111,15 @@ public class Nivel {
         return ladron.constatarDatos(datos);
     }//Usado unicamente en un assert dentro de NivelTest
 
-    public List<Ladron> buscarLadrones(DatosLadron datosLadron){
+    public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
-        return interpol.buscarLadrones(datosLadron);
+        ladronesSospechosos = interpol.buscarLadrones(datosLadron);
+        comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
     }
 
+    public List<Ladron> obtenerListaSospechosos(){
+        return ladronesSospechosos;
+    }
     public int obtenerCantidadCiudadesEscape() {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }

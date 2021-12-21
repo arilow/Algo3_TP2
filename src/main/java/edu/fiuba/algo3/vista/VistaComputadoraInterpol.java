@@ -17,16 +17,18 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class VistaComputadoraInterpol extends VBox {
 
     Nivel nivelActual;
     DatosLadron datosLadron;
-    TextField inputSexo;
+    public TextField inputSexo;
     TextField inputHobby;
     TextField inputSenia;
     TextField inputVehiculo;
     TextField inputCabello;
-    TextField inputCabllo;
+
 
     public VistaComputadoraInterpol (Nivel nivelActual, double ancho, double alto, Node vistaIzquierdaComputadoraInterpol) {
 
@@ -36,16 +38,13 @@ public class VistaComputadoraInterpol extends VBox {
         gridPane.setVgap(8);
         gridPane.setHgap(10);
 
-        double anchoCanvas = ancho;
-
         // Canvas izquierdo
-        double altoIzquierdo = alto;
-        double altoCanvas = altoIzquierdo * 0.4;
-        Canvas canvasDerecho = new Canvas(anchoCanvas, altoCanvas);
+        double altoCanvas = alto * 0.4;
+        Canvas canvasDerecho = new Canvas(ancho, altoCanvas);
         GraphicsContext gcI = canvasDerecho.getGraphicsContext2D();
 
         gcI.setFill(Color.GREEN);
-        gcI.fillRect(0,0, anchoCanvas, altoCanvas);
+        gcI.fillRect(0,0, ancho, altoCanvas);
 
         Label labelSexo = new Label("Sexo:");
         gridPane.setConstraints(labelSexo, 0,0);
@@ -75,22 +74,15 @@ public class VistaComputadoraInterpol extends VBox {
         Button checkLadronBoton = new Button("Buscar ladrones");
         gridPane.setConstraints(checkLadronBoton,1, 5);
 
-        /*checkLadronBoton.setOnAction(e -> System.out.println(inputSexo.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputHobby.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputCabello.getText()));
-        checkLadronBoton.setOnAction(e -> System.out.println(inputSenia.getText()));*/
-
-        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual,this, vistaIzquierdaComputadoraInterpol ));
-
         this.getChildren().addAll(labelSexo,inputSexo,labelHobby,inputHobby,labelCabello,inputCabello,labelSenia,inputSenia,labelVehiculo,inputVehiculo,checkLadronBoton,canvasDerecho);
 
-        //Scene scene = new Scene(this, ancho,alto);
+        obtenerDatosLadron();
+        checkLadronBoton.setOnAction( new ControladorBotonBuscarLadron(nivelActual, this, vistaIzquierdaComputadoraInterpol ));
 
     }
-
     public DatosLadron obtenerDatosLadron() {
-
-        datosLadron = new DatosLadron(inputSexo.getText(), inputHobby.getText(), inputCabello.getText(), inputSenia.getText(), inputVehiculo.getText());
+        this.datosLadron = new DatosLadron(inputSexo.getText(), inputHobby.getText(), inputCabello.getText(),
+                inputSenia.getText(), inputVehiculo.getText());
         return datosLadron;
     }
 }

@@ -14,8 +14,8 @@ import java.util.List;
 public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
 
     Nivel nivel;
-    VistaComputadoraInterpol vistaComputadoraInterpol;
     Node vistaIzquierdaComputadoraInterpol;
+    VistaComputadoraInterpol vistaComputadoraInterpol;
 
     public ControladorBotonBuscarLadron(Nivel nivel, VistaComputadoraInterpol vistaComputadoraInterpol, Node vistaIzquierdaComputadoraInterpol) {
         this.nivel = nivel;
@@ -25,10 +25,11 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        DatosLadron datosLadron = vistaComputadoraInterpol.obtenerDatosLadron();
-        List<Ladron> listaLadrones = nivel.buscarLadrones(datosLadron);
 
-        if (listaLadrones.size() == 1){
+        DatosLadron datosLadron = vistaComputadoraInterpol.obtenerDatosLadron();
+        nivel.buscarLadrones(datosLadron);
+
+        /*if (listaLadrones.size() == 1){
             String nombre = listaLadrones.get(0).obtenerNombre();
             nivel.emitirOrdenDeArresto(listaLadrones.get(0).obtenerNombre());
             System.out.println("Ya tienes la orden para arrestar a: "+ nombre );
@@ -38,13 +39,6 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
                 System.out.println(ladron.obtenerNombre());
                 // todo: esto imprimir en vista izquierda
             }
-        }
-
-
-        //VistaIzquierdaComputadoraInterpol.enlistarLadrones(listaLadrones);
-
-        //si la lista es unitaria asiganar orden de arresto al ladron
-
-
+        }*/
     }
 }

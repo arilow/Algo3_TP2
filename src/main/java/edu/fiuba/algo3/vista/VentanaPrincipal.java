@@ -76,7 +76,11 @@ public class VentanaPrincipal {
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
     }
-
+    public void mostrarPantallaInterpol() {
+        HBox layout = constructorDeEscenas.construirPantallaInterpol();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
     public void mostrarPantallaMapa() {
         HBox layout = constructorDeEscenas.construirPantallaMapa(juego.nivelActual().obtenerCiudadActual());
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
@@ -87,6 +91,5 @@ public class VentanaPrincipal {
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
     }
-
 
 }

@@ -18,7 +18,7 @@ public class Interpol {
     }
 
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){
-        List<Ladron> sospechosos= new ArrayList<>();
+        List<Ladron> sospechosos= new ArrayList<Ladron>();
         Ladron aux = new Ladron(null,null,null,null,null);
         for(Ladron ladron: listaLadrones){
             if(ladron.constatarDatos(datosLadron)) {

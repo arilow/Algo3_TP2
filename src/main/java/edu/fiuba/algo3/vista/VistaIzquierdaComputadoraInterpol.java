@@ -37,16 +37,16 @@ public class VistaIzquierdaComputadoraInterpol extends Canvas {
 
     }
 
-    public void enlistarLadrones(List<Ladron> nombreLadrones){
-
-        gcI.setFill(Color.YELLOWGREEN);
-        gcI.setLineWidth(2);
-        gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
-
-        gcI.setFill(Color.YELLOWGREEN);
-
-        for (Ladron ladron: nombreLadrones){
-            gcI.fillText(ladron.obtenerNombre(), 91,200 );
-        }
-    }
+//    public void enlistarLadrones(List<Ladron> nombreLadrones){
+//
+//        gcI.setFill(Color.YELLOWGREEN);
+//        gcI.setLineWidth(2);
+//        gcI.fillRect(0,0, anchoPantalla, altoPantallaIzquierdaActual);
+//
+//        gcI.setFill(Color.YELLOWGREEN);
+//
+//        for (Ladron ladron: nombreLadrones){
+//            gcI.fillText(ladron.obtenerNombre(), 91,200 );
+//        }
+//    }
 }

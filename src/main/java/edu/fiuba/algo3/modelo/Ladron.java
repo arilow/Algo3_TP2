@@ -62,7 +62,7 @@ public class Ladron {
         return this.datos.constatar(datos);
     }
 
-    public boolean estaEn(String ciudad, int edificio){
+    public boolean estaEn(String ciudad, int edificio) {
         return ciudadActual.es(ciudad) && edificioActual == edificio;
     }
 

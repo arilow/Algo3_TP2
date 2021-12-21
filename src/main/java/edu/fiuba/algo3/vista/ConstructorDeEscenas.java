@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Ladron;
 import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
@@ -11,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class ConstructorDeEscenas {
     VentanaPrincipal ventanaPrincipal;
@@ -65,18 +68,17 @@ public class ConstructorDeEscenas {
     }
 
     public HBox construirPantallaComputadoraInterpol() {
-        // Pantalla izquierda
+        // Pantalla izquierda (no cambia por ahora)
         pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-        // Pantalla Derecha
+        // Pantalla derecha
         pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
     }
-
 
     public HBox construirPantallaEdificio(Pista pista) {
         //Pantalla derecha
@@ -88,6 +90,19 @@ public class ConstructorDeEscenas {
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    public HBox construirPantallaInterpol() {
+        //Pantalla izquierda
+        List<Ladron> listaSospechosos = juego.nivelActual().obtenerListaSospechosos();
+        pantallaIzquierdaActual = new VistaSospechosos(listaSospechosos, anchoPantalla, altoPantallaIzquierdaActual);
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaIzquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        // Pantalla Derecha no cambia
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaIzquierda, pantallaDerecha);
     }
 
     public HBox construirPantallaRegistroJugador() {
