@@ -10,6 +10,7 @@ public class Mapa {
 
     public Mapa(List <Ciudad> ciudadesMapa) {
         for(Ciudad ciudad: ciudades) {
+            //System.out.println( "Cargando ciudad a mapa" + ciudad.obtenerNombre());
             mapeo_aux.put(ciudad.toString(), ciudad);
         }
         this.ciudades=ciudadesMapa;
@@ -20,5 +21,8 @@ public class Mapa {
     }
     public void viajar(Jugador jugador,Ciudad ciudadPartida, Ciudad ciudadLLlegada, Tiempo tiempo) {
         jugador.viajar(ciudadPartida.obtenerDistancia(ciudadLLlegada), tiempo);
+    }
+    public Ciudad obtenerCiudad(String ciudad){
+            return mapeo_aux.get(ciudad);
     }
 }
