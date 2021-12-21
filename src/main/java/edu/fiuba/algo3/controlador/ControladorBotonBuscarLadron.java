@@ -15,20 +15,30 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
 
     Nivel nivel;
     Node vistaIzquierdaComputadoraInterpol;
-    DatosLadron datosLadron;
+    VistaComputadoraInterpol vistaComputadoraInterpol;
 
-    public ControladorBotonBuscarLadron(Nivel nivel, DatosLadron datosCargadosLadron, Node vistaIzquierdaComputadoraInterpol) {
+    public ControladorBotonBuscarLadron(Nivel nivel, VistaComputadoraInterpol vistaComputadoraInterpol, Node vistaIzquierdaComputadoraInterpol) {
         this.nivel = nivel;
-        this.datosLadron = datosCargadosLadron;
-
+        this.vistaComputadoraInterpol = vistaComputadoraInterpol;
         this.vistaIzquierdaComputadoraInterpol = vistaIzquierdaComputadoraInterpol;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        List<Ladron> ladrones = nivel.buscarLadrones(this.datosLadron);
-        for(Ladron ladron : ladrones) {
-            System.out.println(ladron.obtenerNombre());
-        }
+
+        DatosLadron datosLadron = vistaComputadoraInterpol.obtenerDatosLadron();
+        nivel.buscarLadrones(datosLadron);
+
+        /*if (listaLadrones.size() == 1){
+            String nombre = listaLadrones.get(0).obtenerNombre();
+            nivel.emitirOrdenDeArresto(listaLadrones.get(0).obtenerNombre());
+            System.out.println("Ya tienes la orden para arrestar a: "+ nombre );
+            // todo Esto imprimir en vista izquierda
+        } else{
+            for(Ladron ladron: nivel.buscarLadrones(datosLadron)){
+                System.out.println(ladron.obtenerNombre());
+                // todo: esto imprimir en vista izquierda
+            }
+        }*/
     }
 }

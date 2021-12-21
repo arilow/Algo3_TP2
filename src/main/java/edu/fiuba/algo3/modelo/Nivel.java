@@ -111,11 +111,10 @@ public class Nivel {
         return ladron.constatarDatos(datos);
     }//Usado unicamente en un assert dentro de NivelTest
 
-    public List<Ladron> buscarLadrones(DatosLadron datosLadron){
+    public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
-        return interpol.buscarLadrones(datosLadron);
     }
 
     public List<Ladron> obtenerListaSospechosos(){

@@ -27,6 +27,7 @@ public class VistaSospechosos extends Canvas {
         Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 15 );
         gcI.setFont( theFont );
 
+
         if (sospechosos.size() == 1)
         {
             gcI.fillText("Emitiendo orden de arresto para:", 91,200, ancho/2 );
@@ -36,6 +37,7 @@ public class VistaSospechosos extends Canvas {
         for(Ladron ladron: sospechosos){
             gcI.strokeText(ladron.obtenerNombre(), 91,20+i , ancho/2 );
             i+=20;
+            System.out.println(ladron.obtenerNombre());
         }
     }
 }
