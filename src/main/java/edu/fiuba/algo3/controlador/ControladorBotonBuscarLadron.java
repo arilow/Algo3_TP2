@@ -26,8 +26,7 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        DatosLadron datosLadron = vistaComputadoraInterpol.obtenerDatosLadron();
-        nivel.buscarLadrones(datosLadron);
+        nivel.buscarLadrones(vistaComputadoraInterpol.obtenerDatosLadron());
 
         /*if (listaLadrones.size() == 1){
             String nombre = listaLadrones.get(0).obtenerNombre();

@@ -11,7 +11,6 @@ public class ComunicadorEstadoPartida extends Observable {
 
     public void definirEstado(EstadoPartida estadoPartida) {
         estadoActual = estadoPartida;
-
         setChanged();
         notifyObservers();
     }

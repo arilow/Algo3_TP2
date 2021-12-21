@@ -114,6 +114,9 @@ public class Nivel {
     public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
+        if (ladronesSospechosos.size() == 1){
+            this.emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
+        }
         comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
     }
 
@@ -126,6 +129,7 @@ public class Nivel {
 
     public void emitirOrdenDeArresto(String nombreLadron){
         this.ordenDeArresto.ejecutarOrdenDeArresto(nombreLadron);
+        System.out.print("Se emite orden de arresto para:" + nombreLadron);
     }
     public Ladron obtenerLadron(){
         return this.ladron;

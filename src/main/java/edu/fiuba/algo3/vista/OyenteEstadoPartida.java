@@ -35,8 +35,10 @@ public class OyenteEstadoPartida implements Observer {
                 break;
             case BUSCAR_SOSPECHOSOS:
                 ventana.mostrarPantallaInterpol();
+                break;
             case VIAJAR:
                 ventana.mostrarPantallaMapa();
+                break;
             default:
                 System.out.println("Ninguno");
         }
