@@ -53,6 +53,16 @@ public class Ciudad extends Observable {
         this.tieneLadron = false;
         this.imagen=this.nombre+".png";
     }
+    public Ciudad(String nombre, List<Edificio> edificio, List<String> ciudadesVisitables) {
+        this.nombre = nombre;
+        this.edificios = edificio;
+        this.aireLibre = new AireLibre();
+        this.sitioActual = aireLibre;
+        this.ubicacion = ubicacion;
+        this.tieneLadron = false;
+        this.visitada = false;
+        this.ciudadesVisitables=ciudadesVisitables;
+    }
 
     public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
         this.nombre = nombre;
