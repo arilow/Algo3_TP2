@@ -62,6 +62,7 @@ public class Ciudad extends Observable {
         this.tieneLadron = false;
         this.visitada = false;
         this.ciudadesVisitables=ciudadesVisitables;
+        this.imagen=this.nombre+".png";
     }
 
     public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
@@ -72,6 +73,7 @@ public class Ciudad extends Observable {
         this.ubicacion = ubicacion;
         this.tieneLadron = false;
         this.visitada = false;
+        this.imagen=this.nombre+".png";
     }
 
     public boolean es(String nombre) {

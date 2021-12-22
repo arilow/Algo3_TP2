@@ -44,7 +44,10 @@ public class ConstructorDeEscenas {
 
     public HBox construirPantallaInicioCiudad() {
         // Pantalla Izquierda
-        pantallaIzquierdaActual = new VistaImagenCiudad(anchoPantalla, altoPantallaIzquierdaActual);
+        System.out.println(juego.nivelActual().obtenerCiudadActual().obtenerNombre());
+        System.out.println(juego.nivelActual().obtenerCiudadActual());
+        System.out.println(juego.nivelActual().obtenerCiudadActual().obtenerImagen());
+        pantallaIzquierdaActual = new VistaImagenCiudad(juego.nivelActual().obtenerCiudadActual(), anchoPantalla, altoPantallaIzquierdaActual);
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 

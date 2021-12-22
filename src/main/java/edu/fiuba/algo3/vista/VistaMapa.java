@@ -17,7 +17,6 @@ public class VistaMapa extends Canvas {
         gcI.setFont( theFont );
 
         Image image = new Image(ciudad.obtenerImagen());
-        gcI.fillText("Mapa", 10, 10 );
         gcI.drawImage(image, 0, alto-200, ancho, 200);
     }
 }

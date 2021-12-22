@@ -33,22 +33,24 @@ public class VistaListaMapa extends VBox{
         gcI.setFill(Color.BLUE);
         gcI.fillRect(0,0, anchoCanvas, altoCanvas);
 
+        List<String> ciudadesVisitable = nivelActual.obtenerCiudadActual().obtenerCiudadesVisitables();
+
         // Botones Ciudades izquierda
         double altoBotones = altoIzquierdo - altoCanvas;
         Button botonCiudad1;
-        botonCiudad1 = new Button(ciudades.get(0).obtenerNombre());
+        botonCiudad1 = new Button(ciudadesVisitable.get(0));
         botonCiudad1.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad1.setPrefWidth(ancho * 0.33);
         botonCiudad1.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(0)));
 
         Button botonCiudad2;
-        botonCiudad2 = new Button(ciudades.get(1).obtenerNombre());
+        botonCiudad2 = new Button(ciudadesVisitable.get(1));
         botonCiudad2.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad2.setPrefWidth(ancho * 0.33);
         botonCiudad2.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(1)));
 
         Button botonCiudad3;
-        botonCiudad3 = new Button(ciudades.get(2).obtenerNombre());
+        botonCiudad3 = new Button(ciudadesVisitable.get(2));
         botonCiudad3.setPrefHeight(altoIzquierdo - altoBotones);
         botonCiudad3.setPrefWidth(ancho * 0.33);
         botonCiudad3.setOnAction(new ControladorBotonIrACiudad(nivelActual, ciudades.get(2)));

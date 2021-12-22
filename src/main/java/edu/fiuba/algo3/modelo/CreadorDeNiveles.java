@@ -165,7 +165,16 @@ public class CreadorDeNiveles {
                         break;
                 }
             }
-            Ciudad c = new Ciudad(nombre, edificios);//,longitud,latitud);
+
+            // Leo las ciudades visitables
+            JSONArray lecturaCiudadesVisitables = (JSONArray) ciudad.get("ciudadesVisitables");
+            List<String> ciudadesVisitables = new ArrayList<String>();
+            for(Object ciudadVisitable_: lecturaCiudadesVisitables) {
+                String ciudadVisitable = ciudadVisitable_.toString();
+                ciudadesVisitables.add(ciudadVisitable);
+            }
+
+            Ciudad c = new Ciudad(nombre, edificios, ciudadesVisitables);//,longitud,latitud);
             for(Object ciudadMapa_ : listaCiudadesMapa) {
                 JSONObject ciudadMapa = (JSONObject) ciudadMapa_;
                 String nombreMapa = (String) ciudadMapa.get("nombre");
