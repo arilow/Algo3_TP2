@@ -13,11 +13,12 @@ public class VistaEdificio extends Canvas {
         super(ancho, alto);
         GraphicsContext gcI = this.getGraphicsContext2D();
 
-        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12 );
+        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12);
         gcI.setFont( theFont );
 
         gcI.fillText(pista.mostrar(), 10, 90, 310);
 
+        System.out.println(pista.obtenerImagen());
         Image image = new Image(pista.obtenerImagen());
         // TODO: des-hardcodear valores.
         gcI.drawImage(image, 0, alto-200, ancho, 200);
