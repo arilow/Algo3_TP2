@@ -15,65 +15,20 @@ public class Ciudad extends Observable {
     private Sitio sitioActual;
 
     private Sitio aireLibre;  // Espacio fuera de los edificios
-    private boolean visitada;
     private Ubicacion ubicacion;
-    private boolean tieneLadron;
     private List<String> ciudadesVisitables;
-    private Mapa mapaJuego;
     private String imagen;
 
-    protected void recibirJugador(Jugador jugador) {
-        /* TODO */
-    }
-    public Ciudad(String nombre, List<Edificio> edificio,double longitud,double latitud) {
-        this.nombre = nombre;
-        this.edificios = edificio;
-        this.ubicacion= new Ubicacion(longitud,latitud);
-        this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
-        this.tieneLadron = false;
-        this.imagen=this.nombre+".png";
-    }
-
-    public Ciudad(String nombre, List<Edificio> edificio,String longitud,String latitud) {
-        this.nombre = nombre;
-        this.edificios = edificio;
-        this.ubicacion= new Ubicacion(longitud,latitud);
-        this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
-        this.tieneLadron = false;
-        this.imagen=this.nombre+".png";
-    }
-
-    public Ciudad(String nombre, List<Edificio> edificio) {
-        this.nombre = nombre;
-        this.edificios = edificio;
-        this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
-        this.tieneLadron = false;
-        this.imagen=this.nombre+".png";
-    }
     public Ciudad(String nombre, List<Edificio> edificio, List<String> ciudadesVisitables) {
         this.nombre = nombre;
         this.edificios = edificio;
         this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
-        this.ubicacion = ubicacion;
-        this.tieneLadron = false;
-        this.visitada = false;
-        this.ciudadesVisitables=ciudadesVisitables;
-        this.imagen=this.nombre+".png";
-    }
 
-    public Ciudad(String nombre, List<Edificio> edificio, Ubicacion ubicacion) {
-        this.nombre = nombre;
-        this.edificios = edificio;
-        this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
-        this.ubicacion = ubicacion;
-        this.tieneLadron = false;
-        this.visitada = false;
-        this.imagen=this.nombre+".png";
+        // TODO: Resolver ubicacion en constructor.
+        //this.ubicacion = ubicacion;
+        this.ciudadesVisitables=ciudadesVisitables;
+        this.imagen = this.nombre+".png";
     }
 
     public boolean es(String nombre) {
@@ -83,8 +38,6 @@ public class Ciudad extends Observable {
     public Pista entrarAEdificio(int edificio, Tiempo tiempo) {
         this.sitioActual = edificios.get(edificio);
         edificios.get(edificio).aumentarTiempo(tiempo);
-
-        System.out.println("Ciudad: entrarAEdificio");
         return edificios.get(edificio).mostrarPista();
     }
 
@@ -104,24 +57,8 @@ public class Ciudad extends Observable {
         return this.ubicacion.calcularDistancia(otraCiudad.obtenerUbicacion());
     }
 
-    public void asignarLadronAEdificio(int edificio) {
-        edificios.get(edificio).asignarLadron();
-    }
-
-    public void asignarLadron() {
-        this.tieneLadron = true;
-    }
-
-    public boolean tieneLadron() {
-        return tieneLadron;
-    }
-
     public String obtenerNombre() {
         return nombre;
-    }
-
-    public void esVisitada() {
-        visitada = true;
     }
 
     public void agregarObservadorDeEdificios(Observer observer) {

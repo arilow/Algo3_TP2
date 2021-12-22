@@ -14,7 +14,6 @@ public class Nivel {
 
     private List<Ciudad> ciudades;
     private Ladron ladron;
-    private List<Ladron> ladronesNivel;
     private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
@@ -37,18 +36,6 @@ public class Nivel {
 //        this.mapa = new Mapa(ciudades);
     }
 
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
-        tiempo = new Tiempo(10);
-        this.ciudades = ciudades;
-        this.ciudadActual = ciudad;
-        ciudadActual.esVisitada();
-        this.jugador = jugador;
-        this.tesoro = tesoro;
-        this.ladron = ladron;
-        this.ladronesNivel= ladronesNivel;
-        this.ordenDeArresto = new OrdenDeArresto();
-    }
-
     public void jugar(ComunicadorEstadoPartida comunicadorEstadoPartida) {
         this.comunicadorEstadoPartida = comunicadorEstadoPartida;
 //        this.jugador = jugador;
@@ -56,17 +43,16 @@ public class Nivel {
         //aca va el game loop.
     }
 
+    // TODO: Preguntar porque se esta usando esta version de visitar ciudad.
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
-        this.ciudadActual.esVisitada();
         comunicadorEstadoPartida.definirEstado(EstadoPartida.VIAJAR);
     }
 
     public void visitarCiudad(int ciudad) {
         this.ciudadActual = ciudades.get(ciudad);
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
-        this.ciudadActual.esVisitada();
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
@@ -123,6 +109,7 @@ public class Nivel {
     public List<Ladron> obtenerListaSospechosos(){
         return ladronesSospechosos;
     }
+
     public int obtenerCantidadCiudadesEscape() {
        return this.tesoro.obtenerCantidadCiudadesEscape();
     }
@@ -131,13 +118,10 @@ public class Nivel {
         this.ordenDeArresto.emitirOrdenDeArresto(nombreLadron);
         System.out.print("Se emite orden de arresto para: " + nombreLadron);
     }
+
     public Ladron obtenerLadron(){
         return this.ladron;
     }
-
-    /*public boolean estaEn(String ciudad) {
-        return ciudadActual.es(ciudad);
-    }*/
 
     public List<String> listarEdificios() {
         return ciudadActual.listarEdificios();
@@ -145,9 +129,6 @@ public class Nivel {
 
     public String obtenerFecha() {
         return tiempo.aString();
-    }
-    public void agregarObservadorDeEdificios(Observer observer) {
-        ciudadActual.agregarObservadorDeEdificios(observer);
     }
 
     public List<Ciudad> listarCiudades() {
@@ -168,10 +149,5 @@ public class Nivel {
 
     public String nombreTesoro() {
         return ((ObjetoComun)tesoro).nombre();
-    }
-
-
-    public void cambiarCiudadActual(Ciudad ciudad) {
-        this.ciudadActual = ciudad;
     }
 }

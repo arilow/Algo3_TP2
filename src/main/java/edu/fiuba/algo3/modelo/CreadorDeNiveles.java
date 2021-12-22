@@ -22,7 +22,6 @@ public class CreadorDeNiveles {
     public CreadorDeNiveles() {};
 
     public Nivel crearNivel(Jugador jugador) {
-
         String cargoJugador = jugador.obtenerCargo();
 
         // Lectura del archivo del Nivel
@@ -34,11 +33,11 @@ public class CreadorDeNiveles {
         // Obtiene una lista de ciudades a partir del archivo JSON
         JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        cargarCiudades(ciudades, lecturaCiudades,lecturaCiudadesMapa);
+        cargarCiudades(ciudades, lecturaCiudades, lecturaCiudadesMapa);
 
         // Obtiene una lista de ciudades 'comodin' a partir del archivo JSON
         JSONArray lecturaCiudadesComodin = (JSONArray) lecturaArchivo.get("ciudadesComodin");
-        cargarCiudadesNoVisitables(ciudades, lecturaCiudadesComodin,lecturaCiudadesMapa);
+        cargarCiudadesNoVisitables(ciudades, lecturaCiudadesComodin, lecturaCiudadesMapa);
 
         // Obtiene un ladron a partir del archivo JSON
         JSONObject lecturaLadron = (JSONObject) lecturaArchivo.get("ladron");
@@ -47,7 +46,6 @@ public class CreadorDeNiveles {
         // Obtiene un objeto robado a partir del archivo JSON
         String nombreObjetoRobado = (String) lecturaArchivo.get("ObjetoRobado");
         ObjetoRobado tesoro = cargarObjetoRobado(cargoJugador, nombreObjetoRobado);
-
 
         return new Nivel(ciudades.get(0), jugador, tesoro, ladron, ciudades);
     }
@@ -98,6 +96,7 @@ public class CreadorDeNiveles {
         }
         return null;
     }
+    /*
     private void cargarCiudades(List<Ciudad> ciudades, JSONArray listaCiudades) {
         for(Object ciudad_ : listaCiudades) {
             JSONObject ciudad = (JSONObject) ciudad_;
@@ -134,6 +133,7 @@ public class CreadorDeNiveles {
             ciudades.add(c);
         }
     }
+    */
     private void cargarCiudades(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
         for(Object ciudad_ : listaCiudades) {
             JSONObject ciudad = (JSONObject) ciudad_;
@@ -187,7 +187,7 @@ public class CreadorDeNiveles {
             ciudades.add(c);
         }
     }
-
+/*
     private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades) {
 
         int i = 0;
@@ -203,11 +203,17 @@ public class CreadorDeNiveles {
             Biblioteca biblioteca = new Biblioteca(pistaCiudad);
             edificios.add(biblioteca);
 
-            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios);//),longitud,latitud);
+            List<String> ciudadesVacias = new ArrayList<>();
+            ciudadesVacias.add("Ciudad1");
+            ciudadesVacias.add("Ciudad2");
+            ciudadesVacias.add("Ciudad3");
+
+            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios, ciudadesVacias);//),longitud,latitud);
             ciudades.add(ciudadComodin);
         }
 
     }
+*/
     private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
 
         int i = 0;
@@ -223,7 +229,12 @@ public class CreadorDeNiveles {
             Biblioteca biblioteca = new Biblioteca(pistaCiudad);
             edificios.add(biblioteca);
 
-            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios);//),longitud,latitud);
+            List<String> ciudadesVacias = new ArrayList<>();
+            ciudadesVacias.add("Ciudad1");
+            ciudadesVacias.add("Ciudad2");
+            ciudadesVacias.add("Ciudad3");
+
+            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios, ciudadesVacias);//),longitud,latitud);
             ciudades.add(ciudadComodin);
         }
     }

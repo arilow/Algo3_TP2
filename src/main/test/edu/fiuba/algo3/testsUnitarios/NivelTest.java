@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class NivelTest {
-    private PartidaMock partidaMock;
+/*    private PartidaMock partidaMock;
 
     private class PartidaMock {
         Jugador jugador;
@@ -59,4 +59,6 @@ public class NivelTest {
         nivel.entrarAEdificio(0);
         //TODO: Corroborar que baja el tiempo.
     }
+
+ */
 }
