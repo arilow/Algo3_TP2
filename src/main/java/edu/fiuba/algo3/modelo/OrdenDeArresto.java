@@ -12,9 +12,12 @@ public class OrdenDeArresto {
         this.ejecutada = false;
     }
 
-    public void ejecutarOrdenDeArresto(String nombreLadron){
-        this.nombreLadronDeOrden = nombreLadron;
-        this.ejecutada = true;
+    public void emitirOrdenDeArresto(String nombreLadron){
+        if (!this.ejecutada)
+        {
+            this.nombreLadronDeOrden = nombreLadron;
+            this.ejecutada = true;
+        }else{return;}
     }
 
     public boolean fueEjecutada(){
