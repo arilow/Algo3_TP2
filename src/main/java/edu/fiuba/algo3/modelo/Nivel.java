@@ -14,6 +14,7 @@ public class Nivel {
 
     private List<Ciudad> ciudades;
     private Ladron ladron;
+    private List<Ladron> ladronesNivel;
     private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
@@ -51,7 +52,7 @@ public class Nivel {
     }
 
     public void visitarCiudad(int ciudad) {
-        this.ciudadActual = ciudades.get(ciudad);
+        ciudadActual = ciudades.get(ciudad);
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
     }
 
@@ -59,9 +60,10 @@ public class Nivel {
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
-        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){ //La verificación de las ciudades visitadas no funciona. Tira true no importa lo que le pongas
-            if(this.ladronArrestado()){
+        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
+            if(ladronArrestado()){
                 jugador.agregarArresto();
+                // todo terminar nivel
             }else{
                 // Pierdo el nivel
             }
@@ -98,10 +100,10 @@ public class Nivel {
     }//Usado unicamente en un assert dentro de NivelTest
 
     public void buscarLadrones(DatosLadron datosLadron){
-        interpol = new Interpol();
+        interpol = new Interpol(ciudades, ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
-            this.emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
+            emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
         }
         comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
     }
@@ -111,7 +113,7 @@ public class Nivel {
     }
 
     public int obtenerCantidadCiudadesEscape() {
-       return this.tesoro.obtenerCantidadCiudadesEscape();
+       return tesoro.obtenerCantidadCiudadesEscape();
     }
 
     public void emitirOrdenDeArresto(String nombreLadron){
@@ -120,7 +122,7 @@ public class Nivel {
     }
 
     public Ladron obtenerLadron(){
-        return this.ladron;
+        return ladron;
     }
 
     public List<String> listarEdificios() {

@@ -63,7 +63,7 @@ public class Ladron {
     }
 
     public boolean estaEn(String ciudad, int edificio) {
-        return ciudadActual.es(ciudad) && edificioActual == edificio;
+        return (ciudadActual.es(ciudad)) && (edificioActual == edificio);
     }
 
     public void moverserA(Ciudad ciudad, int edificio) {
