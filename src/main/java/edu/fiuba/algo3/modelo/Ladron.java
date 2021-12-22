@@ -13,15 +13,7 @@ public class Ladron {
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
         this.esLibre = true;
-    };
-
-    /*public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual){
-        datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
-        this.ciudadActual = ciudadActual;
-        Random rand = new Random();
-        rand.nextInt(4);
-        this.edificioActual = rand.nextInt();
-    };*/
+    }
 
     public Ladron(String sexo, String hobby, String cabello, String senia, String vehiculo, Ciudad ciudadActual, int edificio, String nombre){
         datos = new DatosLadron(sexo, hobby, cabello, senia, vehiculo);
@@ -29,7 +21,7 @@ public class Ladron {
         this.edificioActual = edificio;
         this.nombreLadron = nombre;
         this.esLibre = true;
-    };
+    }
 
     public Ciudad obtenerCiudadActual(){
         return this.ciudadActual;
@@ -53,6 +45,7 @@ public class Ladron {
     {
         return this.datos;
     }
+
     public String toString() // es una buena práctica que se llame toString y no "convertirACadenaCaracteres"
     {
         return datos.toString();

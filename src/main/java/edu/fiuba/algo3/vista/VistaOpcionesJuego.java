@@ -16,7 +16,6 @@ public class VistaOpcionesJuego extends VBox {
         botonMapa = new Button("Viajar");
         botonMapa.setPrefHeight(alto * 0.25);
         botonMapa.setPrefWidth(ancho);
-        //botonMapa.setOnAction(e -> ventanaPrincipal.mostrarPantallaMapa());
         botonMapa.setOnAction(e -> ventanaPrincipal.mostrarCiudades());
 
         Button botonEdificios;

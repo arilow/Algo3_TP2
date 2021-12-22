@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Ladron;
-import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -11,13 +10,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.util.List;
 
 public class ConstructorDeEscenas {
     VentanaPrincipal ventanaPrincipal;
-    Stage stage;
     Juego juego;
     int anchoVentana;
     int altoVentana;
@@ -31,9 +28,8 @@ public class ConstructorDeEscenas {
     Node pantallaIzquierdaActual;
     Node pantallaDerechaActual;
 
-    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Stage stage, Juego juego, int anchoVentana, int altoVentana) {
+    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Juego juego, int anchoVentana, int altoVentana) {
         this.ventanaPrincipal = ventanaPrincipal;
-        this.stage = stage;
         this.juego = juego;
         this.anchoVentana = anchoVentana;
         this.altoVentana = altoVentana;
@@ -72,7 +68,7 @@ public class ConstructorDeEscenas {
 
     public HBox construirPantallaComputadoraInterpol() {
         // Pantalla izquierda (no cambia por ahora)
-        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
+        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(anchoPantalla, altoPantallaIzquierdaActual);
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
@@ -110,7 +106,7 @@ public class ConstructorDeEscenas {
 
     public HBox construirPantallaRegistroJugador() {
         // Pantalla izquierda.
-        pantallaIzquierdaActual = new VistaRegistroJugador(juego.partidaActual(), anchoPantalla, altoPantallaIzquierdaActual, this);
+        pantallaIzquierdaActual = new VistaRegistroJugador(juego.partidaActual(), anchoPantalla, altoPantallaIzquierdaActual);
         VBox infoFecha = construirPantallaDatos("Cuartel General", "Lunes, 7hs");
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
@@ -126,16 +122,6 @@ public class ConstructorDeEscenas {
         VBox pantallaDerecha = new VBox(pantallaDerechaActual);
 
         return new HBox(pantallaizquierda, pantallaDerecha);
-    }
-
-    private void construirNodosComputadoraInterpol() {
-        altoPantallaDerechaActual = altoVentana * 0.75;
-        double anchoCanvas = anchoPantalla;
-        // Nodo Izquierdo
-        double altoCanvasIzquierdo = altoVentana * 0.9;
-        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoCanvas, altoCanvasIzquierdo);
-        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
-
     }
 
     public HBox construirPantallaInicioNivel() {

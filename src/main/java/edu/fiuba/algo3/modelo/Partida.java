@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.vista.OyenteEstadoPartida;
-
-import java.util.List;
 
 public class Partida {
     private CreadorDeNiveles creadorDeNiveles;

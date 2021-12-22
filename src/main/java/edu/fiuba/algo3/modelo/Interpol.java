@@ -1,15 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
-
-import java.lang.reflect.AnnotatedArrayType;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Interpol {
-
-    DatosLadron datosLadron;
     List<Ladron> listaLadrones;
     Ladron ladronBuscado;
 

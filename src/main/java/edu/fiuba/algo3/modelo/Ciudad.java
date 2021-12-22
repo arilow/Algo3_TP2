@@ -61,12 +61,6 @@ public class Ciudad extends Observable {
         return nombre;
     }
 
-    public void agregarObservadorDeEdificios(Observer observer) {
-        for (Edificio edificio : edificios) {
-            edificio.addObserver(observer);
-        }
-    }
-
     public Edificio obtenerEdificioActual() {
         return (Edificio) sitioActual;
     }

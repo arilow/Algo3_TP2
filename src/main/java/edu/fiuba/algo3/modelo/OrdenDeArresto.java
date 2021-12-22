@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.scene.shape.StrokeLineCap;
-
 public class OrdenDeArresto {
 
 

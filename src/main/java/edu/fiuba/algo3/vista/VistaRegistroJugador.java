@@ -12,7 +12,7 @@ public class VistaRegistroJugador extends VBox {
 
     TextField entradaNombreJugador;
 
-    public VistaRegistroJugador(Partida partida, double ancho, double alto, ConstructorDeEscenas constructorDeEscenas) {
+    public VistaRegistroJugador(Partida partida, double ancho, double alto) {
         Label labelNombreJugador = new Label("Nombre:");
         labelNombreJugador.setPrefWidth(ancho);
         entradaNombreJugador = new TextField();

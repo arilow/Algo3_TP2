@@ -6,7 +6,6 @@ public class Pista {
     static int counter = 0;
 
     public Pista(String contenido) {
-
         this.contenido = contenido;
 
         counter++;

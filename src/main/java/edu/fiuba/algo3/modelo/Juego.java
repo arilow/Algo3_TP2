@@ -2,9 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.vista.OyenteEstadoPartida;
 
-import java.util.List;
-import java.util.Observable;
-
 public class Juego {
     private Partida partida;
 
