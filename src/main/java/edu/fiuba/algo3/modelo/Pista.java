@@ -10,7 +10,9 @@ public class Pista {
         this.contenido = contenido;
 
         counter++;
-        imagen = "image"+ counter + ".png";
+        if(counter > 3)
+            counter = 1;
+        imagen = "Image"+ counter + ".png";
     }
 
     public String mostrar() {
