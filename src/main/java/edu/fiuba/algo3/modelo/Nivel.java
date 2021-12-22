@@ -37,7 +37,7 @@ public class Nivel {
 //        this.mapa = new Mapa(ciudades);
     }
 
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
+    /*public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
         tiempo = new Tiempo(10);
         this.ciudades = ciudades;
         this.ciudadActual = ciudad;
@@ -47,7 +47,7 @@ public class Nivel {
         this.ladron = ladron;
         this.ladronesNivel= ladronesNivel;
         this.ordenDeArresto = new OrdenDeArresto();
-    }
+    }*/
 
     public void jugar(ComunicadorEstadoPartida comunicadorEstadoPartida) {
         this.comunicadorEstadoPartida = comunicadorEstadoPartida;
@@ -58,24 +58,25 @@ public class Nivel {
 
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
-        this.ciudadActual = ciudad;
-        this.ciudadActual.esVisitada();
+        ciudadActual = ciudad;
+        ciudadActual.esVisitada();
         comunicadorEstadoPartida.definirEstado(EstadoPartida.VIAJAR);
     }
 
     public void visitarCiudad(int ciudad) {
-        this.ciudadActual = ciudades.get(ciudad);
+        ciudadActual = ciudades.get(ciudad);
         jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
-        this.ciudadActual.esVisitada();
+        ciudadActual.esVisitada();
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
-        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){ //La verificación de las ciudades visitadas no funciona. Tira true no importa lo que le pongas
-            if(this.ladronArrestado()){
+        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
+            if(ladronArrestado()){
                 jugador.agregarArresto();
+                // todo terminar nivel
             }else{
                 // Pierdo el nivel
             }
@@ -112,10 +113,10 @@ public class Nivel {
     }//Usado unicamente en un assert dentro de NivelTest
 
     public void buscarLadrones(DatosLadron datosLadron){
-        interpol = new Interpol(ciudades);
+        interpol = new Interpol(ciudades, ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
-            this.emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
+            emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
         }
         comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
     }
@@ -124,7 +125,7 @@ public class Nivel {
         return ladronesSospechosos;
     }
     public int obtenerCantidadCiudadesEscape() {
-       return this.tesoro.obtenerCantidadCiudadesEscape();
+       return tesoro.obtenerCantidadCiudadesEscape();
     }
 
     public void emitirOrdenDeArresto(String nombreLadron){
@@ -132,7 +133,7 @@ public class Nivel {
         System.out.print("Se emite orden de arresto para: " + nombreLadron);
     }
     public Ladron obtenerLadron(){
-        return this.ladron;
+        return ladron;
     }
 
     /*public boolean estaEn(String ciudad) {
@@ -172,6 +173,6 @@ public class Nivel {
 
 
     public void cambiarCiudadActual(Ciudad ciudad) {
-        this.ciudadActual = ciudad;
+        ciudadActual = ciudad;
     }
 }
