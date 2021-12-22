@@ -128,8 +128,8 @@ public class Nivel {
     }
 
     public void emitirOrdenDeArresto(String nombreLadron){
-        this.ordenDeArresto.ejecutarOrdenDeArresto(nombreLadron);
-        System.out.print("Se emite orden de arresto para:" + nombreLadron);
+        this.ordenDeArresto.emitirOrdenDeArresto(nombreLadron);
+        System.out.print("Se emite orden de arresto para: " + nombreLadron);
     }
     public Ladron obtenerLadron(){
         return this.ladron;
