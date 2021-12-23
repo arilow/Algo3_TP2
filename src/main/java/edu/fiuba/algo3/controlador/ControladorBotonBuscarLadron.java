@@ -28,16 +28,5 @@ public class ControladorBotonBuscarLadron implements EventHandler<ActionEvent> {
 
         nivel.buscarLadrones(vistaComputadoraInterpol.obtenerDatosLadron());
 
-        /*if (listaLadrones.size() == 1){
-            String nombre = listaLadrones.get(0).obtenerNombre();
-            nivel.emitirOrdenDeArresto(listaLadrones.get(0).obtenerNombre());
-            System.out.println("Ya tienes la orden para arrestar a: "+ nombre );
-            // todo Esto imprimir en vista izquierda
-        } else{
-            for(Ladron ladron: nivel.buscarLadrones(datosLadron)){
-                System.out.println(ladron.obtenerNombre());
-                // todo: esto imprimir en vista izquierda
-            }
-        }*/
     }
 }

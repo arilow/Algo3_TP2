@@ -30,7 +30,6 @@ public class VistaSospechosos extends Canvas {
         {
             gcI.fillText("Ya tienes la orden para arrestar a ", 81,200, ancho/2 );
             gcI.fillText(sospechosos.get(0).obtenerNombre() + '\n', 81,220, ancho/2 );
-
         }
         else{
             int i = 0;

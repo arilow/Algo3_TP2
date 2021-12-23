@@ -8,6 +8,7 @@ public class OrdenDeArresto {
 
     public OrdenDeArresto(){
         this.ejecutada = false;
+        nombreLadronDeOrden = "Ninguno";
     }
 
     public void emitirOrdenDeArresto(String nombreLadron){
@@ -31,12 +32,11 @@ public class OrdenDeArresto {
     }
 
     public boolean verificarLadron(Ladron ladron) {
-        if(this.ejecutada && ladron.obtenerNombre() == nombreLadronDeOrden) {
+        if(ladron.obtenerNombre() == nombreLadronDeOrden) {
             ladron.arrestar();
             return true;
-        } else{
-            return false;
         }
+        return false;
     }
 
     public void emitirOrden(String nombre) {
