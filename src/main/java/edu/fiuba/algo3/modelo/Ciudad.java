@@ -31,6 +31,16 @@ public class Ciudad extends Observable {
         this.imagen = this.nombre+".png";
     }
 
+    public Ciudad(String nombre, List<Edificio> edificio, List<String> ciudadesVisitables,double longitud, double latitud) {
+        this.nombre = nombre;
+        this.edificios = edificio;
+        this.aireLibre = new AireLibre();
+        this.sitioActual = aireLibre;
+        this.ubicacion = new Ubicacion(longitud,latitud);
+        this.ciudadesVisitables=ciudadesVisitables;
+        this.imagen = this.nombre+".png";
+    }
+
     public boolean es(String nombre) {
         return this.nombre.equals(nombre);
     }
@@ -80,5 +90,9 @@ public class Ciudad extends Observable {
 
     public String obtenerImagen() {
         return imagen;
+    }
+
+    public void definirEdificios(List <Edificio> edificios) {
+        this.edificios=edificios;
     }
 }

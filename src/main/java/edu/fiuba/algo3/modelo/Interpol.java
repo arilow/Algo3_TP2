@@ -15,7 +15,7 @@ public class Interpol {
         this.listaLadrones.add(new Ladron("Guiduito","masculino","golf", "rubio", "lunar", "auto"));
         this.listaLadrones.add(new Ladron("Pelusa","masculino","escalar", "negro", "anillo", "motocicleta"));
         this.listaLadrones.add(new Ladron("Franky","masculino","dar clases de algoritmos y programacion 3", "negro", "la facha", "aeroplano"));
-        this.listaLadrones.add(new Ladron("masculino","escalar", "negro", "anillo", "monopatin", ciudades.get(1), 1, "Smiggle"));
+        this.listaLadrones.add(new Ladron("masculino","escalar", "negro", "anillo", "monopatin", "Baghdad", 1, "Smiggle"));
     }
 
     public List<Ladron> buscarLadrones(DatosLadron datosLadron){

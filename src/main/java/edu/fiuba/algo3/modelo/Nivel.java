@@ -26,15 +26,14 @@ public class Nivel {
 
     ComunicadorEstadoPartida comunicadorEstadoPartida;
 
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
+    public Nivel(String ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, Mapa mapa){
         tiempo = new Tiempo(10);
-        this.ciudades = ciudades;
-        this.ciudadActual = ciudad;
+        this.ciudadActual = mapa.obtenerCiudad(ciudad);
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ordenDeArresto = new OrdenDeArresto();
-//        this.mapa = new Mapa(ciudades);
+        this.mapa = mapa;
     }
 
     public void jugar(ComunicadorEstadoPartida comunicadorEstadoPartida) {
@@ -79,9 +78,9 @@ public class Nivel {
         return this.ordenDeArresto.verificarLadron(ladron);
     }
 
-    public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
+    /*public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
         ladron.moverserA(ciudad, edificio);
-    }
+    }*/
 
     public void salirDeEdificio() {
         ciudadActual.salirDeEdificio();
@@ -151,5 +150,9 @@ public class Nivel {
 
     public String nombreTesoro() {
         return ((ObjetoComun)tesoro).nombre();
+    }
+
+    public Ciudad obtenerCiudad(String ciudad) {
+        return mapa.obtenerCiudad(ciudad);
     }
 }

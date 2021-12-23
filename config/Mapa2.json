@@ -1,0 +1,25 @@
+[{
+  "nombre": "Pekin",
+  "latitud": "2.918359",
+  "longitud": "117.659691",
+  "ciudadesVisitables":["Baghdad", "Puerto Moresby", "Sydney"]
+},
+  {
+    "nombre": "Baghdad",
+    "latitud": "33.302430",
+    "longitud": "44.378799",
+    "ciudadesVisitables":["Pekin", "Puerto Moresby", "Sydney"]
+  },
+  {
+    "nombre": "Puerto Moresby",
+    "latitud": "-9.25",
+    "longitud": "147.33333",
+    "ciudadesVisitables":["Pekin", "Baghdad", "Sydney"]
+  },
+  {
+    "nombre": "Sydney",
+    "latitud": "-33.854815",
+    "longitud": "151.216453",
+    "ciudadesVisitables":["Pekin", "Baghdad", "Puerto Moresby"]
+  }
+]

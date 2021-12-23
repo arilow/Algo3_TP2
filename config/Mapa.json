@@ -112,4 +112,35 @@
     "nombre": "Kigali",
     "latitud": "-1.885959",
     "longitud": "30.129675"
-  }]
+  },
+  {
+    "nombre": "Seul",
+    "latitud": "46.716045",
+    "longitud": "-73.658952"
+  },
+  {
+    "nombre": "Astana",
+    "latitud": "31.193390",
+    "longitud": "72.080105"
+  },
+  {
+    "nombre": "Tel Aviv",
+    "latitud": "32.095665",
+    "longitud": "34.806256"
+  },
+  {
+    "nombre": "Ciudad del Cabo",
+    "latitud": "-33.914798",
+    "longitud": "18.548646"
+  },
+  {
+    "nombre": "Nom Pen",
+    "latitud": "11.573039",
+    "longitud": "104.85780"
+  },
+  {
+    "nombre": "Auckland",
+    "latitud": "-36.541281",
+    "longitud": "174.550610"
+  }
+]
