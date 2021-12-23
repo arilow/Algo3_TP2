@@ -20,8 +20,6 @@ public class ControladorBotonRegistrarJugador implements EventHandler<ActionEven
     @Override
     public void handle(ActionEvent actionEvent) {
         String nombreJugador = vista.obtenerInfoJugador();
-
         partida.registrarJugador(nombreJugador);
     }
-
 }

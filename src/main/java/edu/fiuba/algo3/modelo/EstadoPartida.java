@@ -12,5 +12,5 @@ public enum EstadoPartida {
     BUSCAR_SOSPECHOSOS,
 
     LADRON_ARRESTADO,
-    PERDER_NIVEL,
+    PERDER_NIVEL
 }

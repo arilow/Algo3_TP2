@@ -3,12 +3,17 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 //import javafx.beans.Observable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class Nivel {
 
@@ -42,7 +47,6 @@ public class Nivel {
 
         //aca va el game loop.
     }
-
     // TODO: Preguntar porque se esta usando esta version de visitar ciudad.
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
@@ -66,18 +70,18 @@ public class Nivel {
 
             if(ladronArrestado()){
                 jugador.agregarArresto();
-                comunicadorEstadoPartida.definirEstado(EstadoPartida.LADRON_ARRESTADO);;
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.LADRON_ARRESTADO);
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.TERMINAR_NIVEL);
                 // todo terminar nivel
             }else{
                 System.out.println("Nivel perdido");
                 comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
+                //this.terminarNivel(jugador.nombre(),jugador.getCantidadArrestos());
                 // Pierdo el nivel
             }
             return;
         }
-
-
-
+        ciudadActual.entrarAEdificio(edificio,tiempo);
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ENTRAR_A_EDIFICIO);
 
     }

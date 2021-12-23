@@ -184,6 +184,7 @@ public class ConstructorDeEscenas {
 
         //Pantalla izquierda
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        //pantallaIzquierdaActual= new vistaLadronEncarceladoIzquierda(anchoPantalla,altoPantallaIzquierdaActual);
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha no cambia (En principio)
