@@ -33,7 +33,7 @@ public class Tiempo extends Observable {
         // Si son las 10 de la noche, sumar 9 horas.
         if (horas >= 22) {
             horas = (horas + 9) % 24;
-            dia = (dia + 1) % 6;
+            dia = (dia + 1) % 7;
         }
 
         if(horas >= horasFin && dia >= diaFin) {

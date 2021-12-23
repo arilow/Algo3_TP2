@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.sitios.edificios.Edificio;
-//import javafx.beans.Observable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,12 +19,11 @@ public class Nivel implements Observer{
     private Interpol interpol;
     private Mapa mapa;
 
-    private ComunicadorEstadoPartida comunicadorEstadoPartida;
+    ComunicadorEstadoPartida comunicadorEstadoPartida;
 
     public Nivel(String ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, Mapa mapa){
         tiempo = new Tiempo();
         tiempo.addObserver(this);
-
         this.ciudadActual = mapa.obtenerCiudad(ciudad);
         this.jugador = jugador;
         this.tesoro = tesoro;
@@ -90,11 +87,7 @@ public class Nivel implements Observer{
     public boolean tieneTesoro(String tesoro) {
         return this.tesoro.es(tesoro);
     }
-
-    public boolean constatarDatosLadron(DatosLadron datos) {
-        return ladron.constatarDatos(datos);
-    }//Usado unicamente en un assert dentro de NivelTest
-
+    
     public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol(ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
@@ -125,10 +118,6 @@ public class Nivel implements Observer{
         return tiempo.aString();
     }
 
-/*    public List<Ciudad> listarCiudades() {
-        return ciudades;
-    }
-*/
     public void arribarACiudadActual() {
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ARRIBADO_A_CIUDAD_ACTUAL);
     }
@@ -151,13 +140,13 @@ public class Nivel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-
          // Lunes: 24-7 = 17hs
          // Martes a Sabada: 24hs
          // Domingo: 17hs
          // Total de horas: 17 + 24x5 + 17 = 154
         if(tiempo.obtenerHorasPasadas() >= 154) {
-            comunicadorEstadoPartida.definirEstado(EstadoPartida.NIVEL_SE_QUEDO_SIN_TIEMPO);
+            comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
+            System.out.println("P");
         }
 
     }

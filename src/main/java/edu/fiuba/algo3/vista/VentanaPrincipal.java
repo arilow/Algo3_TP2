@@ -98,7 +98,7 @@ public class VentanaPrincipal {
         stage.setScene(scene);
     }
 
-    public void mosrtarPantallaNivelPerdido() {
+    public void mostrarPantallaNivelPerdido() {
         HBox layout = constructorDeEscenas.construirPantallaPerdedorNivel();
         Scene scene = new Scene(layout,anchoVentana,altoVentana);
         stage.setScene(scene);

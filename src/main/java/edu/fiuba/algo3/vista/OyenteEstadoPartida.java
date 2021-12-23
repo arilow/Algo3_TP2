@@ -40,7 +40,7 @@ public class OyenteEstadoPartida implements Observer {
                 ventana.mostrarPantallaGanador();
                 break;
             case PERDER_NIVEL:
-                ventana.mosrtarPantallaNivelPerdido();
+                ventana.mostrarPantallaNivelPerdido();
                 break;
             default:
                 // TODO: Lanzar excepcion.

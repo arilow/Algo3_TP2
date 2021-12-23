@@ -1,11 +1,11 @@
 {
   "ciudades":[
     {
-      "nombre": "Pekin",
+      "nombre": "Atenas",
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Pidio Drachmas"
+          "pista": "Llego en un convertible increible.Pidio Drachmas"
         },
         {
           "nombre": "Puerto",
@@ -14,16 +14,14 @@
         {
           "nombre": "Biblioteca",
           "pista": "Pidio un libro sobre el desierto"
-
-        }],
-      "ciudadesVisitables": ["Seul", "Baghdad", "Astana"]
+        }]
     },
     {
       "nombre": "Baghdad",
       "edificios": [
         {
           "nombre": "Banco",
-          "pista": "Un hombre de cabello negro cambio su dinero a Kinas"
+          "pista": "Cambio su dinero a Baht tailandes."
         },
         {
           "nombre": "Aeropuerto",
@@ -32,55 +30,81 @@
         {
           "nombre": "Biblioteca",
           "pista": "Pidio un libro sobre rocas volcanicas"
-        }],
-      "ciudadesVisitables": ["Pekin", "Puerto Moresby", "Tel Aviv"]
-
+        }]
     },
     {
-      "nombre": "Puerto Moresby",
+      "nombre": "Bangkok",
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Estaba muy interesade en saber sobre el mercado de la lana"
+          "pista": "Estaba muy interesada en la agricultura y la ganaderia. "
         },
         {
-          "nombre": "Puerto",
-          "pista":  "Se fue en un barco que tenia una bandera roja, blanca y azul"
+          "nombre": "Aeropuerto",
+          "pista": "Tenia una bandera celeste y blanca. Awante messi."
         },
         {
           "nombre": "Biblioteca",
-          "pista": "Llego en un combertible y se llevo un libro sobre las casas de opera mas famosas del mundo"
-        }],
-      "ciudadesVisitables": ["Baghdad", "Sydney", "Ciudad del Cabo"]
-
+          "pista": "Pidio un libro sobre el corralito."
+        }]
     },
     {
-      "nombre": "Sydney",
+      "nombre": "Buenos Aires",
+      "edificios": [
+        {
+          "nombre": "Banco",
+          "pista": " Llevaba unas joyas increibles paso por aqui para convertir su dinero a Forinto húngaro"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": " Se fue en un coche con una bandera roja, blanca y verde."
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": " Estaba muy interesada en el Río Danubio"
+        }]
+    },
+    {
+      "nombre": "Budapest",
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Estaba interesado en conseguir libras"
+          "pista": "   "
         },
         {
           "nombre": "Puerto",
-          "pista": "Lo escuche hablando de croquet con un nubio"
+          "pista": " Tenia el pelo marron. Estaba aprendiendo arabe."
         },
         {
           "nombre": "Biblioteca",
-          "pista": "Parecia muy interesado en las tumbas de los faraones."
-        }],
-      "ciudadesVisitables": ["Puerto Moresby", "Sydney", "Auckland"]
+          "pista": " Ella se llevo un libro acerca de la Tumba del faraón"
+        }]
+    },
+    {
+      "nombre": "Cairo",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": " "
+        },
+        {
+          "nombre": "Puerto",
+          "pista": " Puñalada Puñalada"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": " Tiro Tiro Tiro"
+        }]
     }
   ],
-  "ciudadesComodin": ["Seul", "Astana", "Tel Aviv", "Ciudad del Cabo", "Nom Pen", "Auckland"],
   "ladron":
   {
-    "nombre": "Fast Eddie B.",
-    "sexo": "masculino",
-    "hobby": "croquet",
-    "cabello": "negro",
-    "senia": "joyeria",
-    "vehiculo": "convertible"
+    "nombre": "Carmen Sandiego",
+    "sexo": "mujer",
+    "hobby": "tenis",
+    "pelo": "marron",
+    "seña": "joyeria",
+    "auto": "convertible"
   },
   "ObjetoRobado": "Huevo de 1000 anios"
 }

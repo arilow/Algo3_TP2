@@ -25,7 +25,7 @@ public class Ciudad extends Observable {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.edificios = edificio;
-        this.aireLibre = new AireLibre();
+        //this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
         this.ubicacion = new Ubicacion(longitud,latitud);
         this.ciudadesVisitables=ciudadesVisitables;
