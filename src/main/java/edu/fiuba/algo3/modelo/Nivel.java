@@ -11,10 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Nivel {
-
-    private List<Ciudad> ciudades;
     private Ladron ladron;
-    private List<Ladron> ladronesNivel;
     private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
@@ -50,11 +47,6 @@ public class Nivel {
         comunicadorEstadoPartida.definirEstado(EstadoPartida.VIAJAR);
     }
 
-    public void visitarCiudad(int ciudad) {
-        ciudadActual = ciudades.get(ciudad);
-        jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
-    }
-
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
     //TODO edificio no es un int
@@ -76,8 +68,7 @@ public class Nivel {
             return;
         }
 
-
-
+        ciudadActual.entrarAEdificio(edificio, tiempo);
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ENTRAR_A_EDIFICIO);
 
     }
@@ -85,10 +76,6 @@ public class Nivel {
     private boolean ladronArrestado() {
         return this.ordenDeArresto.verificarLadron(ladron);
     }
-
-    /*public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
-        ladron.moverserA(ciudad, edificio);
-    }*/
 
     public void salirDeEdificio() {
         ciudadActual.salirDeEdificio();
@@ -107,7 +94,7 @@ public class Nivel {
     }//Usado unicamente en un assert dentro de NivelTest
 
     public void buscarLadrones(DatosLadron datosLadron){
-        interpol = new Interpol(ciudades, ladron);
+        interpol = new Interpol(ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
             emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
@@ -117,10 +104,6 @@ public class Nivel {
 
     public List<Ladron> obtenerListaSospechosos(){
         return ladronesSospechosos;
-    }
-
-    public int obtenerCantidadCiudadesEscape() {
-       return tesoro.obtenerCantidadCiudadesEscape();
     }
 
     public void emitirOrdenDeArresto(String nombreLadron){
@@ -140,10 +123,10 @@ public class Nivel {
         return tiempo.aString();
     }
 
-    public List<Ciudad> listarCiudades() {
+/*    public List<Ciudad> listarCiudades() {
         return ciudades;
     }
-
+*/
     public void arribarACiudadActual() {
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ARRIBADO_A_CIUDAD_ACTUAL);
     }

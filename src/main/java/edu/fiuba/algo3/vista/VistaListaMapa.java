@@ -20,8 +20,6 @@ public class VistaListaMapa extends VBox{
     ConstructorDeEscenas constructorDeEscenas;
 
     public VistaListaMapa(Nivel nivelActual, double ancho, double alto) {
-        List<Ciudad> ciudades =  nivelActual.listarCiudades();
-
         double anchoCanvas = ancho;
 
         // Canvas izquierdo
