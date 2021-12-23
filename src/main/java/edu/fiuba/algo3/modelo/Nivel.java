@@ -111,7 +111,7 @@ public class Nivel {
     }//Usado unicamente en un assert dentro de NivelTest
 
     public void buscarLadrones(DatosLadron datosLadron){
-        interpol = new Interpol(ciudades, ladron);
+        interpol = new Interpol(ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
             emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
