@@ -27,18 +27,6 @@ public class CreadorDeNiveles {
         // Lectura del archivo del Nivel
         JSONObject lecturaArchivo = cargarArchivo(cargoJugador);
 
-        // Lectura del archivo del mapa total
-        //JSONArray lecturaCiudadesMapa = cargarArchivoMapa();
-
-        // Obtiene una lista de ciudades a partir del archivo JSON
-        /*JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        cargarCiudades(ciudades, lecturaCiudades, lecturaCiudadesMapa);*/
-
-        // Obtiene una lista de ciudades 'comodin' a partir del archivo JSON
-        /*JSONArray lecturaCiudadesComodin = (JSONArray) lecturaArchivo.get("ciudadesComodin");
-        cargarCiudadesNoVisitables(ciudades, lecturaCiudadesComodin, lecturaCiudadesMapa);*/
-
         // Obtiene un mapa partir del archivo JSON
         JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
         Mapa mapa = new Mapa();
@@ -56,25 +44,6 @@ public class CreadorDeNiveles {
         JSONObject ciudadInicial = (JSONObject) lecturaCiudades.get(0);
         return new Nivel( (String)ciudadInicial.get("nombre"), jugador, tesoro, ladron, mapa);
     }
-
-    /*private JSONArray cargarArchivoMapa() {
-        JSONParser parser = new JSONParser();
-        Random rand = new Random();
-        String fileName = "config/Mapa.json"; //Si cambia la ruta se puede pasar por parámetro y  cambiar esta línea por
-                                            // esa variable
-        try {
-            JSONArray lecturaArchivoMapa = (JSONArray) parser.parse(new FileReader(fileName));
-            return lecturaArchivoMapa;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }*/
-
 
     private void cargarCiudadesNivel(Mapa mapaNivel, JSONArray ciudades){
         for(Object ciudad_ : ciudades) {
@@ -140,85 +109,6 @@ public class CreadorDeNiveles {
         return null;
     }
 
-    private void cargarCiudades(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
-        for(Object ciudad_ : listaCiudades) {
-            JSONObject ciudad = (JSONObject) ciudad_;
-            String nombre = (String) ciudad.get("nombre");
-            JSONArray lecturaEdificios = (JSONArray) ciudad.get("edificios");
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            for (Object edificio_: lecturaEdificios) {
-                JSONObject edificio = (JSONObject) edificio_;
-                switch((String) edificio.get("nombre")) {
-                    case "Aeropuerto":
-                        Aeropuerto aeropuerto = new Aeropuerto((String) edificio.get("pista"));
-                        edificios.add(aeropuerto);
-                        break;
-                    case "Banco":
-                        Banco banco = new Banco((String) edificio.get("pista"));
-                        edificios.add(banco);
-                        break;
-                    case "Biblioteca":
-                        Biblioteca biblioteca = new Biblioteca((String) edificio.get("pista"));
-                        edificios.add(biblioteca);
-                        break;
-                    case "Bolsa":
-                        Bolsa bolsa = new Bolsa((String) edificio.get("pista"));
-                        edificios.add(bolsa);
-                        break;
-                    case "Puerto":
-                        Puerto puerto = new Puerto((String) edificio.get("pista"));
-                        edificios.add(puerto);
-                        break;
-                }
-            }
-
-            // Leo las ciudades visitables
-            JSONArray lecturaCiudadesVisitables = (JSONArray) ciudad.get("ciudadesVisitables");
-            List<String> ciudadesVisitables = new ArrayList<String>();
-            for(Object ciudadVisitable_: lecturaCiudadesVisitables) {
-                String ciudadVisitable = ciudadVisitable_.toString();
-                ciudadesVisitables.add(ciudadVisitable);
-            }
-
-            Ciudad c = new Ciudad(nombre, edificios, ciudadesVisitables);//,longitud,latitud);
-            for(Object ciudadMapa_ : listaCiudadesMapa) {
-                JSONObject ciudadMapa = (JSONObject) ciudadMapa_;
-                String nombreMapa = (String) ciudadMapa.get("nombre");
-                if (nombreMapa.equals(nombre)){
-                    double latitud = Double.parseDouble((String)ciudadMapa.get("latitud"));
-                    double longitud = Double.parseDouble((String)ciudadMapa.get("latitud"));
-                    c.agregarUbicacion(longitud,latitud);
-                }
-            }
-            ciudades.add(c);
-        }
-    }
-
-    private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
-
-        int i = 0;
-        for(Object ciudad_ : listaCiudades) {
-            String nombreCiudad = (String) ciudad_;
-            String pistaCiudad = "No tengo informacion sobre el asunto";
-
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            Aeropuerto aeropuerto = new Aeropuerto(pistaCiudad);
-            edificios.add(aeropuerto);
-            Banco banco = new Banco(pistaCiudad);
-            edificios.add(banco);
-            Biblioteca biblioteca = new Biblioteca(pistaCiudad);
-            edificios.add(biblioteca);
-
-            List<String> ciudadesVacias = new ArrayList<>();
-            ciudadesVacias.add("Ciudad1");
-            ciudadesVacias.add("Ciudad2");
-            ciudadesVacias.add("Ciudad3");
-
-            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios, ciudadesVacias);//),longitud,latitud);
-            ciudades.add(ciudadComodin);
-        }
-    }
-
     private Ladron cargarLadron(JSONObject lecturaLadron, String ciudad) {
         String nombre = (String) lecturaLadron.get("nombre");
         String sexo = (String) lecturaLadron.get("sexo");
@@ -235,6 +125,7 @@ public class CreadorDeNiveles {
             case "novato":
                 return new ObjetoComun(nombreObjetoRobado);
             case "detective":
+                return new ObjetoValioso(nombreObjetoRobado);
             case "investigador":
                 return new ObjetoValioso(nombreObjetoRobado);
             case "sargento":

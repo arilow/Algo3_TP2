@@ -1,26 +1,22 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Pista;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
-public class VistaEdificio extends Canvas {
+public class VistaEdificio extends ScrollPane {
 
     public VistaEdificio(Pista pista, double ancho, double alto) {
-        super(ancho, alto);
-        GraphicsContext gcI = this.getGraphicsContext2D();
+        this.setPrefHeight(alto);
+        this.setPrefWidth(ancho);
 
-        Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 12);
-        gcI.setFont( theFont );
+        Text text = new Text();
+        text.setFont(new Font("Times New Roman", 16));
 
-        gcI.fillText(pista.mostrar(), 10, 90, 310);
+        text.setText(pista.mostrar());
+        text.setWrappingWidth(ancho);
 
-        System.out.println(pista.obtenerImagen());
-        Image image = new Image(pista.obtenerImagen());
-        // TODO: des-hardcodear valores.
-        gcI.drawImage(image, 0, alto-200, ancho, 200);
+        this.setContent(text);
     }
 }

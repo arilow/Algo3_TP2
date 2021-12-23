@@ -48,7 +48,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha
-        pantallaDerechaActual = new VistaDescripcionCiudad(anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -157,7 +157,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla derecha no cambia (Por ahora)
-        pantallaDerechaActual = new VistaDescripcionCiudad(anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -170,7 +170,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha no cambia (En principio)
-        pantallaDerechaActual = new VistaDescripcionCiudad(anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);

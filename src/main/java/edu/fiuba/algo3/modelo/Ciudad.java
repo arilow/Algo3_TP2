@@ -11,6 +11,8 @@ import java.util.Observer;
 
 public class Ciudad extends Observable {
     private String nombre;
+    private String descripcion;
+
     private List<Edificio> edificios;
     private Sitio sitioActual;
 
@@ -19,20 +21,9 @@ public class Ciudad extends Observable {
     private List<String> ciudadesVisitables;
     private String imagen;
 
-    public Ciudad(String nombre, List<Edificio> edificio, List<String> ciudadesVisitables) {
+    public Ciudad(String nombre, String descripcion, List<Edificio> edificio, List<String> ciudadesVisitables,double longitud, double latitud) {
         this.nombre = nombre;
-        this.edificios = edificio;
-        this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
-
-        // TODO: Resolver ubicacion en constructor.
-        //this.ubicacion = ubicacion;
-        this.ciudadesVisitables=ciudadesVisitables;
-        this.imagen = this.nombre+".png";
-    }
-
-    public Ciudad(String nombre, List<Edificio> edificio, List<String> ciudadesVisitables,double longitud, double latitud) {
-        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.edificios = edificio;
         this.aireLibre = new AireLibre();
         this.sitioActual = aireLibre;
@@ -94,5 +85,9 @@ public class Ciudad extends Observable {
 
     public void definirEdificios(List <Edificio> edificios) {
         this.edificios=edificios;
+    }
+
+    public String obtenerDescripcion() {
+        return descripcion;
     }
 }

@@ -1,15 +1,20 @@
 package edu.fiuba.algo3.vista;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
-public class VistaDescripcionCiudad extends Canvas {
-    public VistaDescripcionCiudad(double ancho, double alto) {
-        super(ancho, alto);
-        GraphicsContext gcD = getGraphicsContext2D();
+public class VistaDescripcionCiudad extends ScrollPane {
+    public VistaDescripcionCiudad(String descripcion, double ancho, double alto) {
+        this.setPrefHeight(alto);
+        this.setPrefWidth(ancho);
 
-        gcD.setFill(Color.BLUE);
-        gcD.fillRect(0,0,ancho, alto);
+        Text text = new Text();
+        text.setFont(new Font("Times New Roman", 16));
+
+        text.setText(descripcion);
+        text.setWrappingWidth(ancho);
+
+        this.setContent(text);
     }
 }
