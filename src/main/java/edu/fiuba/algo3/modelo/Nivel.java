@@ -11,10 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Nivel {
-
-    private List<Ciudad> ciudades;
     private Ladron ladron;
-    private List<Ladron> ladronesNivel;
     private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
     private Ciudad ciudadActual;
@@ -26,27 +23,14 @@ public class Nivel {
 
     ComunicadorEstadoPartida comunicadorEstadoPartida;
 
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades){
+    public Nivel(String ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, Mapa mapa){
         tiempo = new Tiempo(10);
-        this.ciudades = ciudades;
-        this.ciudadActual = ciudad;
+        this.ciudadActual = mapa.obtenerCiudad(ciudad);
         this.jugador = jugador;
         this.tesoro = tesoro;
         this.ladron = ladron;
         this.ordenDeArresto = new OrdenDeArresto();
-//        this.mapa = new Mapa(ciudades);
-    }
-
-    public Nivel(Ciudad ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, List<Ciudad> ciudades, List<Ladron> ladronesNivel){
-        tiempo = new Tiempo(10);
-        this.ciudades = ciudades;
-        this.ciudadActual = ciudad;
-        ciudadActual.esVisitada();
-        this.jugador = jugador;
-        this.tesoro = tesoro;
-        this.ladron = ladron;
-        this.ladronesNivel= ladronesNivel;
-        this.ordenDeArresto = new OrdenDeArresto();
+        this.mapa = mapa;
     }
 
     public void jugar(ComunicadorEstadoPartida comunicadorEstadoPartida) {
@@ -56,43 +40,41 @@ public class Nivel {
         //aca va el game loop.
     }
 
+    // TODO: Preguntar porque se esta usando esta version de visitar ciudad.
     public void visitarCiudad(Ciudad ciudad){
         jugador.viajar(ciudadActual.obtenerDistancia(ciudad), tiempo);
         this.ciudadActual = ciudad;
-        this.ciudadActual.esVisitada();
         comunicadorEstadoPartida.definirEstado(EstadoPartida.VIAJAR);
-    }
-
-    public void visitarCiudad(int ciudad) {
-        this.ciudadActual = ciudades.get(ciudad);
-        jugador.viajar(ciudadActual.obtenerDistancia(ciudades.get(ciudad)), tiempo);
-        this.ciudadActual.esVisitada();
     }
 
     public Ciudad obtenerCiudadActual() { return ciudadActual;}
 
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
-        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){ //La verificación de las ciudades visitadas no funciona. Tira true no importa lo que le pongas
-            if(this.ladronArrestado()){
+        if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
+
+            System.out.println("Nivel: entrarAEdificio");
+            System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
+
+            if(ladronArrestado()){
                 jugador.agregarArresto();
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.LADRON_ARRESTADO);;
+                // todo terminar nivel
             }else{
+                System.out.println("Nivel perdido");
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
                 // Pierdo el nivel
             }
+            return;
         }
-        System.out.println("Nivel: entrarAEdificio");
-        System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
 
+        ciudadActual.entrarAEdificio(edificio, tiempo);
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ENTRAR_A_EDIFICIO);
 
     }
 
     private boolean ladronArrestado() {
         return this.ordenDeArresto.verificarLadron(ladron);
-    }
-
-    public void asignarUbicacionALadron(Ciudad ciudad, int edificio){
-        ladron.moverserA(ciudad, edificio);
     }
 
     public void salirDeEdificio() {
@@ -112,10 +94,10 @@ public class Nivel {
     }//Usado unicamente en un assert dentro de NivelTest
 
     public void buscarLadrones(DatosLadron datosLadron){
-        interpol = new Interpol();
+        interpol = new Interpol(ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
-            this.emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
+            emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());
         }
         comunicadorEstadoPartida.definirEstado(EstadoPartida.BUSCAR_SOSPECHOSOS);
     }
@@ -123,21 +105,15 @@ public class Nivel {
     public List<Ladron> obtenerListaSospechosos(){
         return ladronesSospechosos;
     }
-    public int obtenerCantidadCiudadesEscape() {
-       return this.tesoro.obtenerCantidadCiudadesEscape();
-    }
 
     public void emitirOrdenDeArresto(String nombreLadron){
         this.ordenDeArresto.emitirOrdenDeArresto(nombreLadron);
         System.out.print("Se emite orden de arresto para: " + nombreLadron);
     }
-    public Ladron obtenerLadron(){
-        return this.ladron;
-    }
 
-    /*public boolean estaEn(String ciudad) {
-        return ciudadActual.es(ciudad);
-    }*/
+    public Ladron obtenerLadron(){
+        return ladron;
+    }
 
     public List<String> listarEdificios() {
         return ciudadActual.listarEdificios();
@@ -146,14 +122,11 @@ public class Nivel {
     public String obtenerFecha() {
         return tiempo.aString();
     }
-    public void agregarObservadorDeEdificios(Observer observer) {
-        ciudadActual.agregarObservadorDeEdificios(observer);
-    }
 
-    public List<Ciudad> listarCiudades() {
+/*    public List<Ciudad> listarCiudades() {
         return ciudades;
     }
-
+*/
     public void arribarACiudadActual() {
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ARRIBADO_A_CIUDAD_ACTUAL);
     }
@@ -170,8 +143,7 @@ public class Nivel {
         return ((ObjetoComun)tesoro).nombre();
     }
 
-
-    public void cambiarCiudadActual(Ciudad ciudad) {
-        this.ciudadActual = ciudad;
+    public Ciudad obtenerCiudad(String ciudad) {
+        return mapa.obtenerCiudad(ciudad);
     }
 }

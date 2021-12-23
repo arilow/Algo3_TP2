@@ -1,0 +1,46 @@
+{
+  "ciudades":[
+    {
+      "nombre": "Atenas",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Pidio Drachmas"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": "LLego en un auto con una bandera roja, blanca y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre el desierto"
+        }]
+    },
+    {
+      "nombre": "Baghdad",
+      "edificios": [
+        {
+          "nombre": "Banco",
+          "pista": "Un hombre de cabello negro cambio su dinero a Kinas"
+        },
+        {
+          "nombre": "Aeropuerto",
+          "pista": "Tenia una bandera amarilla, roja y negra"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre rocas volcanicas"
+        }]
+    }
+  ],
+  "ladron":
+  {
+    "nombre": "Fast Eddie B.",
+    "sexo": "masculino",
+    "hobby": "croquet",
+    "cabello": "negro",
+    "senia": "joyeria",
+    "vehiculo": "convertible"
+  },
+  "ObjetoRobado": "Huevo de 1000 anios"
+}

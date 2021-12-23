@@ -19,30 +19,31 @@ public class OyenteEstadoPartida implements Observer {
 
         switch (estadoPartida) {
             case EMPEZAR:
-                System.out.println("EMPEZAR");
                 ventana.abrirPantallaRegistroJugador();
                 break;
             case COMIENZA_NIVEL:
                 ventana.mostrarPantallaInicioNivel();
-                System.out.println("JUGADOR_REGISTRADO");
                 break;
             case ARRIBADO_A_CIUDAD_ACTUAL:
                 ventana.mostrarPantallaInicioCiudad();
-                System.out.println("ARRIBADO_A_CIUDAD_ACTUAL");
                 break;
             case ENTRAR_A_EDIFICIO:
                 ventana.mostrarPantallaEdificio();
-                System.out.println("ENTRAR_A_EDIFICIO");
                 break;
             case BUSCAR_SOSPECHOSOS:
                 ventana.mostrarPantallaInterpol();
-                System.out.println("BUSCAR_SOSPECHOSOS");
                 break;
             case VIAJAR:
                 ventana.mostrarPantallaMapa();
-                System.out.println("VIAJAR");
+                break;
+            case LADRON_ARRESTADO:
+                ventana.mostrarPantallaGanador();
+                break;
+            case PERDER_NIVEL:
+                ventana.mosrtarPantallaNivelPerdido();
                 break;
             default:
+                // TODO: Lanzar excepcion.
                 System.out.println("Ninguno");
         }
     }

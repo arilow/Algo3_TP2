@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreadorDeNivelTest {
-    @Test
+/*    @Test
     public void test01CargarUnNivelConElCreadorDeNiveles() {
         CreadorDeNiveles creadorDeNiveles = new CreadorDeNiveles();
         Jugador jugador = new Jugador("Ariel");
@@ -35,7 +35,7 @@ public class CreadorDeNivelTest {
 
         assertTrue(nivel.tieneTesoro("Huevo de 1000 anios"));
     }
-
+*/
     @Test
     public void test01CargarUnNivelConElCreadorDeNivelesParaUnDetective() {
         CreadorDeNiveles creadorDeNiveles = new CreadorDeNiveles();

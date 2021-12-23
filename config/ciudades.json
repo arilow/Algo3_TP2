@@ -1,11 +1,4 @@
 [{
-    "nombre": "pekin",
-    "latitud": "2.918359",
-    "longitud": "117.659691",
-    "objetoRobado": ["Huevo de 1000 años"],
-    "edificios": ["Bolsa", "Aeropuerto", "Biblioteca"]
-},
-{
     "nombre": "Baghdad",
     "latitud": "33.302430",
     "longitud": "44.378799",
@@ -150,12 +143,5 @@
     "latitud": "59.913330",
     "longitud": "10.73897",
     "objetoRobado": ["Casco Vikingo"],
-    "edificios": ["", "", ""]
-},
-{
-    "nombre": "Kigali",
-    "latitud": "-1.885959",
-    "longitud": "30.129675",
-    "objetoRobado": ["Tocado del rey Watusi"],
     "edificios": ["", "", ""]
 }]

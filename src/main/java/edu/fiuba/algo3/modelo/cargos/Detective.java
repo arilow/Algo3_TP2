@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tiempo;
 
 public class Detective implements Cargo {
-
     private Jugador jugador;
     private int velocidadViaje = 1100; // km/h
 

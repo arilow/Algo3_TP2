@@ -37,7 +37,6 @@ public class EdificioTest {
 
         Pista pista =  edif.mostrarPista();
         assertEquals("Soy una pista", pista.mostrar());
-
     }
 
     @Test
@@ -116,7 +115,7 @@ public class EdificioTest {
 
         assertEquals(27, tiempo.obtenerHorasPasadas());
     }
-
+/*
     //Caso de uso 04
     @Test
     public void test05AeropuertoAumentaTiempoTresVeces() {
@@ -156,5 +155,5 @@ public class EdificioTest {
         assertEquals(162, tiempo.obtenerHorasPasadas());
     }
 
-
+*/
 }

@@ -24,9 +24,11 @@ public class Jugador {
         tiempo.sumarHoras(cantidadHoras);
         this.fueAcuchillado = true; // Cuando fue aculliado una vez ya suma siempre 1 hs
     }
+
     public void recibirHeridaArmaFuego(Tiempo tiempo) {
         tiempo.sumarHoras(4);
     }
+
     public void dormir(Tiempo tiempo) {
         tiempo.sumarHoras(8);
     }
@@ -42,11 +44,13 @@ public class Jugador {
     public void setCantidadArrestos(int cantidadArrestos) {
         this.cantidadArrestos = cantidadArrestos;
     }
+
     public int getCantidadArrestos() { return this.cantidadArrestos; }
 
     public Cargo getCargo() {
         return this.cargo;
     }
+
     public String obtenerCargo() {
         return this.cargo.obtenerCargo();
     }

@@ -38,7 +38,7 @@ public class VentanaPrincipal {
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
 
-        constructorDeEscenas = new ConstructorDeEscenas(this, stage, juego, anchoVentana, altoVentana);
+        constructorDeEscenas = new ConstructorDeEscenas(this, juego, anchoVentana, altoVentana);
     }
 
     public void abrirPantallaRegistroJugador() {
@@ -92,4 +92,15 @@ public class VentanaPrincipal {
         stage.setScene(scene);
     }
 
+    public void mostrarPantallaGanador() {
+        HBox layout = constructorDeEscenas.construirPantallaGanadorNivel();
+        Scene scene = new Scene(layout,anchoVentana,altoVentana);
+        stage.setScene(scene);
+    }
+
+    public void mosrtarPantallaNivelPerdido() {
+        HBox layout = constructorDeEscenas.construirPantallaPerdedorNivel();
+        Scene scene = new Scene(layout,anchoVentana,altoVentana);
+        stage.setScene(scene);
+    }
 }

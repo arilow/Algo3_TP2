@@ -31,7 +31,7 @@ public class ConstructorDeEscenas {
     Node pantallaIzquierdaActual;
     Node pantallaDerechaActual;
 
-    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Stage stage, Juego juego, int anchoVentana, int altoVentana) {
+    public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Juego juego, int anchoVentana, int altoVentana) {
         this.ventanaPrincipal = ventanaPrincipal;
         this.stage = stage;
         this.juego = juego;
@@ -52,7 +52,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha
-        pantallaDerechaActual = new VistaDescripcionCiudad(anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -72,7 +72,7 @@ public class ConstructorDeEscenas {
 
     public HBox construirPantallaComputadoraInterpol() {
         // Pantalla izquierda (no cambia por ahora)
-        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
+        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(anchoPantalla, altoPantallaIzquierdaActual);
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
@@ -128,16 +128,6 @@ public class ConstructorDeEscenas {
         return new HBox(pantallaizquierda, pantallaDerecha);
     }
 
-    private void construirNodosComputadoraInterpol() {
-        altoPantallaDerechaActual = altoVentana * 0.75;
-        double anchoCanvas = anchoPantalla;
-        // Nodo Izquierdo
-        double altoCanvasIzquierdo = altoVentana * 0.9;
-        pantallaIzquierdaActual = new VistaIzquierdaComputadoraInterpol(juego.nivelActual(), anchoCanvas, altoCanvasIzquierdo);
-        pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
-
-    }
-
     public HBox construirPantallaInicioNivel() {
         // Pantalla izquierda
         pantallaIzquierdaActual = new VistaExplicacionNivel(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
@@ -171,6 +161,7 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla derecha no cambia (Por ahora)
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -183,7 +174,33 @@ public class ConstructorDeEscenas {
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha no cambia (En principio)
-        pantallaDerechaActual = new VistaDescripcionCiudad(anchoPantalla, altoPantallaDerechaActual);
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    public HBox construirPantallaGanadorNivel() {
+
+        //Pantalla izquierda
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        // Pantalla Derecha no cambia (En principio)
+        pantallaDerechaActual = new vistaLadronEncarcelado(anchoPantalla, altoPantallaDerechaActual);
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
+
+    }
+
+    public HBox construirPantallaPerdedorNivel() {
+        //Pantalla izquierda
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+
+        pantallaDerechaActual = new vistaCarcelSinLadron(anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);

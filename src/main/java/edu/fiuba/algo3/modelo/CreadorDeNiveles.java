@@ -22,52 +22,61 @@ public class CreadorDeNiveles {
     public CreadorDeNiveles() {};
 
     public Nivel crearNivel(Jugador jugador) {
-
         String cargoJugador = jugador.obtenerCargo();
 
         // Lectura del archivo del Nivel
         JSONObject lecturaArchivo = cargarArchivo(cargoJugador);
 
-        // Lectura del archivo del mapa total
-        JSONArray lecturaCiudadesMapa = cargarArchivoMapa();
-
-        // Obtiene una lista de ciudades a partir del archivo JSON
+        // Obtiene un mapa partir del archivo JSON
         JSONArray lecturaCiudades = (JSONArray) lecturaArchivo.get("ciudades");
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        cargarCiudades(ciudades, lecturaCiudades,lecturaCiudadesMapa);
-
-        // Obtiene una lista de ciudades 'comodin' a partir del archivo JSON
-        JSONArray lecturaCiudadesComodin = (JSONArray) lecturaArchivo.get("ciudadesComodin");
-        cargarCiudadesNoVisitables(ciudades, lecturaCiudadesComodin,lecturaCiudadesMapa);
+        Mapa mapa = new Mapa();
+        cargarCiudadesNivel(mapa,lecturaCiudades);
 
         // Obtiene un ladron a partir del archivo JSON
         JSONObject lecturaLadron = (JSONObject) lecturaArchivo.get("ladron");
-        Ladron ladron  = cargarLadron(lecturaLadron, ciudades);
+        JSONObject ciudadLadron = (JSONObject) lecturaCiudades.get(lecturaCiudades.size()-1);
+
+        Ladron ladron  = cargarLadron(lecturaLadron,(String)ciudadLadron.get("nombre") );
 
         // Obtiene un objeto robado a partir del archivo JSON
         String nombreObjetoRobado = (String) lecturaArchivo.get("ObjetoRobado");
         ObjetoRobado tesoro = cargarObjetoRobado(cargoJugador, nombreObjetoRobado);
-
-
-        return new Nivel(ciudades.get(0), jugador, tesoro, ladron, ciudades);
+        JSONObject ciudadInicial = (JSONObject) lecturaCiudades.get(0);
+        return new Nivel( (String)ciudadInicial.get("nombre"), jugador, tesoro, ladron, mapa);
     }
 
-    private JSONArray cargarArchivoMapa() {
-        JSONParser parser = new JSONParser();
-        Random rand = new Random();
-        String fileName = "config/Mapa.json"; //Si cambia la ruta se puede pasar por parámetro y  cambiar esta línea por
-                                            // esa variable
-        try {
-            JSONArray lecturaArchivoMapa = (JSONArray) parser.parse(new FileReader(fileName));
-            return lecturaArchivoMapa;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+    private void cargarCiudadesNivel(Mapa mapaNivel, JSONArray ciudades){
+        for(Object ciudad_ : ciudades) {
+            JSONObject ciudad = (JSONObject) ciudad_;
+            JSONArray lecturaEdificios = (JSONArray) ciudad.get("edificios");
+            List<Edificio> edificios = new ArrayList<Edificio>();
+            for (Object edificio_ : lecturaEdificios) {
+                JSONObject edificio = (JSONObject) edificio_;
+                switch ((String) edificio.get("nombre")) {
+                    case "Aeropuerto":
+                        Aeropuerto aeropuerto = new Aeropuerto((String) edificio.get("pista"));
+                        edificios.add(aeropuerto);
+                        break;
+                    case "Banco":
+                        Banco banco = new Banco((String) edificio.get("pista"));
+                        edificios.add(banco);
+                        break;
+                    case "Biblioteca":
+                        Biblioteca biblioteca = new Biblioteca((String) edificio.get("pista"));
+                        edificios.add(biblioteca);
+                        break;
+                    case "Bolsa":
+                        Bolsa bolsa = new Bolsa((String) edificio.get("pista"));
+                        edificios.add(bolsa);
+                        break;
+                    case "Puerto":
+                        Puerto puerto = new Puerto((String) edificio.get("pista"));
+                        edificios.add(puerto);
+                        break;
+                }
+            }
+            mapaNivel.agregarCiudadDeNivel((String) ciudad.get("nombre"),edificios);
         }
-        return null;
     }
     private JSONObject cargarArchivo(String nivel) {
         JSONParser parser = new JSONParser();
@@ -78,7 +87,7 @@ public class CreadorDeNiveles {
             case "novato":
                 fileName += "Facil/Nivel" + n + ".json";
                 break;
-            case "detective":
+            case "detective": //Podriamos hacer que se repita un nivel o crear uno nuevo
             case "investigador":
                 fileName += "Medio/Nivel" + n + ".json";
                 break;
@@ -86,6 +95,7 @@ public class CreadorDeNiveles {
                 fileName += "Dificil/Nivel" + n + ".json";
                 break;
         }
+        fileName= "config/Facil/Nivel4.json";
         try {
             JSONObject lecturaArchivo = (JSONObject) parser.parse(new FileReader(fileName));
             return lecturaArchivo;
@@ -98,136 +108,8 @@ public class CreadorDeNiveles {
         }
         return null;
     }
-    private void cargarCiudades(List<Ciudad> ciudades, JSONArray listaCiudades) {
-        for(Object ciudad_ : listaCiudades) {
-            JSONObject ciudad = (JSONObject) ciudad_;
-            String nombre = (String) ciudad.get("nombre");
-            JSONArray lecturaEdificios = (JSONArray) ciudad.get("edificios");
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            for (Object edificio_: lecturaEdificios) {
-                JSONObject edificio = (JSONObject) edificio_;
-                switch((String) edificio.get("nombre")) {
-                    case "Aeropuerto":
-                        Aeropuerto aeropuerto = new Aeropuerto((String) edificio.get("pista"));
-                        edificios.add(aeropuerto);
-                        break;
-                    case "Banco":
-                        Banco banco = new Banco((String) edificio.get("pista"));
-                        edificios.add(banco);
-                        break;
-                    case "Biblioteca":
-                        Biblioteca biblioteca = new Biblioteca((String) edificio.get("pista"));
-                        edificios.add(biblioteca);
-                        break;
-                    case "Bolsa":
-                        Bolsa bolsa = new Bolsa((String) edificio.get("pista"));
-                        edificios.add(bolsa);
-                        break;
-                    case "Puerto":
-                        Puerto puerto = new Puerto((String) edificio.get("pista"));
-                        edificios.add(puerto);
-                        break;
-                }
-            }
 
-            Ciudad c = new Ciudad(nombre, edificios);//,longitud,latitud);
-            ciudades.add(c);
-        }
-    }
-    private void cargarCiudades(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
-        for(Object ciudad_ : listaCiudades) {
-            JSONObject ciudad = (JSONObject) ciudad_;
-            String nombre = (String) ciudad.get("nombre");
-            JSONArray lecturaEdificios = (JSONArray) ciudad.get("edificios");
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            for (Object edificio_: lecturaEdificios) {
-                JSONObject edificio = (JSONObject) edificio_;
-                switch((String) edificio.get("nombre")) {
-                    case "Aeropuerto":
-                        Aeropuerto aeropuerto = new Aeropuerto((String) edificio.get("pista"));
-                        edificios.add(aeropuerto);
-                        break;
-                    case "Banco":
-                        Banco banco = new Banco((String) edificio.get("pista"));
-                        edificios.add(banco);
-                        break;
-                    case "Biblioteca":
-                        Biblioteca biblioteca = new Biblioteca((String) edificio.get("pista"));
-                        edificios.add(biblioteca);
-                        break;
-                    case "Bolsa":
-                        Bolsa bolsa = new Bolsa((String) edificio.get("pista"));
-                        edificios.add(bolsa);
-                        break;
-                    case "Puerto":
-                        Puerto puerto = new Puerto((String) edificio.get("pista"));
-                        edificios.add(puerto);
-                        break;
-                }
-            }
-
-            // Leo las ciudades visitables
-            JSONArray lecturaCiudadesVisitables = (JSONArray) ciudad.get("ciudadesVisitables");
-            List<String> ciudadesVisitables = new ArrayList<String>();
-            for(Object ciudadVisitable_: lecturaCiudadesVisitables) {
-                String ciudadVisitable = ciudadVisitable_.toString();
-                ciudadesVisitables.add(ciudadVisitable);
-            }
-
-            Ciudad c = new Ciudad(nombre, edificios, ciudadesVisitables);//,longitud,latitud);
-            for(Object ciudadMapa_ : listaCiudadesMapa) {
-                JSONObject ciudadMapa = (JSONObject) ciudadMapa_;
-                String nombreMapa = (String) ciudadMapa.get("nombre");
-                if (nombreMapa.equals(nombre)){
-                    double latitud = Double.parseDouble((String)ciudadMapa.get("latitud"));
-                    double longitud = Double.parseDouble((String)ciudadMapa.get("latitud"));
-                    c.agregarUbicacion(longitud,latitud);
-                }
-            }
-            ciudades.add(c);
-        }
-    }
-
-    private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades) {
-
-        int i = 0;
-        for(Object ciudad_ : listaCiudades) {
-            String nombreCiudad = (String) ciudad_;
-            String pistaCiudad = "No tengo informacion sobre el asunto";
-
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            Aeropuerto aeropuerto = new Aeropuerto(pistaCiudad);
-            edificios.add(aeropuerto);
-            Banco banco = new Banco(pistaCiudad);
-            edificios.add(banco);
-            Biblioteca biblioteca = new Biblioteca(pistaCiudad);
-            edificios.add(biblioteca);
-
-            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios);//),longitud,latitud);
-            ciudades.add(ciudadComodin);
-        }
-
-    }
-    private void cargarCiudadesNoVisitables(List<Ciudad> ciudades, JSONArray listaCiudades,JSONArray listaCiudadesMapa) {
-
-        int i = 0;
-        for(Object ciudad_ : listaCiudades) {
-            String nombreCiudad = (String) ciudad_;
-            String pistaCiudad = "No tengo informacion sobre el asunto";
-
-            List<Edificio> edificios = new ArrayList<Edificio>();
-            Aeropuerto aeropuerto = new Aeropuerto(pistaCiudad);
-            edificios.add(aeropuerto);
-            Banco banco = new Banco(pistaCiudad);
-            edificios.add(banco);
-            Biblioteca biblioteca = new Biblioteca(pistaCiudad);
-            edificios.add(biblioteca);
-
-            Ciudad ciudadComodin = new Ciudad(nombreCiudad, edificios);//),longitud,latitud);
-            ciudades.add(ciudadComodin);
-        }
-    }
-    private Ladron cargarLadron(JSONObject lecturaLadron, List<Ciudad> ciudades) {
+    private Ladron cargarLadron(JSONObject lecturaLadron, String ciudad) {
         String nombre = (String) lecturaLadron.get("nombre");
         String sexo = (String) lecturaLadron.get("sexo");
         String hobby = (String) lecturaLadron.get("hobby");
@@ -235,7 +117,7 @@ public class CreadorDeNiveles {
         String senia = (String) lecturaLadron.get("senia");
         String vehiculo = (String) lecturaLadron.get("vehiculo");
 
-        return new Ladron(sexo, hobby, cabello, senia, vehiculo, ciudades.get(0), 0, nombre);
+        return new Ladron(sexo, hobby, cabello, senia, vehiculo, ciudad, 0, nombre);
     }
 
     private ObjetoRobado cargarObjetoRobado(String nivel, String nombreObjetoRobado) {
@@ -243,6 +125,7 @@ public class CreadorDeNiveles {
             case "novato":
                 return new ObjetoComun(nombreObjetoRobado);
             case "detective":
+                return new ObjetoValioso(nombreObjetoRobado);
             case "investigador":
                 return new ObjetoValioso(nombreObjetoRobado);
             case "sargento":

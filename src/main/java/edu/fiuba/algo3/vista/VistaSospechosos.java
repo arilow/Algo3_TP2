@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Ladron;
-import edu.fiuba.algo3.modelo.Nivel;
-import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,7 +26,7 @@ public class VistaSospechosos extends Canvas {
         if (sospechosos.size() == 1)
         {
             gcI.fillText("Ya tienes la orden para arrestar a ", 81,200, ancho/2 );
-            gcI.fillText(sospechosos.get(0).obtenerNombre(), 81,220, ancho/2 );
+            gcI.fillText(sospechosos.get(0).obtenerNombre() + '\n', 81,220, ancho/2 );
         }
         else{
             int i = 0;
