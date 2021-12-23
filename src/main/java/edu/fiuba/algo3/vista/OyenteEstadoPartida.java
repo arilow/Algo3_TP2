@@ -36,6 +36,12 @@ public class OyenteEstadoPartida implements Observer {
             case VIAJAR:
                 ventana.mostrarPantallaMapa();
                 break;
+            case LADRON_ARRESTADO:
+                ventana.mostrarPantallaGanador();
+                break;
+            case PERDER_NIVEL:
+                ventana.mosrtarPantallaNivelPerdido();
+                break;
             default:
                 // TODO: Lanzar excepcion.
                 System.out.println("Ninguno");

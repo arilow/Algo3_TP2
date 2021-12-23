@@ -11,4 +11,6 @@ public enum EstadoPartida {
     ENTRAR_A_EDIFICIO,
     BUSCAR_SOSPECHOSOS,
 
+    LADRON_ARRESTADO,
+    PERDER_NIVEL,
 }

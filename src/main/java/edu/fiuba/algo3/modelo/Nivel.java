@@ -60,15 +60,23 @@ public class Nivel {
     //TODO edificio no es un int
     public void entrarAEdificio(int edificio){
         if (ladron.estaEn(ciudadActual.obtenerNombre(), edificio)){
+
+            System.out.println("Nivel: entrarAEdificio");
+            System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
+
             if(ladronArrestado()){
                 jugador.agregarArresto();
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.LADRON_ARRESTADO);;
                 // todo terminar nivel
             }else{
+                System.out.println("Nivel perdido");
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
                 // Pierdo el nivel
             }
+            return;
         }
-        System.out.println("Nivel: entrarAEdificio");
-        System.out.println(ciudadActual.entrarAEdificio(edificio, tiempo).mostrar());
+
+
 
         comunicadorEstadoPartida.definirEstado(EstadoPartida.ENTRAR_A_EDIFICIO);
 
