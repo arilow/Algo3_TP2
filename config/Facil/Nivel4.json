@@ -5,7 +5,7 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Pidio Drachmas"
+          "pista": "Pidio Drachmas. Llevaba unas joyas increibles."
         },
         {
           "nombre": "Puerto",
@@ -21,7 +21,7 @@
       "edificios": [
         {
           "nombre": "Banco",
-          "pista": "Un hombre de cabello negro cambio su dinero a Kinas"
+          "pista": "Un hombre de cabello negro cambio su dinero a Baht tailandes."
         },
         {
           "nombre": "Aeropuerto",
@@ -30,6 +30,38 @@
         {
           "nombre": "Biblioteca",
           "pista": "Pidio un libro sobre rocas volcanicas"
+        }]
+    },
+    {
+      "nombre": "Bangkok",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": "Estaba muy interesado en la agricultura y la ganaderia. "
+        },
+        {
+          "nombre": "Aeropuerto",
+          "pista": "Tenia una bandera celeste y blanca. Awante messi."
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": "Pidio un libro sobre el corralito."
+        }]
+    },
+    {
+      "nombre": "Buenos Aires",
+      "edificios": [
+        {
+          "nombre": "Bolsa",
+          "pista": " "
+        },
+        {
+          "nombre": "Aeropuerto",
+          "pista": " Puñalada Puñalada"
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": " Tiro Tiro Tiro"
         }]
     }
   ],
