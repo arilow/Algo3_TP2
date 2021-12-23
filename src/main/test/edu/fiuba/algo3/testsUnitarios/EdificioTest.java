@@ -45,7 +45,7 @@ public class EdificioTest {
          * TODO: Tratar de solucionar usando mockito
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
@@ -62,7 +62,7 @@ public class EdificioTest {
          * TODO: Tratar de solucionar usando mockito
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
@@ -82,7 +82,7 @@ public class EdificioTest {
          * TODO: Tratar de solucionar usando mockito
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
@@ -104,7 +104,7 @@ public class EdificioTest {
          * TODO: Tratar de solucionar usando mockito
          */
         // Tiempo tiempoMock = mock(Tiempo.class);
-        Tiempo tiempo = new Tiempo(50);
+        Tiempo tiempo = new Tiempo();
         Edificio edif = new Aeropuerto("Soy una pista");
 
         // edif.aumentarTiempo(tiempoMock);
@@ -125,7 +125,7 @@ public class EdificioTest {
         Ciudad montreal = new Ciudad("Montreal", edificios);
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
 
-        Tiempo tiempo = new Tiempo(50);
+        Tiempo tiempo = new Tiempo();
 
         edificios.add(aeropuerto);
         ciudades.add(montreal);

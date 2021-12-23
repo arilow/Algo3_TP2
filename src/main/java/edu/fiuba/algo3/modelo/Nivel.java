@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Nivel {
+public class Nivel implements Observer{
     private Ladron ladron;
     private List<Ladron> ladronesSospechosos;
     private ObjetoRobado tesoro;
@@ -21,10 +21,12 @@ public class Nivel {
     private Interpol interpol;
     private Mapa mapa;
 
-    ComunicadorEstadoPartida comunicadorEstadoPartida;
+    private ComunicadorEstadoPartida comunicadorEstadoPartida;
 
     public Nivel(String ciudad, Jugador jugador, ObjetoRobado tesoro, Ladron ladron, Mapa mapa){
-        tiempo = new Tiempo(10);
+        tiempo = new Tiempo();
+        tiempo.addObserver(this);
+
         this.ciudadActual = mapa.obtenerCiudad(ciudad);
         this.jugador = jugador;
         this.tesoro = tesoro;
@@ -145,5 +147,18 @@ public class Nivel {
 
     public Ciudad obtenerCiudad(String ciudad) {
         return mapa.obtenerCiudad(ciudad);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+         // Lunes: 24-7 = 17hs
+         // Martes a Sabada: 24hs
+         // Domingo: 17hs
+         // Total de horas: 17 + 24x5 + 17 = 154
+        if(tiempo.obtenerHorasPasadas() >= 154) {
+            comunicadorEstadoPartida.definirEstado(EstadoPartida.NIVEL_SE_QUEDO_SIN_TIEMPO);
+        }
+
     }
 }

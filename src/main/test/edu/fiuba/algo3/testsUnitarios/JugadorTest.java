@@ -14,7 +14,7 @@ public class JugadorTest {
     //Caso de uso 05
     @Test
     public void test01JugadorRecibeHeridaDeCuchilloPorPrimeraVez() {
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Jugador jugador = new Jugador(nombre);
         jugador.recibirHeridaCuchillo(tiempo);
 
@@ -24,7 +24,7 @@ public class JugadorTest {
     //Caso de uso 05
     @Test
     public void test02JugadorRecibeHeridaDeCuchilloPorSegundaVez() {
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Jugador jugador = new Jugador(nombre);
 
         jugador.recibirHeridaCuchillo(tiempo);
@@ -36,7 +36,7 @@ public class JugadorTest {
     //Caso de uso 05
     @Test
     public void test03JugadorDuerme() {
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         Jugador jugador = new Jugador(nombre);
 
         jugador.dormir(tiempo);
