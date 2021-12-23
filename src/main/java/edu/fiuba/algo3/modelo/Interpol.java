@@ -7,7 +7,7 @@ public class Interpol {
     List<Ladron> listaLadrones;
     Ladron ladronBuscado;
 
-    public Interpol(List<Ciudad> ciudades, Ladron ladron){
+    public Interpol(Ladron ladron){
 
         this.ladronBuscado = ladron;
         listaLadrones = new ArrayList<Ladron>();
