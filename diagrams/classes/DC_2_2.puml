@@ -1,0 +1,46 @@
+@startuml algoThief
+
+together {
+    class Nivel {
+        - ciudadActual: Ciudad
+        + jugar(comunicador: ComunicadoEstadoPartida)
+        + visitarCiudad(ciudad: Ciudad)
+        + obetenerCiudadActual(): Ciudad
+        + entrarAEdificio(edificio: int)
+        + ladronArrestado(): bool
+        + tieneTesoro(tesoro: string): bool
+        + buscarLadrones(datosLadron: DatosLadron)
+        + obtenerListaSospechosos(): Ladron[]
+        + omitirOrdenDeArresto(nombreLadron: string)
+        + obtenerLadron(): Ladron
+        + listaEdificios(): String[]
+        + obtenerFecha(): String
+        + arribarACiudadActual()
+        + obtenerEdificioActual(): Edificio
+        + obtenerJugadorActual(): Jugador
+        + nombreTesoro(): String
+        + obtenerCiudad(ciudad: string): Ciudad
+    }
+}
+class Ciudad {
+        - sitio:Sitio
+        - ubicacion: Ubicacion
+        + Recibir(jugador: Jugador)
+        + MostrarPista(): Pista
+}
+class Mapa {
+    - mapeo_aux: Map<String,Ciudad>
+    + viajar(Jugador jugador,Ciudad ciudadPartida, String ciudadLLlegada, Tiempo tiempo)
+    + obtenerCiudad(String ciudad)
+    + obtenerCiudad(String ciudad)
+    + cargarArchivo()
+}
+
+
+Nivel --> Mapa
+Nivel --> Ciudad
+Mapa "1" o-- "..*" Ciudad
+
+CreadorDeNiveles .left> Nivel
+
+@enduml

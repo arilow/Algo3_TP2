@@ -50,13 +50,6 @@ together {
         + obtenerCargo(): string
     }
 
-    class Ciudad {
-        - ubicacion: Ubicacion
-        - sitio: Sitio
-        + Recibir(jugador: Jugador)
-        + MostrarPista(): Pista
-    }
-
     class OrdenDeArresto{
     - nombreLadronDeOrden: String
     }
@@ -74,21 +67,11 @@ class Ladron {
     + arrestar()
     + estaLibre(): bool
 }
-
 class Interpol {
     - ladronBuscado: String
     - listaLadrones: List<Ladron>
     + buscarLadrones()
 }
-
-class Mapa {
-    - mapeo_aux: Map<String,Ciudad>
-    + viajar(Jugador jugador,Ciudad ciudadPartida, String ciudadLLlegada, Tiempo tiempo)
-    + obtenerCiudad(String ciudad)
-    + obtenerCiudad(String ciudad)
-    + cargarArchivo()
-}
-
 
 
 class Tiempo {
@@ -138,19 +121,19 @@ ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
 ObjetoRobado <|.. MuyValioso
 
-Nivel ..> Ciudad
-Nivel ..> Ladron
-Nivel ..> Interpol
-Nivel ..> OrdenDeArresto
-Nivel ..> Mapa
+
+
+Nivel --> Ladron
+Nivel --> Interpol
+Nivel --> OrdenDeArresto
+
 Nivel ..> Tiempo
-Nivel ..> ObjetoRobado
-Mapa "1" o-- "..*"Ciudad
+Nivel --> ObjetoRobado
+
 
 CreadorDeNiveles .left> Nivel
 Jugador <.up. Nivel
 
-Jugador <. Ciudad
 
 
 @enduml
