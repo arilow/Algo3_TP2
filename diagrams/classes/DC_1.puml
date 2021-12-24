@@ -1,0 +1,92 @@
+@startuml algoThief
+together {
+    class Juego {
+    - DatoDeCiudades
+    - DatosDeLadrones
+
+    - IniciarMenu()
+    - GenerarPartida()
+
+    }
+
+    class Partida {
+        + Empezar(estado: ComunicadorEstadoPartida)
+        + RegistrarJugador(nombre: string)
+        + CrearNivel()
+        + ComenzarNivel()
+        + NivelActual(): Nivel
+    }
+
+    class ManipuladorDeEventos {
+    }
+}
+
+together {
+    class Nivel {
+        - ciudadActual: Ciudad
+        + jugar(comunicador: ComunicadoEstadoPartida)
+        + visitarCiudad(ciudad: Ciudad)
+        + obetenerCiudadActual(): Ciudad
+        + entrarAEdificio(edificio: int)
+        + ladronArrestado(): bool
+        + tieneTesoro(tesoro: string): bool
+        + buscarLadrones(datosLadron: DatosLadron)
+        + obtenerListaSospechosos(): Ladron[]
+        + omitirOrdenDeArresto(nombreLadron: string)
+        + obtenerLadron(): Ladron
+        + listaEdificios(): String[]
+        + obtenerFecha(): String
+        + arribarACiudadActual()
+        + obtenerEdificioActual(): Edificio
+        + obtenerJugadorActual(): Jugador
+        + nombreTesoro(): String
+        + obtenerCiudad(ciudad: string): Ciudad
+    }
+
+    class CreadorDeNiveles {
+        - max: int
+        - min: int
+        + crearNivel()
+        + cargarCiudadesNivel()
+        + cargarArchivo()
+        + cargarLadron()
+        + cargarObjetoRobado()
+    }
+}
+
+together {
+    class Jugador {
+        - cargo: Cargo
+        - cantidadArrestos: int
+        - fueAcuchillado: bool
+        - nombre: string
+        + asignarCargo(cargo: Cargo)
+        + recibirHeridaCuchillo(tiempo: Tiempo)
+        + dormir(tiempo: Tiempo)
+        + recibirHeridaArmaFuego(tiempo: Tiempo)
+        + viajar(distancia: double, tiempo: Tiempo)
+        + agregarArresto()
+        + setCantidadArrestos(cantidadArrestos: int)
+        + getCantidadArrestos(): int
+        + getCargo(): Cargo
+        + obtenerCargo(): string
+    }
+
+
+Juego -left-> Partida
+Partida -right-> ManipuladorDeEventos
+Partida -down-> Nivel
+ManipuladorDeEventos .up.> Nivel
+
+
+'Partida --> ManipuladorDeEventos
+Partida --> Jugador
+Partida --> CreadorDeNiveles
+
+
+CreadorDeNiveles .left> Nivel
+Jugador <.up. Nivel
+
+
+
+@enduml

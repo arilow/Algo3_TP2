@@ -85,6 +85,8 @@ public class Nivel implements Observer{
 
     public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol();
+        tiempo.sumarHoras(2);
+        interpol = new Interpol();
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
         if (ladronesSospechosos.size() == 1){
             emitirOrdenDeArresto(ladronesSospechosos.get(0).obtenerNombre());

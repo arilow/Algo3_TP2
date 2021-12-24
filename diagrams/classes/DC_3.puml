@@ -1,0 +1,70 @@
+@startuml algoThief
+
+class Ciudad {
+        + Recibir(jugador: Jugador)
+        + MostrarPista(): Pista
+    }
+class Mapa {
+    - mapeo_aux: Map<String,Ciudad>
+    + viajar(Jugador jugador,Ciudad ciudadPartida, String ciudadLLlegada, Tiempo tiempo)
+    + obtenerCiudad(String ciudad)
+    + obtenerCiudad(String ciudad)
+    + cargarArchivo()
+}
+
+class Tiempo {
+    - horas: int
+    - horasFin: int
+    - dia: int
+    - diaFin: int
+}
+
+class Edificio {
+    - nombre: string
+    - contadorDeEntradas: int
+    + aumentarTiempo(tiempo: Tiempo)
+    + mostrarPista(): Pista
+    + mostrarInfo(): string
+    + nombre(): string
+}
+
+class Pista{}
+
+class Aeropuerto{}
+class Puerto{}
+class Bolsa{}
+class Banco{}
+class Biblioteca{}
+
+class Tiempo {
+    - horas
+    - horasFin
+    sumarHoras()
+}
+
+interface Sitio {
+}
+
+class Ubicacion {
+    - longitud: double
+    - latitud: double
+    + obtenerLatitud(): double
+    + obtenerLongitud(): double
+    + calcularDistancia(ubicacion: Ubicacion): double
+}
+
+Mapa "1" o-- "..*"Ciudad
+Ciudad .down.> Tiempo
+Ciudad --> "4" Sitio
+Ciudad .down.> Ubicacion
+Sitio --> AireLibre
+Sitio -->  Edificio
+Edificio <|-- Aeropuerto
+Edificio <|-- Puerto
+Edificio <|-- Biblioteca
+Edificio <|-- Bolsa
+Edificio <|-- Banco
+Ciudad ..> Pista
+Edificio *-- "1" Pista
+
+@enduml

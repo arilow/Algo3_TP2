@@ -1,25 +1,4 @@
 @startuml algoThief
-together {
-    class Juego {
-    - DatoDeCiudades
-    - DatosDeLadrones
-
-    - IniciarMenu()
-    - GenerarPartida()
-
-    }
-
-    class Partida {
-        + Empezar(estado: ComunicadorEstadoPartida)
-        + RegistrarJugador(nombre: string)
-        + CrearNivel()
-        + ComenzarNivel()
-        + NivelActual(): Nivel
-    }
-
-    class ManipuladorDeEventos {
-    }
-}
 
 together {
     class Nivel {
@@ -72,6 +51,8 @@ together {
     }
 
     class Ciudad {
+        - ubicacion: Ubicacion
+        - sitio: Sitio
         + Recibir(jugador: Jugador)
         + MostrarPista(): Pista
     }
@@ -117,35 +98,6 @@ class Tiempo {
     - diaFin: int
 }
 
-class Edificio {
-    - nombre: string
-    - contadorDeEntradas: int
-    + aumentarTiempo(tiempo: Tiempo)
-    + mostrarPista(): Pista
-    + mostrarInfo(): string
-    + nombre(): string
-}
-
-interface Cargo{
-    + agregarArresto()
-    + viajar(distancia: double, tiempo: Tiempo)
-    + asignarJugador(jugador: Jugador)
-    + obtenerCargo(): string
-}
-
-class Novato{}
-class Detective{}
-class Investigador{}
-class Sargento{}
-
-class Pista{}
-
-class Aeropuerto{}
-class Puerto{}
-class Bolsa{}
-class Banco{}
-class Biblioteca{}
-
 class Ladron{}
 class DatosLadron{
     - sexo: string
@@ -180,51 +132,11 @@ class Tiempo {
     sumarHoras()
 }
 
-interface Sitio {
-}
-
-class Ubicacion {
-    - longitud: double
-    - latitud: double
-    + obtenerLatitud(): double
-    + obtenerLongitud(): double
-    + calcularDistancia(ubicacion: Ubicacion): double
-}
-
-Juego -right-> Partida
-Partida -right-> ManipuladorDeEventos
-Partida --> Nivel
-ManipuladorDeEventos .up.> Nivel
-
-Jugador --> Cargo
-
-Cargo <|.. Novato
-Cargo <|.. Detective
-Cargo <|.. Investigador
-Cargo <|.. Sargento
-
-Ciudad .down.> Tiempo
-Ciudad --> "4" Sitio
-Ciudad .down.> Ubicacion
-Sitio --> AireLibre
-Sitio -->  Edificio
-Edificio <|-- Aeropuerto
-Edificio <|-- Puerto
-Edificio <|-- Biblioteca
-Edificio <|-- Bolsa
-Edificio <|-- Banco
-Ciudad ..> Pista
-Edificio *-- "1" Pista
 Ladron --> DatosLadron
 
 ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
 ObjetoRobado <|.. MuyValioso
-
-
-'Partida --> ManipuladorDeEventos
-Partida --> Jugador
-Partida --> CreadorDeNiveles
 
 Nivel ..> Ciudad
 Nivel ..> Ladron
@@ -233,6 +145,7 @@ Nivel ..> OrdenDeArresto
 Nivel ..> Mapa
 Nivel ..> Tiempo
 Nivel ..> ObjetoRobado
+Mapa "1" o-- "..*"Ciudad
 
 CreadorDeNiveles .left> Nivel
 Jugador <.up. Nivel
