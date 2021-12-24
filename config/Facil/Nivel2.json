@@ -53,15 +53,15 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": " "
+          "pista": "Ladron"
         },
         {
           "nombre": "Aeropuerto",
-          "pista": " Puñalada Puñalada"
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Tiro Tiro Tiro"
+          "pista": "Tiro"
         }]
     }
   ],
@@ -70,9 +70,9 @@
     "nombre": "Len Buck",
     "sexo": "hombre",
     "hobby": "escalar motañas",
-    "pelo": "rojo",
+    "cabello": "rojo",
     "seña": "tatuaje",
-    "auto": "convertible"
+    "vehiculo": "convertible"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo de 2000 años"
 }

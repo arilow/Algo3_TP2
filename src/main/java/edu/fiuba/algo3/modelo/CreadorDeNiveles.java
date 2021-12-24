@@ -87,7 +87,8 @@ public class CreadorDeNiveles {
             case "novato":
                 fileName += "Facil/Nivel" + n + ".json";
                 break;
-            case "detective": //Podriamos hacer que se repita un nivel o crear uno nuevo
+            case "detective":
+                fileName += "Medio/Nivel" + n + ".json";
             case "investigador":
                 fileName += "Medio/Nivel" + n + ".json";
                 break;

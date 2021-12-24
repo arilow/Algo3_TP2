@@ -53,26 +53,27 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": " "
+          "pista": "Ladron"
         },
         {
           "nombre": "Aeropuerto",
-          "pista": " Puñalada Puñalada"
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Tiro Tiro Tiro"
+          "pista": "Tiro"
         }]
     }
   ],
-  "ladron":
+
+"ladron":
   {
     "nombre": "Fast Eddie B.",
     "sexo": "masculino",
     "hobby": "croquet",
     "cabello": "negro",
-    "senia": "joyeria",
+    "seña": "joyeria",
     "vehiculo": "convertible"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo de 1000 años"
 }

@@ -85,15 +85,15 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": " "
+          "pista": "Ladron"
         },
         {
-          "nombre": "Puerto",
-          "pista": " Puñalada Puñalada"
+          "nombre": "Aeropuerto",
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Tiro Tiro Tiro"
+          "pista": "Tiro"
         }]
     }
   ],
@@ -102,9 +102,9 @@
     "nombre": "Carmen Sandiego",
     "sexo": "mujer",
     "hobby": "tenis",
-    "pelo": "marron",
+    "cabello": "marron",
     "seña": "joyeria",
-    "auto": "convertible"
+    "vehiculo": "convertible"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo dificil de 3000 años"
 }

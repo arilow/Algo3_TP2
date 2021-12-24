@@ -53,15 +53,15 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": " "
+          "pista": "Ladron"
         },
         {
           "nombre": "Aeropuerto",
-          "pista": " Puñalada Puñalada"
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Tiro Tiro Tiro"
+          "pista": "Tiro"
         }]
     }
   ],
@@ -70,9 +70,9 @@
     "nombre": "Katherine Drib",
     "sexo": "mujer",
     "hobby": "escalar montaña",
-    "pelo": "marron",
+    "cabello": "marron",
     "seña": "tatuaje",
-    "auto": "motocicleta"
+    "vehiculo": "motocicleta"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo medio de 3000 años"
 }

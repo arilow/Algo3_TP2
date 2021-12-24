@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Ladron;
-import edu.fiuba.algo3.modelo.Nivel;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -11,13 +9,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.util.List;
 
 public class ConstructorDeEscenas {
     VentanaPrincipal ventanaPrincipal;
-    Stage stage;
     Juego juego;
     int anchoVentana;
     int altoVentana;
@@ -33,7 +29,6 @@ public class ConstructorDeEscenas {
 
     public ConstructorDeEscenas(VentanaPrincipal ventanaPrincipal, Juego juego, int anchoVentana, int altoVentana) {
         this.ventanaPrincipal = ventanaPrincipal;
-        this.stage = stage;
         this.juego = juego;
         this.anchoVentana = anchoVentana;
         this.altoVentana = altoVentana;
@@ -79,6 +74,19 @@ public class ConstructorDeEscenas {
 
         // Pantalla derecha
         pantallaDerechaActual = new VistaComputadoraInterpol(juego.nivelActual(), anchoPantalla, altoPantallaDerechaActual, pantallaIzquierdaActual);
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    public HBox construirPantallaConexiones() {
+        // Pantalla izquierda
+        pantallaIzquierdaActual = new VistaListaCiudades(juego.nivelActual(), anchoPantalla, altoPantallaIzquierdaActual);
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        // Pantalla derecha.
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -136,7 +144,7 @@ public class ConstructorDeEscenas {
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-        // Patalla derecha
+        // Pantalla derecha actual.
         double anchoCanvas = anchoPantalla;
         double altoCanvas = altoVentana;
         Canvas canvas = new Canvas(anchoCanvas, altoCanvas);
@@ -145,7 +153,7 @@ public class ConstructorDeEscenas {
         gcD.fillRect(0,0, anchoCanvas, altoCanvas);
         pantallaDerechaActual = canvas;
 
-        VBox pantallaDerecha = new VBox(pantallaDerechaActual);
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
     }
@@ -158,7 +166,7 @@ public class ConstructorDeEscenas {
 
     private VBox construirPantallaDatos(String ciudad, String fecha) {
         double altoVistaFecha = altoVentana - altoPantallaIzquierdaActual;
-        //System.out.println(ciudad + fecha);
+
         pantallaDatos = new VistaDatos(ciudad, fecha, anchoPantalla, altoVistaFecha);
         return (VBox) pantallaDatos;
     }
