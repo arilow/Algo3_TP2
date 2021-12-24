@@ -233,12 +233,12 @@ Nivel ..> Interpol
 Nivel ..> OrdenDeArresto
 Nivel ..> Mapa
 Nivel ..> Tiempo
+Nivel ..> ObjetoRobado
 
 CreadorDeNiveles .left> Nivel
 Jugador <.up. Nivel
 
 Jugador <. Ciudad
 
-Ladron --> ObjetoRobado
 
 @enduml
