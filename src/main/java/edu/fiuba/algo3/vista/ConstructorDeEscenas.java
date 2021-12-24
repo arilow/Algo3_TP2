@@ -167,19 +167,6 @@ public class ConstructorDeEscenas {
         return new HBox(pantallaizquierda, pantallaDerecha);
     }
 
-    public HBox construirPantallaMapa(Ciudad ciudad) {
-        //Pantalla izquierda
-        pantallaIzquierdaActual = new VistaMapa(ciudad, anchoPantalla, altoPantallaDerechaActual);
-        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
-        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
-
-        // Pantalla Derecha no cambia (En principio)
-        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
-        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
-
-        return new HBox(pantallaizquierda, pantallaDerecha);
-    }
-
     public HBox construirPantallaGanadorNivel() {
 
         //Pantalla izquierda
@@ -201,7 +188,6 @@ public class ConstructorDeEscenas {
         pantallaIzquierdaActual= new vistaLadronEscapadoIzquierda(juego.partidaActual(),anchoPantalla,altoPantallaIzquierdaActual);
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-
         pantallaDerechaActual = new vistaCarcelSinLadron(anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
@@ -214,7 +200,7 @@ public class ConstructorDeEscenas {
         pantallaIzquierdaActual= new vistaIzquierdaPerderPorTiempo(juego.partidaActual(),anchoPantalla,altoPantallaIzquierdaActual);
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-        System.out.println("Antes de la vista CarcelSinLadron (derecha)");
+        System.out.println("construirPantallaPerdedorNivelPorTiempo");
         pantallaDerechaActual = new vistaCarcelSinLadron(anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 

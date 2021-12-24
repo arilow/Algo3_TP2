@@ -5,24 +5,34 @@ import edu.fiuba.algo3.controlador.ControladorBotonSiguienteExplicacionNivel;
 import edu.fiuba.algo3.modelo.Nivel;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class VistaExplicacionNivel extends VBox {
     public VistaExplicacionNivel(Nivel nivel, double ancho, double alto) {
         String nombreJugador = nivel.obtenerJugador().nombre();
 
-        Label texto0 = new Label("Hola " + nombreJugador +"!!!!");
-        Label texto1 = new Label("Se han robado el ");
-        Label labelNombreObjetoRobado = new Label(nivel.nombreTesoro());
-        Label texto2 = new Label("Ayudanos a resolver este caso y te daremos una galleta.");
+        ScrollPane scrollPane = new ScrollPane();
 
+        scrollPane.setPrefHeight(alto);
+        scrollPane.setPrefWidth(ancho);
 
-        labelNombreObjetoRobado.setPrefWidth(ancho);
+        Text text = new Text();
+        text.setFont(new Font("Times New Roman", 16));
+
+        text.setText("Hola " + nombreJugador +"!!!!" + '\n' +
+                "Se han robado el " + nivel.nombreTesoro() + '\n' +
+                "Ayudanos a resolver este caso y te daremos una galleta.");
+
+        text.setWrappingWidth(ancho);
+        scrollPane.setContent(text);
 
         Button botonSiguiente = new Button("Siguiente");
         botonSiguiente.setOnAction(new ControladorBotonSiguienteExplicacionNivel(nivel));
 
-        getChildren().addAll(texto0, texto1, labelNombreObjetoRobado, texto2, botonSiguiente);
+        getChildren().addAll(scrollPane, botonSiguiente);
     }
 }

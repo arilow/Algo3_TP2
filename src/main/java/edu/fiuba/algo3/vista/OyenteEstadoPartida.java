@@ -34,7 +34,7 @@ public class OyenteEstadoPartida implements Observer {
                 ventana.mostrarPantallaInterpol();
                 break;
             case VIAJAR:
-                ventana.mostrarPantallaMapa();
+                ventana.mostrarPantallaInicioCiudad();
                 break;
             case LADRON_ARRESTADO:
                 ventana.mostrarPantallaGanador();
