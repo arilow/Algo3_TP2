@@ -5,7 +5,7 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Pidio Drachmas. Llevaba unas joyas increibles."
+          "pista": "Pidio Drachmas. Llevaba unos anillos increibles."
         },
         {
           "nombre": "Puerto",
@@ -21,7 +21,7 @@
       "edificios": [
         {
           "nombre": "Banco",
-          "pista": "Un hombre de cabello negro cambio su dinero a Baht tailandes."
+          "pista": "Un hombre de cabello rojo cambio su dinero a Baht tailandes."
         },
         {
           "nombre": "Aeropuerto",
@@ -70,8 +70,8 @@
     "nombre": "Scar Graynolt",
     "sexo": "hombre",
     "hobby": "croquet",
-    "cabello": "red",
-    "seña": "añillo",
+    "cabello": "rojo",
+    "seña": "anillo",
     "vehiculo": "limusina"
   },
   "ObjetoRobado": "Huevo de 3000 años"

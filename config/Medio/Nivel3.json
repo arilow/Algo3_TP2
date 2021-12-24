@@ -5,7 +5,7 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Pidio Drachmas. Llevaba unas joyas increibles."
+          "pista": "Pidio Drachmas. "
         },
         {
           "nombre": "Puerto",
@@ -21,7 +21,7 @@
       "edificios": [
         {
           "nombre": "Banco",
-          "pista": "Un hombre de cabello negro cambio su dinero a Baht tailandes."
+          "pista": "Cambio su dinero a Baht tailandes."
         },
         {
           "nombre": "Aeropuerto",
@@ -37,7 +37,7 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "Estaba muy interesado en la agricultura y la ganaderia. "
+          "pista": "Tenia el cabello negro. Estaba muy interesado en la agricultura y la ganaderia. "
         },
         {
           "nombre": "Aeropuerto",
@@ -50,6 +50,22 @@
     },
     {
       "nombre": "Buenos Aires",
+      "edificios": [
+        {
+          "nombre": "Banco",
+          "pista": " Llevaba unos anillos increibles paso por aqui para convertir su dinero a Forinto húngaro"
+        },
+        {
+          "nombre": "Puerto",
+          "pista": " Se fue en un coche con una bandera roja, blanca y verde."
+        },
+        {
+          "nombre": "Biblioteca",
+          "pista": " Estaba muy interesado en el Río Danubio"
+        }]
+    },
+    {
+      "nombre": "Budapest",
       "edificios": [
         {
           "nombre": "Bolsa",
@@ -67,12 +83,12 @@
   ],
   "ladron":
   {
-    "nombre": "Katherine Drib",
-    "sexo": "mujer",
-    "hobby": "escalar montaña",
-    "cabello": "marron",
-    "seña": "tatuaje",
-    "vehiculo": "motocicleta"
+    "nombre": "Nick Brunch",
+    "sexo": "hombre",
+    "hobby": "escalar motañas",
+    "cabello": "negro",
+    "seña": "anillo",
+    "vehiculo": "moto"
   },
-  "ObjetoRobado": "Huevo medio de 3000 años"
+  "ObjetoRobado": "Huevo medio de 1000 años"
 }
