@@ -1,17 +1,65 @@
 @startuml algoThief
-class Juego {
-- DatoDeCiudades
-- DatosDeLadrones
+together {
+    class Juego {
+    - DatoDeCiudades
+    - DatosDeLadrones
 
-- IniciarMenu()
-- GenerarPartida()
+    - IniciarMenu()
+    - GenerarPartida()
 
+    }
+
+    class Partida {
+    ' - jugador: Jugador
+    ' - ladron: Ladron
+      + GenerarNivel()
+    }
+
+    class ManipuladorDeEventos {
+        + EscucharEvento(nivel: Nivel)
+    }
 }
 
-class Partida {
-' - jugador: Jugador
-' - ladron: Ladron
-    + GenerarNivel()
+together {
+    class Nivel {
+        - ciudades: Ciudad
+        - ciudadActual: Ciudad
+        - mapa: Mapa
+        + EntrarAEdificio(edif: Edificio)
+    }
+
+    class CreadorDeNiveles {
+        - max: int
+        - min: int
+        + crearNivel()
+        + cargarCiudadesNivel()
+        + cargarArchivo()
+        + cargarLadron()
+        + cargarObjetoRobado()
+    }
+}
+
+together {
+    class Jugador {
+        + SumarHoras(horas: int)
+    }
+
+    class Ciudad {
+        + Recibir(jugador: Jugador)
+        + MostrarPista(): Pista
+    }
+
+    class OrdenDeArresto{
+    - nombreLadronDeOrden: String
+    }
+}
+
+    class Ladron {
+    }
+class Interpol {
+    - ladronBuscado: String
+    - listaLadrones: List<Ladron>
+    + buscarLadrones()
 }
 
 class Mapa {
@@ -22,18 +70,7 @@ class Mapa {
     + cargarArchivo()
 }
 
-class Interpol {
-    - ladronBuscado: String
-    - listaLadrones: List<Ladron>
-    + buscarLadrones()
-}
 
-class Nivel {
-- ciudades: Ciudad
-- ciudadActual: Ciudad
-
-+ EntrarAEdificio(edif: Edificio)
-}
 
 class Tiempo {
     - horas: int
@@ -42,33 +79,13 @@ class Tiempo {
     - diaFin: int
 }
 
-class CreadorDeNiveles {
-    - max: int
-    - min: int
-    + crearNivel()
-    + cargarCiudadesNivel()
-    + cargarArchivo()
-    + cargarLadron()
-    + cargarObjetoRobado()
-}
 
-class ManipuladorDeEventos {
-+ EscucharEvento(nivel: Nivel)
-}
 
-class Jugador {
-    - tiempo
-    + SumarHoras(horas: int)
-}
 
-class Ciudad {
-    + Recibir(jugador: Jugador)
-    + MostrarPista(): Pista
-}
 
-class OrdenDeArresto{
-- nombreLadronDeOrden: String
-}
+
+
+
 
 
 
@@ -86,10 +103,9 @@ class Pista{}
 
 class Aeropuerto{}
 class Puerto{}
-class Palacio{}
 class Bolsa{}
 class Banco{}
-class Museo{}
+class Biblioteca{}
 
 class Ladron{}
 class DatosLadron{}
@@ -107,6 +123,14 @@ class Tiempo {
     sumarHoras()
 }
 
+interface Sitio {
+}
+
+Juego -right-> Partida
+Partida -right-> ManipuladorDeEventos
+Partida --> Nivel
+ManipuladorDeEventos .up.> Nivel
+
 Jugador --> Cargo
 
 Cargo <|.. Novato
@@ -114,38 +138,41 @@ Cargo <|.. Detective
 Cargo <|.. Investigador
 Cargo <|.. Sargento
 
-Ciudad --> "3" Edificio
+Ciudad .down.> Tiempo
+Ciudad --> "4" Sitio
+Sitio --> AireLibre
+Sitio -->  Edificio
 Edificio <|-- Aeropuerto
 Edificio <|-- Puerto
 Edificio <|-- Biblioteca
-Edificio <|-- Palacio
 Edificio <|-- Bolsa
 Edificio <|-- Banco
-Edificio <|-- Museo
-
+Ciudad ..> Pista
+Edificio *-- "1" Pista
 Ladron --> DatosLadron
 
 ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
 ObjetoRobado <|.. MuyValioso
 
-Juego --> Partida
 
-Partida --> ManipuladorDeEventos
+'Partida --> ManipuladorDeEventos
 Partida --> Jugador
-Partida --> Nivel
 Partida --> CreadorDeNiveles
 
-Nivel --> Ciudad
-Nivel --> Ladron
-Nivel <. ManipuladorDeEventos
+Nivel ..> Ciudad
+Nivel ..> Ladron
+Nivel ..> Interpol
+Nivel ..> OrdenDeArresto
+Nivel ..> Mapa
+Nivel ..> Tiempo
 
 
 CreadorDeNiveles .left> Nivel
-Jugador <. Nivel
+Jugador <.up. Nivel
+
 Jugador <. Ciudad
 
 Ladron --> ObjetoRobado
-
 
 @enduml
