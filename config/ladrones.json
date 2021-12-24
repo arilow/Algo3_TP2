@@ -1,80 +1,80 @@
 [{
     "nombre": "Nick Brunch",
-    "genero": "hombre",
+    "sexo": "hombre",
     "hobby": "escalar motañas",
     "pelo": "negro",
     "seña": "anillo",
-    "auto": "moto"
+    "vehiculo": "moto"
 },
 {
     "nombre": "Len Buck",
-    "genero": "hombre",
+    "sexo": "hombre",
     "hobby": "escalar motañas",
     "pelo": "rojo",
     "seña": "tatuaje",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Ihor Ihorovitch",
-    "genero": "hombre",
+    "sexo": "hombre",
     "hobby": "croquet",
     "pelo": "rubio",
     "seña": "tatuaje",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Fast Eddie B.",
-    "genero": "hombre",
+    "sexo": "hombre",
     "hobby": "croquet",
     "pelo": "negro",
     "seña": "joyeria",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Scar Graynolt",
-    "genero": "hombre",
+    "sexo": "hombre",
     "hobby": "croquet",
     "pelo": "red",
     "seña": "añillo",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Merey Laroc",
-    "genero": "mujer",
+    "sexo": "mujer",
     "hobby": "escalar montaña",
     "pelo": "marron",
     "seña": "limusina",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Lady Agatha",
-    "genero": "mujer",
+    "sexo": "mujer",
     "hobby": "tenis",
     "pelo": "rojo",
     "seña": "añillo",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Katherine Drib",
-    "genero": "mujer",
+    "sexo": "mujer",
     "hobby": "escalar montaña",
     "pelo": "marron",
     "seña": "tatuaje",
-    "auto": "motocicleta"
+    "vehiculo": "motocicleta"
 },
 {
     "nombre": "Dazzle Annie",
-    "genero": "mujer",
+    "sexo": "mujer",
     "hobby": "tenis",
     "pelo": "rubia",
     "seña": "tatuaje",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Carmen Sandiego",
-    "genero": "mujer",
+    "sexo": "mujer",
     "hobby": "tenis",
     "pelo": "marron",
     "seña": "joyeria",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 }]

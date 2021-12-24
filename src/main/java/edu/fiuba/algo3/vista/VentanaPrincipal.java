@@ -2,16 +2,11 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorBotonIniciarJuego;
 import edu.fiuba.algo3.modelo.Juego;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 public class VentanaPrincipal {
     int anchoVentana;
@@ -67,6 +62,12 @@ public class VentanaPrincipal {
 
     public void mostrarComputadoraInterpol() {
         HBox layout = constructorDeEscenas.construirPantallaComputadoraInterpol();
+        Scene scene = new Scene(layout, anchoVentana, altoVentana);
+        stage.setScene(scene);
+    }
+
+    public void mostrarConexiones() {
+        HBox layout = constructorDeEscenas.construirPantallaConexiones();
         Scene scene = new Scene(layout, anchoVentana, altoVentana);
         stage.setScene(scene);
     }

@@ -10,7 +10,7 @@ public class VistaOpcionesJuego extends VBox {
         Button botonConexiones = new Button("Ver conexiones");
         botonConexiones.setPrefHeight(alto * 0.25);
         botonConexiones.setPrefWidth(ancho);
-        //botonConexiones.setOnAction(e -> ventanaPrincipal.mostrarConexiones());
+        botonConexiones.setOnAction(e -> ventanaPrincipal.mostrarConexiones());
 
         Button botonMapa;
         botonMapa = new Button("Viajar");

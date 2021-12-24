@@ -69,15 +69,15 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": "   "
+          "pista": "Ladron"
         },
         {
-          "nombre": "Puerto",
-          "pista": " Tenia el pelo marron. Estaba aprendiendo arabe."
+          "nombre": "Aeropuerto",
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Ella se llevo un libro acerca de la Tumba del faraón"
+          "pista": "Tiro"
         }]
     }
   ],
@@ -86,9 +86,9 @@
     "nombre": "Nick Brunch",
     "sexo": "hombre",
     "hobby": "escalar motañas",
-    "pelo": "negro",
+    "cabello": "negro",
     "seña": "anillo",
-    "auto": "moto"
+    "vehiculo": "moto"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo medio de 1000 años"
 }

@@ -53,15 +53,15 @@
       "edificios": [
         {
           "nombre": "Bolsa",
-          "pista": " "
+          "pista": "Ladron"
         },
         {
           "nombre": "Aeropuerto",
-          "pista": " Puñalada Puñalada"
+          "pista": "Puñalada"
         },
         {
           "nombre": "Biblioteca",
-          "pista": " Tiro Tiro Tiro"
+          "pista": "Tiro"
         }]
     }
   ],
@@ -70,9 +70,9 @@
     "nombre": "Scar Graynolt",
     "sexo": "hombre",
     "hobby": "croquet",
-    "pelo": "red",
+    "cabello": "red",
     "seña": "añillo",
-    "auto": "limusina"
+    "vehiculo": "limusina"
   },
-  "ObjetoRobado": "Huevo de 1000 anios"
+  "ObjetoRobado": "Huevo de 3000 años"
 }

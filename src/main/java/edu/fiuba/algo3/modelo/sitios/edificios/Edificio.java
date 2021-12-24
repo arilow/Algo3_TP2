@@ -19,11 +19,19 @@ public abstract class Edificio extends Observable implements Sitio {
 
     public void aumentarTiempo(Tiempo tiempo) {
         int horasPorSumar;
-        contadorDeEntradas++;
-        if(contadorDeEntradas <= 3)
-            horasPorSumar = contadorDeEntradas;
-        else
-            horasPorSumar = 3;
+
+        if(pista.mostrar().equals("Puñalada")) {
+            horasPorSumar = 2;
+        } else if(pista.mostrar().equals("Tiro")) {
+            horasPorSumar = 4;
+        } else {
+            contadorDeEntradas++;
+            if (contadorDeEntradas <= 3)
+                horasPorSumar = contadorDeEntradas;
+            else
+                horasPorSumar = 3;
+        }
+
         tiempo.sumarHoras(horasPorSumar);
     }
 
@@ -32,6 +40,7 @@ public abstract class Edificio extends Observable implements Sitio {
         notifyObservers(pista);
         return pista;
     }
+
     public String mostrarInfo() {
         return "Edificio";
     }

@@ -16,7 +16,6 @@ public class Ciudad extends Observable {
     private List<Edificio> edificios;
     private Sitio sitioActual;
 
-    private Sitio aireLibre;  // Espacio fuera de los edificios
     private Ubicacion ubicacion;
     private List<String> ciudadesVisitables;
     private String imagen;
@@ -26,7 +25,7 @@ public class Ciudad extends Observable {
         this.descripcion = descripcion;
         this.edificios = edificio;
         //this.aireLibre = new AireLibre();
-        this.sitioActual = aireLibre;
+//        this.sitioActual = aireLibre;
         this.ubicacion = new Ubicacion(longitud,latitud);
         this.ciudadesVisitables=ciudadesVisitables;
         this.imagen = this.nombre+".png";
@@ -42,16 +41,8 @@ public class Ciudad extends Observable {
         return edificios.get(edificio).mostrarPista();
     }
 
-    public void agregarUbicacion(double longitud, double latitud) {
-        this.ubicacion= new Ubicacion(longitud,latitud);
-    }
-
     public Ubicacion obtenerUbicacion() {
         return ubicacion;
-    }
-
-    public void salirDeEdificio() {
-        this.sitioActual = aireLibre;
     }
 
     public double obtenerDistancia(Ciudad otraCiudad) {
