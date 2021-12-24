@@ -1,24 +1,17 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ControladorBotonEntrarEdificio;
 import edu.fiuba.algo3.controlador.ControladorBotonIrACiudad;
-import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Nivel;
-import edu.fiuba.algo3.modelo.Pista;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 public class VistaListaMapa extends VBox{
-    ConstructorDeEscenas constructorDeEscenas;
-
     public VistaListaMapa(Nivel nivelActual, double ancho, double alto) {
         double anchoCanvas = ancho;
 
@@ -28,8 +21,9 @@ public class VistaListaMapa extends VBox{
         Canvas canvasIzquierdo = new Canvas(anchoCanvas, altoCanvas);
         GraphicsContext gcI = canvasIzquierdo.getGraphicsContext2D();
 
-        gcI.setFill(Color.BLUE);
-        gcI.fillRect(0,0, anchoCanvas, altoCanvas);
+        Image image = new Image("Mapa.jpg");
+        // TODO: des-hardcodear valores.
+        gcI.drawImage(image, 0, altoCanvas*0.1, anchoCanvas, anchoCanvas);
 
         List<String> ciudadesVisitable = nivelActual.obtenerCiudadActual().obtenerCiudadesVisitables();
 

@@ -15,6 +15,6 @@ public class VistaImagenCiudad extends Canvas {
 
         Image image = new Image(ciudad.obtenerImagen());
         // TODO: des-hardcodear valores.
-        gcI.drawImage(image, 0, alto-300, ancho, 200);
+        gcI.drawImage(image, 0, 0, ancho, alto);
     }
 }
