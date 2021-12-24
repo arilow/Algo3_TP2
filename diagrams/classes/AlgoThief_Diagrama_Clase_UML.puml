@@ -14,11 +14,42 @@ class Partida {
     + GenerarNivel()
 }
 
+class Mapa {
+    - mapeo_aux: Map<String,Ciudad>
+    + viajar(Jugador jugador,Ciudad ciudadPartida, String ciudadLLlegada, Tiempo tiempo)
+    + obtenerCiudad(String ciudad)
+    + obtenerCiudad(String ciudad)
+    + cargarArchivo()
+}
+
+class Interpol {
+    - ladronBuscado: String
+    - listaLadrones: List<Ladron>
+    + buscarLadrones()
+}
+
 class Nivel {
 - ciudades: Ciudad
 - ciudadActual: Ciudad
 
 + EntrarAEdificio(edif: Edificio)
+}
+
+class Tiempo {
+    - horas: int
+    - horasFin: int
+    - dia: int
+    - diaFin: int
+}
+
+class CreadorDeNiveles {
+    - max: int
+    - min: int
+    + crearNivel()
+    + cargarCiudadesNivel()
+    + cargarArchivo()
+    + cargarLadron()
+    + cargarObjetoRobado()
 }
 
 class ManipuladorDeEventos {
@@ -34,6 +65,12 @@ class Ciudad {
     + Recibir(jugador: Jugador)
     + MostrarPista(): Pista
 }
+
+class OrdenDeArresto{
+- nombreLadronDeOrden: String
+}
+
+
 
 class Edificio {
     - pista: Pista
@@ -56,7 +93,8 @@ class Museo{}
 
 class Ladron{}
 class DatosLadron{}
-class Sexo{}
+
+
 
 interface ObjetoRobado{}
 class Comun{}
@@ -86,11 +124,6 @@ Edificio <|-- Banco
 Edificio <|-- Museo
 
 Ladron --> DatosLadron
-DatosLadron --> Sexo
-DatosLadron --> Hobby
-DatosLadron --> Cabello
-DatosLadron --> Seña
-DatosLadron --> Vehiculo
 
 ObjetoRobado <|.. Comun
 ObjetoRobado <|.. Valioso
@@ -101,12 +134,14 @@ Juego --> Partida
 Partida --> ManipuladorDeEventos
 Partida --> Jugador
 Partida --> Nivel
+Partida --> CreadorDeNiveles
 
 Nivel --> Ciudad
 Nivel --> Ladron
 Nivel <. ManipuladorDeEventos
 
 
+CreadorDeNiveles .left> Nivel
 Jugador <. Nivel
 Jugador <. Ciudad
 
