@@ -10,13 +10,14 @@ together {
     }
 
     class Partida {
-    ' - jugador: Jugador
-    ' - ladron: Ladron
-      + GenerarNivel()
+        + Empezar(estado: ComunicadorEstadoPartida)
+        + RegistrarJugador(nombre: string)
+        + CrearNivel()
+        + ComenzarNivel()
+        + NivelActual(): Nivel
     }
 
     class ManipuladorDeEventos {
-        + EscucharEvento(nivel: Nivel)
     }
 }
 
@@ -24,8 +25,23 @@ together {
     class Nivel {
         - ciudades: Ciudad
         - ciudadActual: Ciudad
-        - mapa: Mapa
-        + EntrarAEdificio(edif: Edificio)
+        + jugar(comunicador: ComunicadoEstadoPartida)
+        + visitarCiudad(ciudad: Ciudad)
+        + obetenerCiudadActual(): Ciudad
+        + entrarAEdificio(edificio: int)
+        + ladronArrestado(): bool
+        + tieneTesoro(tesoro: string): bool
+        + buscarLadrones(datosLadron: DatosLadron)
+        + obtenerListaSospechosos(): Ladron[]
+        + omitirOrdenDeArresto(nombreLadron: string)
+        + obtenerLadron(): Ladron
+        + listaEdificios(): String[]
+        + obtenerFecha(): String
+        + arribarACiudadActual()
+        + obtenerEdificioActual(): Edificio
+        + obtenerJugadorActual(): Jugador
+        + nombreTesoro(): String
+        + obtenerCiudad(ciudad: string): Ciudad
     }
 
     class CreadorDeNiveles {
@@ -41,7 +57,19 @@ together {
 
 together {
     class Jugador {
-        + SumarHoras(horas: int)
+        - cantidadArrestos: int
+        - fueAcuchillado: bool
+        - nombre: string
+        + asignarCargo(cargo: Cargo)
+        + recibirHeridaCuchillo(tiempo: Tiempo)
+        + dormir(tiempo: Tiempo)
+        + recibirHeridaArmaFuego(tiempo: Tiempo)
+        + viajar(distancia: double, tiempo: Tiempo)
+        + agregarArresto()
+        + setCantidadArrestos(cantidadArrestos: int)
+        + getCantidadArrestos(): int
+        + getCargo(): Cargo
+        + obtenerCargo(): string
     }
 
     class Ciudad {
@@ -54,8 +82,19 @@ together {
     }
 }
 
-    class Ladron {
-    }
+class Ladron {
+    - ciudadActual: string
+    - edificioActual: int
+    - nombreLadron: string
+    - esLibre: bool
+    + obtenerNombre(): string
+    + toString(): string
+    + constatarDatos(datos: DatosLadron): bool
+    + estaEn(ciudad: string, edificio: int): bool
+    + arrestar()
+    + estaLibre(): bool
+}
+
 class Interpol {
     - ladronBuscado: String
     - listaLadrones: List<Ladron>
@@ -79,21 +118,22 @@ class Tiempo {
     - diaFin: int
 }
 
-
-
-
-
-
-
-
-
-
-
 class Edificio {
-    - pista: Pista
+    - nombre: string
+    - contadorDeEntradas: int
+    + aumentarTiempo(tiempo: Tiempo)
+    + mostrarPista(): Pista
+    + mostrarInfo(): string
+    + nombre(): string
 }
 
-interface Cargo{}
+interface Cargo{
+    + agregarArresto()
+    + viajar(distancia: double, tiempo: Tiempo)
+    + asignarJugador(jugador: Jugador)
+    + obtenerCargo(): string
+}
+
 class Novato{}
 class Detective{}
 class Investigador{}
@@ -108,14 +148,32 @@ class Banco{}
 class Biblioteca{}
 
 class Ladron{}
-class DatosLadron{}
+class DatosLadron{
+    - sexo: string
+    - hobby: string
+    - cabello: string
+    - senia: string
+    - vehiculo: string
+    + constatar(otro: DatosLadron): bool
+    + toString(): string
+}
 
-
-
-interface ObjetoRobado{}
-class Comun{}
-class Valioso{}
-class MuyValioso{}
+interface ObjetoRobado{
+    + es(nombre: string)
+    + obtenerCantidadCiudadesEscape(): int
+}
+class Comun{
+    - nombre: string
+    - cantidadCiudadesEscape: int
+}
+class Valioso{
+    - nombre: string
+    - cantidadCiudadesEscape: int
+}
+class MuyValioso{
+    - nombre: string
+    - cantidadCiudadesEscape: int
+}
 
 class Tiempo {
     - horas
@@ -124,6 +182,14 @@ class Tiempo {
 }
 
 interface Sitio {
+}
+
+class Ubicacion {
+    - longitud: double
+    - latitud: double
+    + obtenerLatitud(): double
+    + obtenerLongitud(): double
+    + calcularDistancia(ubicacion: Ubicacion): double
 }
 
 Juego -right-> Partida
@@ -140,6 +206,7 @@ Cargo <|.. Sargento
 
 Ciudad .down.> Tiempo
 Ciudad --> "4" Sitio
+Ciudad .down.> Ubicacion
 Sitio --> AireLibre
 Sitio -->  Edificio
 Edificio <|-- Aeropuerto
@@ -166,7 +233,6 @@ Nivel ..> Interpol
 Nivel ..> OrdenDeArresto
 Nivel ..> Mapa
 Nivel ..> Tiempo
-
 
 CreadorDeNiveles .left> Nivel
 Jugador <.up. Nivel
