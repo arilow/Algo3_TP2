@@ -32,7 +32,7 @@ public class OrdenDeArresto {
     }
 
     public boolean verificarLadron(Ladron ladron) {
-        if(ladron.obtenerNombre() == nombreLadronDeOrden) {
+        if(ladron.obtenerNombre().equals(nombreLadronDeOrden)) {
             ladron.arrestar();
             return true;
         }

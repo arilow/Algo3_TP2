@@ -1,80 +1,81 @@
-[{
+{"ladrones": [{
     "nombre": "Nick Brunch",
-    "genero": "hombre",
+    "sexo": "masculino",
     "hobby": "escalar motañas",
-    "pelo": "negro",
+    "cabello": "negro",
     "seña": "anillo",
-    "auto": "moto"
+    "vehiculo": "moto"
 },
 {
     "nombre": "Len Buck",
-    "genero": "hombre",
+    "sexo": "masculino",
     "hobby": "escalar motañas",
-    "pelo": "rojo",
+    "cabello": "rojo",
     "seña": "tatuaje",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Ihor Ihorovitch",
-    "genero": "hombre",
+    "sexo": "masculino",
     "hobby": "croquet",
-    "pelo": "rubio",
+    "cabello": "rubio",
     "seña": "tatuaje",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Fast Eddie B.",
-    "genero": "hombre",
+    "sexo": "masculino",
     "hobby": "croquet",
-    "pelo": "negro",
+    "cabello": "negro",
     "seña": "joyeria",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Scar Graynolt",
-    "genero": "hombre",
+    "sexo": "masculino",
     "hobby": "croquet",
-    "pelo": "red",
+    "cabello": "red",
     "seña": "añillo",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Merey Laroc",
-    "genero": "mujer",
+    "sexo": "femenino",
     "hobby": "escalar montaña",
-    "pelo": "marron",
+    "cabello": "marron",
     "seña": "limusina",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Lady Agatha",
-    "genero": "mujer",
+    "sexo": "femenino",
     "hobby": "tenis",
-    "pelo": "rojo",
+    "cabello": "rojo",
     "seña": "añillo",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 },
 {
     "nombre": "Katherine Drib",
-    "genero": "mujer",
+    "sexo": "femenino",
     "hobby": "escalar montaña",
-    "pelo": "marron",
+    "cabello": "marron",
     "seña": "tatuaje",
-    "auto": "motocicleta"
+    "vehiculo": "motocicleta"
 },
 {
     "nombre": "Dazzle Annie",
-    "genero": "mujer",
+    "sexo": "femenino",
     "hobby": "tenis",
-    "pelo": "rubia",
+    "cabello": "rubia",
     "seña": "tatuaje",
-    "auto": "limusina"
+    "vehiculo": "limusina"
 },
 {
     "nombre": "Carmen Sandiego",
-    "genero": "mujer",
+    "sexo": "femenino",
     "hobby": "tenis",
-    "pelo": "marron",
+    "cabello": "marron",
     "seña": "joyeria",
-    "auto": "convertible"
+    "vehiculo": "convertible"
 }]
+}

@@ -64,7 +64,8 @@ public class ConstructorDeEscenas {
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-        // Pantalla derecha no cambia (Por ahora)
+        // Pantalla Derecha
+        pantallaDerechaActual = new VistaDescripcionCiudad(juego.nivelActual().obtenerCiudadActual().obtenerDescripcion(), anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
         return new HBox(pantallaizquierda, pantallaDerecha);
@@ -135,8 +136,16 @@ public class ConstructorDeEscenas {
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
-        // Pantalla derecha actual pareciera mantenerse constante por ahora
-        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+        // Patalla derecha
+        double anchoCanvas = anchoPantalla;
+        double altoCanvas = altoVentana;
+        Canvas canvas = new Canvas(anchoCanvas, altoCanvas);
+        GraphicsContext gcD = canvas.getGraphicsContext2D();
+        gcD.setFill(Color.BLACK);
+        gcD.fillRect(0,0, anchoCanvas, altoCanvas);
+        pantallaDerechaActual = canvas;
+
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual);
 
         return new HBox(pantallaizquierda, pantallaDerecha);
     }

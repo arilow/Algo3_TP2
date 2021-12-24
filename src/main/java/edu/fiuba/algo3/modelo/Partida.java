@@ -35,11 +35,13 @@ public class Partida {
         try {
             JSONParser parser = new JSONParser();
             JSONObject lecturaArchivo = (JSONObject) parser.parse(new FileReader(fileName));
-            JSONArray jugadores= (JSONArray) lecturaArchivo.get("Jugadores");
+            JSONArray jugadores = (JSONArray) lecturaArchivo.get("Jugadores");
 
             for(Object jugador_ : jugadores){
                 if(nombre.equals((String) ((JSONObject)jugador_).get("nombre"))){
-                    jugador.setCantidadArrestos(Integer.parseInt(((JSONObject)jugador_).get("cantidadArrestos").toString()));
+                    for (int i = 0; i < Integer.parseInt(((JSONObject)jugador_).get("cantidadArrestos").toString()); i++)
+                        jugador.agregarArresto();
+//                        jugador.setCantidadArrestos(Integer.parseInt(((JSONObject)jugador_).get("cantidadArrestos").toString()));
                     break;
                 }
             }

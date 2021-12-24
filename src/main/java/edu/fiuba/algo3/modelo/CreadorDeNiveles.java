@@ -95,7 +95,6 @@ public class CreadorDeNiveles {
                 fileName += "Dificil/Nivel" + n + ".json";
                 break;
         }
-        fileName= "config/Facil/Nivel4.json";
         try {
             JSONObject lecturaArchivo = (JSONObject) parser.parse(new FileReader(fileName));
             return lecturaArchivo;
@@ -114,7 +113,7 @@ public class CreadorDeNiveles {
         String sexo = (String) lecturaLadron.get("sexo");
         String hobby = (String) lecturaLadron.get("hobby");
         String cabello = (String) lecturaLadron.get("cabello");
-        String senia = (String) lecturaLadron.get("senia");
+        String senia = (String) lecturaLadron.get("seña");
         String vehiculo = (String) lecturaLadron.get("vehiculo");
 
         return new Ladron(sexo, hobby, cabello, senia, vehiculo, ciudad, 0, nombre);
