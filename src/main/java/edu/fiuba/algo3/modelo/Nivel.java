@@ -87,7 +87,7 @@ public class Nivel implements Observer{
     public boolean tieneTesoro(String tesoro) {
         return this.tesoro.es(tesoro);
     }
-    
+
     public void buscarLadrones(DatosLadron datosLadron){
         interpol = new Interpol(ladron);
         ladronesSospechosos = interpol.buscarLadrones(datosLadron);
@@ -146,7 +146,6 @@ public class Nivel implements Observer{
          // Total de horas: 17 + 24x5 + 17 = 154
         if(tiempo.obtenerHorasPasadas() >= 154) {
             comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
-            System.out.println("P");
         }
 
     }
