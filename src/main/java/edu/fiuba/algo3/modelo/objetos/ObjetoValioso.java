@@ -16,4 +16,5 @@ public class ObjetoValioso implements ObjetoRobado{
     public int obtenerCantidadCiudadesEscape(){
         return cantidadCiudadesEscape;
     }
+    public String nombre(){return nombre;}
 }

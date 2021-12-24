@@ -15,7 +15,6 @@ public class Partida {
     private CreadorDeNiveles creadorDeNiveles;
     private Nivel nivelActual;
     private Jugador jugador;
-
     private ComunicadorEstadoPartida estado;
 
     public Partida(OyenteEstadoPartida oyenteEstadoPartida) {
@@ -56,7 +55,7 @@ public class Partida {
         comenzarNivel();
     }
     public void terminarNivel(){
-        //agregar un if para el caso de que exista el nombre
+
         String nombreJugador= jugador.nombre();
         int cantidadDeArrestos = jugador.getCantidadArrestos();
         String fileName = "config/partidas.json";
@@ -72,11 +71,12 @@ public class Partida {
                     nuevo_jugador=false;
                 }
             }
-            if(nuevo_jugador==true)
+            if(nuevo_jugador)
             {
                 JSONObject datosPartida = new JSONObject();
                 datosPartida.put("nombre",nombreJugador);
                 datosPartida.put("cantidadArrestos",Integer.toString(cantidadDeArrestos));
+                jugadores.add(datosPartida);
             }
             FileWriter file = new FileWriter(fileName);
             lecturaArchivo.put("Jugadores",jugadores);
@@ -106,5 +106,12 @@ public class Partida {
     public Nivel nivelActual() {
         return nivelActual;
     }
+
+    public void siguienteNivel() {
+        terminarNivel();
+        crearNivel();
+        comenzarNivel();
+    }
+    public Jugador obtenerJugador(){return  jugador;}
 }
 

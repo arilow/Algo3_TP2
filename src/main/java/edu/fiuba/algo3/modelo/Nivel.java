@@ -62,6 +62,8 @@ public class Nivel implements Observer{
             }else{
                 System.out.println("Nivel perdido");
                 comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
+                comunicadorEstadoPartida.definirEstado(EstadoPartida.LADRON_ESCAPADO);
+                //this.terminarNivel(jugador.nombre(),jugador.getCantidadArrestos());
                 // Pierdo el nivel
             }
             return;
@@ -76,13 +78,6 @@ public class Nivel implements Observer{
         return this.ordenDeArresto.verificarLadron(ladron);
     }
 
-    public void salirDeEdificio() {
-        ciudadActual.salirDeEdificio();
-    }
-
-    public int obtenerTiempo() {
-        return tiempo.obtenerHorasPasadas();
-    }
 
     public boolean tieneTesoro(String tesoro) {
         return this.tesoro.es(tesoro);
@@ -131,7 +126,7 @@ public class Nivel implements Observer{
     }
 
     public String nombreTesoro() {
-        return ((ObjetoComun)tesoro).nombre();
+        return tesoro.nombre();
     }
 
     public Ciudad obtenerCiudad(String ciudad) {
@@ -145,7 +140,7 @@ public class Nivel implements Observer{
          // Domingo: 17hs
          // Total de horas: 17 + 24x5 + 17 = 154
         if(tiempo.obtenerHorasPasadas() >= 154) {
-            comunicadorEstadoPartida.definirEstado(EstadoPartida.PERDER_NIVEL);
+            comunicadorEstadoPartida.definirEstado(EstadoPartida.NIVEL_SE_QUEDO_SIN_TIEMPO);
         }
 
     }

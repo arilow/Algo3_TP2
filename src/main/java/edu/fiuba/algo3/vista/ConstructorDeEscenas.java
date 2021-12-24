@@ -184,7 +184,7 @@ public class ConstructorDeEscenas {
 
         //Pantalla izquierda
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
-        //pantallaIzquierdaActual= new vistaLadronEncarceladoIzquierda(anchoPantalla,altoPantallaIzquierdaActual);
+        pantallaIzquierdaActual= new vistaLadronEncarceladoIzquierda(juego.partidaActual(),anchoPantalla,altoPantallaIzquierdaActual);
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
         // Pantalla Derecha no cambia (En principio)
@@ -198,9 +198,23 @@ public class ConstructorDeEscenas {
     public HBox construirPantallaPerdedorNivel() {
         //Pantalla izquierda
         VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        pantallaIzquierdaActual= new vistaLadronEscapadoIzquierda(juego.partidaActual(),anchoPantalla,altoPantallaIzquierdaActual);
         VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
 
 
+        pantallaDerechaActual = new vistaCarcelSinLadron(anchoPantalla, altoPantallaDerechaActual);
+        VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
+
+        return new HBox(pantallaizquierda, pantallaDerecha);
+    }
+
+    public HBox construirPantallaPerdedorNivelPorTiempo() {
+        //Pantalla izquierda
+        VBox infoFecha = construirPantallaDatos(juego.nivelActual().obtenerCiudadActual().obtenerNombre(), juego.nivelActual().obtenerFecha());
+        pantallaIzquierdaActual= new vistaIzquierdaPerderPorTiempo(juego.partidaActual(),anchoPantalla,altoPantallaIzquierdaActual);
+        VBox pantallaizquierda = new VBox(infoFecha, pantallaIzquierdaActual);
+
+        System.out.println("Antes de la vista CarcelSinLadron (derecha)");
         pantallaDerechaActual = new vistaCarcelSinLadron(anchoPantalla, altoPantallaDerechaActual);
         VBox pantallaDerecha = new VBox(pantallaDerechaActual, construirPantallaOpciones());
 
