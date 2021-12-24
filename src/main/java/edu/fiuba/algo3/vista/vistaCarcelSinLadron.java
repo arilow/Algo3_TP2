@@ -10,6 +10,7 @@ public class vistaCarcelSinLadron extends Canvas {
         super(ancho, alto);
         GraphicsContext gcI = getGraphicsContext2D();
 
+        System.out.println("Entré a la vista CarcelSinLadron (derecha)");
         Image image = new Image("Carcel_sin_ladron.png");
         // TODO: des-hardcodear valores.
         gcI.drawImage(image, 0, alto-300, ancho, 200);

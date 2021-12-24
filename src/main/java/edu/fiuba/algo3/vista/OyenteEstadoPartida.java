@@ -39,8 +39,11 @@ public class OyenteEstadoPartida implements Observer {
             case LADRON_ARRESTADO:
                 ventana.mostrarPantallaGanador();
                 break;
-            case PERDER_NIVEL:
+            case LADRON_ESCAPADO:
                 ventana.mostrarPantallaNivelPerdido();
+                break;
+            case NIVEL_SE_QUEDO_SIN_TIEMPO:
+                ventana.mostrarPantallaNivelPerdidoPorTiempo();
                 break;
             default:
                 // TODO: Lanzar excepcion.

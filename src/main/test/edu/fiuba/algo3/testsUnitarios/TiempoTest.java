@@ -25,7 +25,7 @@ public class TiempoTest {
 
     @Test
     public void test01TiempoSeAgregaUnaHora() {
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
 
         tiempo.sumarHoras(1);
 
@@ -35,7 +35,7 @@ public class TiempoTest {
     @Test
     public void test02TiempoSeTermina() {
         ObservadorDeTiempo observadorDeTiempo = new ObservadorDeTiempo();
-        Tiempo tiempo = new Tiempo(10);
+        Tiempo tiempo = new Tiempo();
         tiempo.addObserver(observadorDeTiempo);
 
         tiempo.sumarHoras(10);
@@ -46,7 +46,7 @@ public class TiempoTest {
     @Test
     public void test03Las25HorasCorrespondenAlMartesALas8hs() {
 
-        Tiempo tiempo = new Tiempo(45);
+        Tiempo tiempo = new Tiempo();
         tiempo.sumarHoras(25);
         String tiempoString = tiempo.aString();
 
@@ -56,7 +56,7 @@ public class TiempoTest {
     @Test
     public void test04Las50HorasCorrespondenAlMiercolesALas9hs() {
 
-        Tiempo tiempo = new Tiempo(60);
+        Tiempo tiempo = new Tiempo();
         tiempo.sumarHoras(50);
         String tiempoString = tiempo.aString();
 
@@ -66,7 +66,7 @@ public class TiempoTest {
     @Test
     public void test05Las100HorasCorrespondenAlViernesALas11hs() {
 
-        Tiempo tiempo = new Tiempo(120);
+        Tiempo tiempo = new Tiempo();
         tiempo.sumarHoras(100);
         String tiempoString = tiempo.aString();
 
@@ -76,7 +76,7 @@ public class TiempoTest {
     @Test
     public void test06Las150HorasCorrespondenAlDomingoALas13hs() {
 
-        Tiempo tiempo = new Tiempo(178);
+        Tiempo tiempo = new Tiempo();
         tiempo.sumarHoras(150);
         String tiempoString = tiempo.aString();
 

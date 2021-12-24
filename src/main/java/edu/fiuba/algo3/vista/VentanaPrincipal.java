@@ -103,4 +103,10 @@ public class VentanaPrincipal {
         Scene scene = new Scene(layout,anchoVentana,altoVentana);
         stage.setScene(scene);
     }
+
+    public void mostrarPantallaNivelPerdidoPorTiempo() {
+        HBox layout = constructorDeEscenas.construirPantallaPerdedorNivelPorTiempo();
+        Scene scene = new Scene(layout,anchoVentana,altoVentana);
+        stage.setScene(scene);
+    }
 }

@@ -12,7 +12,7 @@ public class Tiempo extends Observable {
     private int dia;
     private int diaFin;
 
-    public Tiempo(int fin) {
+    public Tiempo() {
         this.horas = 7; /* Arranca a las 7 AM */
         this.dia = 0; /* Lunes */
         this.horasFin = 17 /* Termina a las 5 de la tarde */;
@@ -33,7 +33,7 @@ public class Tiempo extends Observable {
         // Si son las 10 de la noche, sumar 9 horas.
         if (horas >= 22) {
             horas = (horas + 9) % 24;
-            dia++;
+            dia = (dia + 1) % 7;
         }
 
         if(horas >= horasFin && dia >= diaFin) {
